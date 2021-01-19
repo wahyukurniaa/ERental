@@ -2,21 +2,16 @@ package com.wahyukurnia.erental.Kategori;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.wahyukurnia.erental.API;
-import com.wahyukurnia.erental.PrefManager;
 import com.wahyukurnia.erental.R;
 
 import org.json.JSONArray;
@@ -26,34 +21,32 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Kategori extends AppCompatActivity {
+public class IsiKategoriActivity extends AppCompatActivity {
     API api;
 
-    private List<Model_Kategori> dataKategori;
+    private List<Model_IsiKategori> dataIsiKategori;
     private RecyclerView recycler_kategori;
-    Adapter_Kategori adapter;
-    Button btn_profil;
+    Adapter_IsiKategori adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_kategori);
-
+        setContentView(R.layout.activity_isi_kategori);
 
         api = new API();
         AndroidNetworking.initialize(this);
 
-        recycler_kategori = findViewById(R.id.recycler_kategori);
+        recycler_kategori = findViewById(R.id.recycler_isi_kategori);
         recycler_kategori.setHasFixedSize(true);
-        recycler_kategori.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true));
+        recycler_kategori.setLayoutManager(new GridLayoutManager(this,3));
 
-        dataKategori = new ArrayList<>();
-        AndroidNetworking.initialize(getApplicationContext());
-        getDataKategori();
+        dataIsiKategori = new ArrayList<>();
+        AndroidNetworking.initialize(this);
+        getDataIsiKategori();
 
     }
 
-    public void getDataKategori(){
+    public void getDataIsiKategori(){
         AndroidNetworking.get(api.URL_Kategori)
                 .setPriority(Priority.LOW)
                 .build()
@@ -65,13 +58,15 @@ public class Kategori extends AppCompatActivity {
                             JSONArray res = response.getJSONArray("res");
                             for(int i =0; i <res.length();i++){
                                 JSONObject data = res.getJSONObject(i);
-                                dataKategori.add(new Model_Kategori(
-                                        data.getInt("id_kategori"),
-                                        data.getString("nama_kategori")
+                                dataIsiKategori.add(new Model_IsiKategori(
+                                        data.getString("nama_barang"),
+                                        data.getString("tarif"),
+                                        data.getString("deskripsi"),
+                                        api.URL_GAMBAR+data.getString("gambar_barang")
 
                                 ));
                             }
-                            Adapter_Kategori adapter = new Adapter_Kategori(dataKategori);
+                            Adapter_IsiKategori adapter = new Adapter_IsiKategori(dataIsiKategori);
                             recycler_kategori.setAdapter(adapter);
                             adapter.notifyDataSetChanged();
 
@@ -86,4 +81,5 @@ public class Kategori extends AppCompatActivity {
                     }
                 });
     }
+
 }

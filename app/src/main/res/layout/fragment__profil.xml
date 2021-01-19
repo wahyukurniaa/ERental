@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".Profil.Fragment_Profil">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_menu"
+        android:background="#FF9800"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|center_horizontal"
+                android:text="E-Rental "
+                android:textColor="@color/white"
+                android:textSize="@dimen/_17sdp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <ImageView
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/username_profl"
+        android:text="Username"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_10sdp"
+        android:textStyle="bold"
+        android:gravity="center_horizontal"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_logout"
+        android:layout_gravity="center_horizontal"
+        android:text="Logout"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="WELCOME BOARD"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_20sdp"
+        android:textStyle="bold"
+        android:gravity="center_horizontal"/>
+
+    <Button
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="@dimen/_180sdp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:id="@+id/btn_profil"
+        android:text="Profil"
+        />
+    <Button
+        android:layout_width="@dimen/_180sdp"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_edit_profil"
+        android:layout_gravity="center"
+        android:text="Edit Profil"
+        />
+    <Button
+        android:layout_width="@dimen/_180sdp"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_store"
+        android:layout_gravity="center"
+        android:text="Store"
+        />
+    <Button
+        android:layout_width="@dimen/_180sdp"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_booked"
+        android:layout_gravity="center"
+        android:text="Booked"
+        />
+
+
+</LinearLayout>
