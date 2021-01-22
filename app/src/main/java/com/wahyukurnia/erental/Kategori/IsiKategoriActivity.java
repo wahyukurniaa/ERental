@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -24,6 +25,8 @@ import java.util.List;
 public class IsiKategoriActivity extends AppCompatActivity {
     API api;
 
+    String id;
+
     private List<Model_IsiKategori> dataIsiKategori;
     private RecyclerView recycler_kategori;
     Adapter_IsiKategori adapter;
@@ -36,9 +39,12 @@ public class IsiKategoriActivity extends AppCompatActivity {
         api = new API();
         AndroidNetworking.initialize(this);
 
+        Intent i = getIntent();
+        id = i.getStringExtra("id");
+
         recycler_kategori = findViewById(R.id.recycler_isi_kategori);
         recycler_kategori.setHasFixedSize(true);
-        recycler_kategori.setLayoutManager(new GridLayoutManager(this,3));
+        recycler_kategori.setLayoutManager(new GridLayoutManager(this,2));
 
         dataIsiKategori = new ArrayList<>();
         AndroidNetworking.initialize(this);
@@ -47,7 +53,7 @@ public class IsiKategoriActivity extends AppCompatActivity {
     }
 
     public void getDataIsiKategori(){
-        AndroidNetworking.get(api.URL_Kategori)
+        AndroidNetworking.get(api.URL_Isi_Kategori+id)
                 .setPriority(Priority.LOW)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
@@ -59,10 +65,12 @@ public class IsiKategoriActivity extends AppCompatActivity {
                             for(int i =0; i <res.length();i++){
                                 JSONObject data = res.getJSONObject(i);
                                 dataIsiKategori.add(new Model_IsiKategori(
+                                        data.getInt("id_barang"),
                                         data.getString("nama_barang"),
-                                        data.getString("tarif"),
-                                        data.getString("deskripsi"),
-                                        api.URL_GAMBAR+data.getString("gambar_barang")
+                                        data.getString("tarif_barang"),
+                                       api.URL_GAMBAR+data.getString("gambar_barang")
+
+
 
                                 ));
                             }

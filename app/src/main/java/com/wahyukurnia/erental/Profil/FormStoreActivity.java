@@ -27,7 +27,8 @@ Button next;
 String id_user;
 API api;
 TinyDB tinyDB;
-EditText edt_namaStore, edt_alamatStore, edt_telpStore, edt_WAStore, edt_IGStore;
+EditText edt_namaStore, edt_alamatStore, edt_telpStore, edt_WAStore, edt_IGStore,
+    edt_gambar;
     private static final String TAG = "FormStoreActivity";
 
     @Override
@@ -38,8 +39,10 @@ EditText edt_namaStore, edt_alamatStore, edt_telpStore, edt_WAStore, edt_IGStore
         api = new API();
         Log.d(TAG, "onCreate: inisialisasi");
 
+        AndroidNetworking.initialize(this);
+
         tinyDB = new TinyDB(this);
-       id_user = tinyDB.getString("keyIdUser");
+        id_user = tinyDB.getString("keyIdUser");
 
         Log.e("salah", tinyDB.getString("keyIdUser"));
 
@@ -48,11 +51,15 @@ EditText edt_namaStore, edt_alamatStore, edt_telpStore, edt_WAStore, edt_IGStore
         edt_telpStore = findViewById(R.id.edt_telpStore);
         edt_WAStore = findViewById(R.id.edt_WAStore);
         edt_IGStore = findViewById(R.id.edt_IGStore);
+        edt_gambar = findViewById(R.id.edt_gambarStore);
+
 
 
         next = findViewById(R.id.btn_nextStore);
-        AndroidNetworking.initialize(getApplicationContext());
         aksiTambahStore();
+
+
+
     }
 
     public void aksiTambahStore(){
@@ -85,7 +92,7 @@ EditText edt_namaStore, edt_alamatStore, edt_telpStore, edt_WAStore, edt_IGStore
 
     }
 
-    public void tambahData(String id_user, String nama_store, String alamat_store, String telp_Store, String wa_store, String ig_store){
+    public void tambahData(String id_user,String nama_store,String alamat_store,String telp_Store,String wa_store,String ig_store){
         //koneksi ke file create.php, jika menggunakan localhost gunakan ip sesuai dengan ip kamu
         AndroidNetworking.post(api.URL_Store)
                 .addBodyParameter("id_user", id_user) //id bersifat Auto_Increment tidak perlu diisi/(diisi NULL) cek create.php
@@ -99,11 +106,12 @@ EditText edt_namaStore, edt_alamatStore, edt_telpStore, edt_WAStore, edt_IGStore
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        Intent i = new Intent(FormStoreActivity.this, PasangSewaActivity.class);
+                        startActivity(i);
                         //Handle Response
                         Log.e(TAG, "onResponse: " + response);
                         Toast.makeText(getApplicationContext(),"Data berhasil ditambahkan" , Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(FormStoreActivity.this, PasangSewaActivity.class);
-                        startActivity(i);
+
                         //memunculkan Toast saat data berhasil ditambahkan
 
                     }

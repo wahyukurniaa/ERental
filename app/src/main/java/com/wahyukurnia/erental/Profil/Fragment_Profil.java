@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.wahyukurnia.erental.LoginActivity;
@@ -54,6 +55,14 @@ public class Fragment_Profil extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getContext(),StoreActivity.class);
+                startActivity(i);
+            }
+        });
+        btn_edit_profil = view.findViewById(R.id.btn_edit_profil);
+        btn_edit_profil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), EditProfilActivity.class);
                 startActivity(i);
             }
         });
