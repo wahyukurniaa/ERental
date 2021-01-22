@@ -27,8 +27,13 @@ public class TinyDB {
     private String DEFAULT_APP_IMAGEDATA_DIRECTORY;
     private String lastImagePath = "";
 
+    int Private_mode=0;
+
+    private static final String PREF_NAME = "e_rental";
+
     public TinyDB(Context appContext) {
-        preferences = PreferenceManager.getDefaultSharedPreferences(appContext);
+       /* preferences = PreferenceManager.getDefaultSharedPreferences(appContext);*/
+        preferences = appContext.getSharedPreferences(PREF_NAME, Private_mode);
     }
 
 

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context=".Kategori.IsiKategoriActivity">
 
@@ -53,14 +54,12 @@
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="@dimen/_10sdp"
         android:id="@+id/recycler_isi_kategori"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:itemCount="9"
-
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        tools:itemCount="2"
         tools:listitem="@layout/item_row_isi_kategori" />
 
 </LinearLayout>
