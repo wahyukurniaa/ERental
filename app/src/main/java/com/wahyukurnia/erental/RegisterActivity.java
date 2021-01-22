@@ -2,6 +2,7 @@ package com.wahyukurnia.erental;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
@@ -18,6 +20,8 @@ import com.androidnetworking.interfaces.JSONObjectRequestListener;
 
 import org.json.JSONObject;
 
+import dmax.dialog.SpotsDialog;
+
 public class RegisterActivity extends AppCompatActivity {
     API api;
     private static final String TAG = "MainActivity";
@@ -25,11 +29,13 @@ public class RegisterActivity extends AppCompatActivity {
              edt_emailuser_register, edt_telpuser_register,
              edt_username_register, edt_passuser_register;
     Button btn_daftar;
+    TextView txtLogin;
+    AlertDialog alertDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
+        alertDialog =new SpotsDialog.Builder().setContext(this).setMessage("Sedang Mengirim Data ....").setCancelable(false).build();
         Log.d(TAG, "onCreate: inisialisasi");
         api = new API();
 
@@ -39,6 +45,13 @@ public class RegisterActivity extends AppCompatActivity {
         edt_telpuser_register = findViewById(R.id.edt_telpuser_register);
         edt_username_register = findViewById(R.id.edt_username_register);
         edt_passuser_register = findViewById(R.id.edt_pass_register);
+        txtLogin = findViewById(R.id.txt_Login);
+        txtLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
 
         btn_daftar = findViewById(R.id.btn_daftar);
