@@ -1,13 +1,22 @@
 package com.wahyukurnia.erental.Kategori;
 
 public class Model_IsiKategori {
-    String nama_barang, tarif, deskripsi, gambar_barang;
+    int id_barang;
+    String nama_barang, tarif, gambar_barang;
 
-    public Model_IsiKategori(String nama_barang, String tarif, String deskripsi, String gambar_barang) {
+    public Model_IsiKategori(int id_barang, String nama_barang, String tarif, String gambar_barang) {
+        this.id_barang = id_barang;
         this.nama_barang = nama_barang;
         this.tarif = tarif;
-        this.deskripsi = deskripsi;
         this.gambar_barang = gambar_barang;
+    }
+
+    public int getId_barang() {
+        return id_barang;
+    }
+
+    public void setId_barang(int id_barang) {
+        this.id_barang = id_barang;
     }
 
     public String getNama_barang() {
@@ -24,14 +33,6 @@ public class Model_IsiKategori {
 
     public void setTarif(String tarif) {
         this.tarif = tarif;
-    }
-
-    public String getDeskripsi() {
-        return deskripsi;
-    }
-
-    public void setDeskripsi(String deskripsi) {
-        this.deskripsi = deskripsi;
     }
 
     public String getGambar_barang() {
