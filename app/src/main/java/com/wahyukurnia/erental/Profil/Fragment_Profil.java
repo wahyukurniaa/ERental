@@ -21,6 +21,8 @@ public class Fragment_Profil extends Fragment {
     TinyDB tinyDB;
     Button logout,btn_profil, btn_edit_profil, btn_store;
     TextView txt_username_profil;
+    TextView title;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -30,6 +32,10 @@ public class Fragment_Profil extends Fragment {
         tinyDB = new TinyDB(getContext());
         txt_username_profil = view.findViewById(R.id.username_profl);
         txt_username_profil.setText(tinyDB.getString("keyNamaUser"));
+
+        title = view.findViewById(R.id.tv_toolbar);
+        title.setText("Profil User");
+
 
         logout = view.findViewById(R.id.btn_logout);
         logout.setOnClickListener(new View.OnClickListener() {

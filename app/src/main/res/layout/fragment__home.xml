@@ -1,78 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swHome"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     tools:context=".Kategori.Fragment_Home">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_menu"
-        android:background="#FF9800"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|center_horizontal"
-                android:text="E-Rental "
-                android:textColor="@color/white"
-                android:textSize="@dimen/_17sdp"
-                android:textStyle="bold" />
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/toolbar_main" />
 
-            <RelativeLayout
-                android:layout_width="20dp"
-                android:layout_height="wrap_content"/>
-            <EditText
+
+            <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_30sdp"
-                android:background="@drawable/bg_isi"
-                android:gravity="left|center_vertical"
-                android:textAllCaps="false"
-                android:drawableStart="@drawable/ic_baseline_search_24"
-                android:id="@+id/btncari"
-                android:hint="Cari Disini.."
-                android:imeOptions="actionDone"
-                android:paddingHorizontal="@dimen/_20sdp"
-                android:layout_marginRight="@dimen/_5sdp"
-                android:layout_marginBottom="@dimen/_5sdp"
-                android:layout_marginTop="@dimen/_3sdp"
-                android:textColor="@color/black" />
-            <RelativeLayout
-                android:layout_width="10dp"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:id="@+id/mainLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+<!--                        Search bar-->
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_40sdp">
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_20sdp"
+                                android:background="?colorPrimary" />
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_40sdp"
+                                android:layout_marginLeft="@dimen/_20sdp"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:layout_marginRight="@dimen/_20sdp"
+                                android:background="@drawable/bg_isi"
+                                android:drawableLeft="@drawable/ic_baseline_search_24"
+                                android:paddingLeft="@dimen/_5sdp"
+                                android:translationZ="@dimen/_100sdp" />
+                        </RelativeLayout>
+
+<!--                        slider -->
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_20sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginRight="@dimen/_20sdp"
+                            app:cardCornerRadius="6dp">
+                            <com.smarteist.autoimageslider.SliderView
+                                android:id="@+id/imageSlider"
+                                android:layout_width="match_parent"
+                                android:layout_height="150dp"
+                                app:sliderAnimationDuration="600"
+                                app:sliderAutoCycleDirection="back_and_forth"
+                                app:sliderAutoCycleEnabled="true"
+                                app:sliderIndicatorAnimationDuration="600"
+                                app:sliderIndicatorGravity="center_horizontal|bottom"
+                                app:sliderIndicatorMargin="15dp"
+                                app:sliderIndicatorOrientation="horizontal"
+                                app:sliderIndicatorPadding="3dp"
+                                app:sliderIndicatorRadius="2dp"
+                                app:sliderIndicatorSelectedColor="#5A5A5A"
+                                app:sliderIndicatorUnselectedColor="#FFF"
+                                app:sliderScrollTimeInSec="1"
+                                app:sliderStartAutoCycle="true" />
+                        </androidx.cardview.widget.CardView>
+
+<!--                        recycler kategori -->
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recycler_kategori"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center|center_horizontal"
+                            android:layout_marginTop="@dimen/_20sdp"
+                            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                            app:spanCount="4"
+                            tools:itemCount="4"
+                            tools:listitem="@layout/item_row_kategori" />
 
 
+
+                    </LinearLayout>
+                    <com.facebook.shimmer.ShimmerFrameLayout
+                        android:id="@+id/shimmer_beranda"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="gone">
+
+                        <include layout="@layout/shimmer_beranda" />
+                    </com.facebook.shimmer.ShimmerFrameLayout>
+
+                    <include
+                        layout="@layout/layout_koneksi"
+                        android:visibility="gone" />
+                </RelativeLayout>
+            </androidx.core.widget.NestedScrollView>
         </LinearLayout>
-    </androidx.appcompat.widget.Toolbar>
-
-    <TextView
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="Cari Kategori Anda"
-        android:textStyle="bold"
-        android:textSize="@dimen/_20sdp"
-        android:textColor="@color/black"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="@dimen/_10sdp"
-        android:id="@+id/recycler_kategori"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:itemCount="9"
-        android:layout_gravity="center|center_horizontal"
-        tools:listitem="@layout/item_row_kategori" />
-
-
-</LinearLayout>
+    </RelativeLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

@@ -1,0 +1,66 @@
+ <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+     android:background="?colorPrimary"
+        android:orientation="vertical">
+
+     <androidx.appcompat.widget.Toolbar
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal">
+        <RelativeLayout
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/ib_back"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:visibility="gone"
+                android:background="?attr/actionBarItemBackground"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_back" />
+
+            <TextView
+                android:id="@+id/tv_toolbar"
+                android:layout_width="wrap_content"
+                android:fontFamily="@font/quicksand_bold"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="@dimen/_18sdp"
+                android:textColor="@color/white"
+                tools:text="Toolbar" />
+
+            <ImageButton
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:id="@+id/ib_message"
+                android:tint="@color/white"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="?attr/actionBarItemBackground"
+                android:scaleType="fitCenter"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:src="@drawable/ic_baseline_message_24" />
+
+            <ImageButton
+                android:layout_toLeftOf="@+id/ib_message"
+                android:layout_centerVertical="true"
+                android:id="@+id/ib_notif"
+                android:tint="@color/white"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="?attr/actionBarItemBackground"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_baseline_notifications_24" />
+
+        </RelativeLayout>
+     </androidx.appcompat.widget.Toolbar>
+ </LinearLayout>
+
+
