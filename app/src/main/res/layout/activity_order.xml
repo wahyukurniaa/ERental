@@ -87,8 +87,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/tanggal_awal"
             android:textSize="@dimen/_15sdp"
-            android:textColor="@color/black"
-            android:background="date"
             />
         <TextView
             android:layout_width="wrap_content"

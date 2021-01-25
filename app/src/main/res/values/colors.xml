@@ -11,8 +11,8 @@
     <color name="main_dark">#F6255A</color>
     <color name="bg_dark">#1A1A25</color>
 
-    <color name="ui_day">#D58003</color>
-    <color name="ui_night">#6D5CA3</color>
+    <color name="ui_day">#3BA2EF</color>
+    <color name="ui_night">#3F9EE4</color>
 
     <color name="shimmer_foreground">#DADADA</color>
     <color name="shimmer_background">#EBEBEB</color>

@@ -1,65 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swBarang"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
     tools:context=".Kategori.IsiKategoriActivity">
 
-<!--    <androidx.appcompat.widget.Toolbar-->
-<!--        android:id="@+id/toolbar_menu"-->
-<!--        android:background="#FF9800"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content">-->
-
-<!--        <LinearLayout-->
-<!--            android:orientation="horizontal"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content">-->
-
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_gravity="center|center_horizontal"-->
-<!--                android:text="E-Rental "-->
-<!--                android:textColor="@color/white"-->
-<!--                android:textSize="@dimen/_17sdp"-->
-<!--                android:textStyle="bold" />-->
-
-<!--            <RelativeLayout-->
-<!--                android:layout_width="20dp"-->
-<!--                android:layout_height="wrap_content"/>-->
-<!--            <EditText-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="@dimen/_30sdp"-->
-<!--                android:background="@drawable/bg_isi"-->
-<!--                android:gravity="left|center_vertical"-->
-<!--                android:textAllCaps="false"-->
-<!--                android:drawableStart="@drawable/ic_baseline_search_24"-->
-<!--                android:id="@+id/btncari"-->
-<!--                android:hint="Cari Disini.."-->
-<!--                android:imeOptions="actionDone"-->
-<!--                android:paddingHorizontal="@dimen/_20sdp"-->
-<!--                android:layout_marginRight="@dimen/_5sdp"-->
-<!--                android:layout_marginBottom="@dimen/_5sdp"-->
-<!--                android:layout_marginTop="@dimen/_3sdp"-->
-<!--                android:textColor="@color/black" />-->
-<!--            <RelativeLayout-->
-<!--                android:layout_width="10dp"-->
-<!--                android:layout_height="match_parent"/>-->
-
-
-<!--        </LinearLayout>-->
-<!--    </androidx.appcompat.widget.Toolbar>-->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_isi_kategori"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        tools:itemCount="2"
-        tools:listitem="@layout/item_row_isi_kategori" />
+        android:layout_height="match_parent">
 
-</LinearLayout>
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_second" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:id="@+id/recycler_isi_kategori"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/item_row_isi_kategori"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="2" />
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer_barang"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/toolbar"
+            android:visibility="gone">
+
+            <include layout="@layout/shimmer_barang" />
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+        <include
+            layout="@layout/layout_koneksi"
+            android:visibility="gone" />
+    </RelativeLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
