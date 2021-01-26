@@ -12,7 +12,7 @@
     <color name="bg_dark">#1A1A25</color>
 
     <color name="ui_day">#3BA2EF</color>
-    <color name="ui_night">#3F9EE4</color>
+    <color name="ui_night">#0B314C</color>
 
     <color name="shimmer_foreground">#DADADA</color>
     <color name="shimmer_background">#EBEBEB</color>

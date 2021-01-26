@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
@@ -29,12 +31,25 @@ API api;
 TinyDB tinyDB;
 EditText edt_namaStore, edt_alamatStore, edt_telpStore, edt_WAStore, edt_IGStore,
     edt_gambar;
+TextView title;
+ImageView back;
     private static final String TAG = "FormStoreActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_store);
+
+        title = findViewById(R.id.tv_toolbar);
+        title.setText("Buat Store");
+
+        back = findViewById(R.id.ib_back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         api = new API();
         Log.d(TAG, "onCreate: inisialisasi");

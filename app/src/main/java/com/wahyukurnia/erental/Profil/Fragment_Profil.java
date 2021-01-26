@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.wahyukurnia.erental.LoginActivity;
@@ -19,7 +20,7 @@ import com.wahyukurnia.erental.TinyDB;
 
 public class Fragment_Profil extends Fragment {
     TinyDB tinyDB;
-    Button logout,btn_profil, btn_edit_profil, btn_store;
+    LinearLayout logout,btn_profil, btn_edit_profil, btn_store;
     TextView txt_username_profil;
     TextView title;
 

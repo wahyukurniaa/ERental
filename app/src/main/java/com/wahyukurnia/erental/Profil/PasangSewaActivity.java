@@ -11,7 +11,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
@@ -33,6 +35,8 @@ public class PasangSewaActivity extends AppCompatActivity {
     EditText edt_namaBarang,edt_tarif,edt_stokBarang,edtdeskripsi,edt_input_gambar;
     Button pasang_sewa;
     API api;
+    TextView title;
+    ImageView back;
     Spinner List;
 //    private String[] Item= new ArrayList;
     ArrayList<String> dataKategori = new ArrayList<>();
@@ -43,6 +47,16 @@ public class PasangSewaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pasang_sewa);
         api = new API();
         AndroidNetworking.initialize(this);
+        back = findViewById(R.id.ib_back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        title = findViewById(R.id.tv_toolbar);
+        title.setText("Pasang Sewa");
 
         List = findViewById(R.id.spinner_Kategori);
         getDataKategori();
