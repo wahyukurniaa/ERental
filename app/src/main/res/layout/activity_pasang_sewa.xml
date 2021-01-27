@@ -176,7 +176,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btn_sewa"
+        android:id="@+id/btn_pasangSewa"
         android:text="Pasang Sewa!"
         android:layout_marginRight="@dimen/_10sdp"
         android:textColor="@color/white"
