@@ -25,8 +25,9 @@ import org.json.JSONObject;
 
 public class CheckoutActivity extends AppCompatActivity {
     API api;
-    String id,id_user,namaUser,alamatUser,id_sewaBarang;
-    String nama_barang,tarif_barang,gambar_barang;
+    String id,id_user,namaUser,alamatUser;
+    String nama_barang,tarif_barang,banyakSewa,gambar_barang;
+    int total;
     TinyDB tinyDB;;
     ImageView img_checkout;
     TextView txt_judul_checkout,txt_tarif_checkout,txt_banyak_checkout,namaCheckout,alamatCheckout,totalCheckout;
@@ -48,8 +49,9 @@ public class CheckoutActivity extends AppCompatActivity {
         nama_barang = i.getStringExtra("nama_barang");
         tarif_barang = i.getStringExtra("tarif_barang");
         gambar_barang = i.getStringExtra("gambar_barang");
-        id_sewaBarang = i.getStringExtra("id_sewa_barang");
-        Log.e("sewa",""+id_sewaBarang);
+        banyakSewa = i.getStringExtra("banyak_sewa");
+        total = i.getIntExtra("total",0);
+
 
         img_checkout = findViewById(R.id.img_checkout);
         Picasso.get().load(gambar_barang).into(img_checkout);
@@ -61,6 +63,8 @@ public class CheckoutActivity extends AppCompatActivity {
         txt_tarif_checkout.setText(""+tarif_barang);
 
         txt_banyak_checkout = findViewById(R.id.txt_banyak_checkout);
+        txt_banyak_checkout.setText(""+banyakSewa);
+
         namaCheckout = findViewById(R.id.namaCheckout);
         namaCheckout.setText(""+namaUser);
 
@@ -68,6 +72,7 @@ public class CheckoutActivity extends AppCompatActivity {
         alamatCheckout.setText(""+alamatUser);
 
         totalCheckout = findViewById(R.id.totalCheckout);
+        totalCheckout.setText(""+total);
 
         btnCheckout = findViewById(R.id.btnCheckout);
 

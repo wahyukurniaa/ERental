@@ -67,6 +67,7 @@ Button btnConfirm;
 TextView namaBarang_Order, hargaBarang;
 EditText edt_banyakSewa,edt_LamaSewa,edt_alamatPenyewa,edt_Jaminan, edt_jenis_transaksi,edt_jenis_pengiriman;
 String gambar;
+    String tarif;
 
     private static final String TAG = "OrderActivity";
     @Override
@@ -116,7 +117,7 @@ String gambar;
                                 JSONObject data = res.getJSONObject(i);
                                 int id =  data.getInt("id_barang");
                                 String nama = data.getString("nama_barang");
-                                String tarif = data.getString("tarif_barang");
+                                tarif = data.getString("tarif_barang");
 
 
                                 namaBarang_Order.setText(nama);
@@ -192,12 +193,14 @@ String gambar;
                     @Override
                     public void onResponse(JSONObject response) {
 
+                        int total = Integer.valueOf(banyakSewa) * Integer.valueOf(tarif);
                         //Handle Response
                         Intent i = new Intent(OrderActivity.this, CheckoutActivity.class);
                         i.putExtra("nama_barang",namaBarang_Order.getText().toString());
                         i.putExtra("tarif_barang",hargaBarang.getText().toString());
                         i.putExtra("gambar_barang", api.URL_GAMBAR+gambar);
-                        i.putExtra("id_sewa_barang",toString());
+                        i.putExtra("banyak_sewa", banyakSewa+" item");
+                        i.putExtra("total",total);
                         startActivity(i);
 
                         Log.e(TAG, "onResponse: " + response);
