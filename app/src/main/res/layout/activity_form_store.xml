@@ -7,127 +7,114 @@
     android:orientation="vertical"
     tools:context=".Profil.FormStoreActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_menu"
-        android:background="#FF9800"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|center_horizontal"
-                android:text="E-Rental "
-                android:textColor="@color/white"
-                android:textSize="@dimen/_17sdp"
-                android:textStyle="bold" />
+   <include
+       layout="@layout/toolbar_second"
+       android:id="@+id/toolbar"/>
 
 
-        </LinearLayout>
-    </androidx.appcompat.widget.Toolbar>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Store"
-        android:textSize="@dimen/_25sdp"
-        android:textColor="@color/black"
-        android:gravity="center_horizontal"/>
-    <LinearLayout
-        android:layout_marginLeft="@dimen/_5sdp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="@dimen/_8sdp"
-        android:weightSum="2">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Nama Store"
-            android:textColor="@color/black"
-            android:layout_weight="1"/>
         <EditText
+            android:layout_margin="@dimen/_15sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/edt_namaStore"
             android:inputType="text"
             android:singleLine="true"
-            android:layout_weight="1"
-            android:textColor="@color/black"
-            android:textColorHint="@color/material_on_background_disabled"/>
-    </LinearLayout>
+            android:hint="Nama Store"
+            android:paddingTop="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_10sdp"
+            android:paddingLeft="@dimen/_10sdp"
+            android:background="@drawable/edbg"/>
 
-        <LinearLayout
-            android:layout_marginLeft="@dimen/_5sdp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="@dimen/_8sdp"
-            android:weightSum="2">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Alamat"
-                android:textColor="@color/black"
-                android:layout_weight="1"/>
+
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/edt_alamatStore"
                 android:inputType="text"
+                android:paddingTop="@dimen/_10sdp"
+                android:paddingBottom="@dimen/_10sdp"
+                android:paddingLeft="@dimen/_10sdp"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_marginRight="@dimen/_15sdp"
+                android:layout_marginBottom="@dimen/_15sdp"
                 android:singleLine="true"
-                android:layout_weight="1"
-                android:textColor="@color/black"
-                android:textColorHint="@color/material_on_background_disabled"/>
-        </LinearLayout>
+                android:background="@drawable/edbg"
+
+                android:hint="Alamat"/>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contact Person"
+        android:layout_marginLeft="@dimen/_25sdp"
+        android:textColor="?colorPrimary"
+        android:paddingLeft="@dimen/_5sdp"
+        android:paddingRight="@dimen/_5sdp"
+        android:fontFamily="@font/quicksand_bold"
+        android:background="?android:windowBackground"/>
 
     <LinearLayout
-        android:layout_marginLeft="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:translationZ="-10dp"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:layout_marginRight="@dimen/_15sdp"
+        android:layout_marginBottom="@dimen/_15sdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="@dimen/_8sdp"
-        android:weightSum="2">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Contact Person"
-            android:textColor="@color/black"
-            android:layout_weight="1"/>
+        android:orientation="vertical"
+        android:background="@drawable/edbg">
+
         <EditText
+            android:layout_marginTop="@dimen/_15sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/edt_telpStore"
             android:hint="+62"
             android:singleLine="true"
-            android:layout_weight="1"
-            android:textColor="@color/black"
-            android:textColorHint="@color/material_on_background_disabled"/>
+            android:background="@drawable/edbg"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingBottom="@dimen/_5sdp"
+            android:paddingLeft="@dimen/_5sdp"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_15sdp"
+            />
+        <EditText
+            android:id="@+id/edt_WAStore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:hint="WhatsApp"
+            android:background="@drawable/edbg"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingBottom="@dimen/_5sdp"
+            android:paddingLeft="@dimen/_5sdp"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_15sdp"
+            />
+        <EditText
+            android:id="@+id/edt_IGStore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:hint="Instagram"
+            android:background="@drawable/edbg"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingBottom="@dimen/_5sdp"
+            android:paddingLeft="@dimen/_5sdp"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_15sdp"
+            />
+
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/edt_WAStore"
-        android:layout_width="@dimen/_150sdp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:hint="WhatsApp"
-        android:singleLine="true"
-        android:textColor="@color/black"
-        android:textColorHint="@color/material_on_background_disabled" />
-    <EditText
-        android:id="@+id/edt_IGStore"
-        android:layout_width="@dimen/_150sdp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:hint="Instagram"
-        android:singleLine="true"
-        android:textColor="@color/black"
-        android:textColorHint="@color/material_on_background_disabled" />
+</RelativeLayout>
+
+
 
     <LinearLayout
         android:layout_marginLeft="@dimen/_5sdp"
@@ -140,7 +127,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Gambar Store"
-            android:textColor="@color/black"
             android:layout_weight="1"/>
         <EditText
             android:layout_width="match_parent"
@@ -154,12 +140,12 @@
     </LinearLayout>
 
     <Button
-        android:layout_marginTop="@dimen/_8sdp"
-        android:layout_width="wrap_content"
+
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btn_nextStore"
         android:text="Next"
-        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_margin="@dimen/_15sdp"
         android:layout_gravity="right"/>
 
 

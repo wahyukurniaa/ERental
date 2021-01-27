@@ -17,14 +17,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageButton
+            <ImageView
                 android:id="@+id/ib_back"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:visibility="gone"
-                android:background="?attr/actionBarItemBackground"
+                android:visibility="visible"
+                android:layout_centerVertical="true"
                 android:scaleType="fitCenter"
-                android:src="@drawable/ic_back" />
+                android:src="@drawable/ic_back"
+                app:tint="@color/white" />
 
             <TextView
                 android:id="@+id/tv_toolbar"
@@ -33,31 +34,10 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:textSize="@dimen/_18sdp"
+                android:layout_centerHorizontal="true"
                 android:textColor="@color/white"
                 tools:text="Toolbar" />
 
-            <ImageButton
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:id="@+id/ib_message"
-                android:tint="@color/white"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:background="?attr/actionBarItemBackground"
-                android:scaleType="fitCenter"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:src="@drawable/ic_baseline_message_24" />
-
-            <ImageButton
-                android:layout_toLeftOf="@+id/ib_message"
-                android:layout_centerVertical="true"
-                android:id="@+id/ib_notif"
-                android:tint="@color/white"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:background="?attr/actionBarItemBackground"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_baseline_notifications_24" />
 
         </RelativeLayout>
      </androidx.appcompat.widget.Toolbar>

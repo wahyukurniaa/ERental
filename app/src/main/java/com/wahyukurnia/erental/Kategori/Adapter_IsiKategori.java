@@ -13,10 +13,13 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
+import com.wahyukurnia.erental.API;
 import com.wahyukurnia.erental.Detail.DetailBarangActivity;
 import com.wahyukurnia.erental.R;
 
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 public class Adapter_IsiKategori extends RecyclerView.Adapter<Adapter_IsiKategori.ViewHolder> {
     Context context;
@@ -36,16 +39,27 @@ public class Adapter_IsiKategori extends RecyclerView.Adapter<Adapter_IsiKategor
 
     @Override
     public void onBindViewHolder(@NonNull Adapter_IsiKategori.ViewHolder holder, int position) {
+        API api = new API();
         Model_IsiKategori data = dataIsiKategori.get(position);
-        int id_barang =  data.getId_barang();
+        Locale localeId = new Locale("in", "ID");
+        final NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeId);
+        String  id_barang =  data.getId_barang();
         holder.txt_namaKategori.setText(data.getNama_barang());
-        holder.txt_tarif_kategori.setText("Rp."+data.getTarif());
-        Picasso.get().load(data.getGambar_barang()).into(holder.img_kategori);
+        holder.txt_tarif_kategori.setText(formatRupiah.format((double)Integer.valueOf(data.getTarif_barang())));
+        Picasso.get().load(api.URL_GAMBAR_U+data.getGambar_barang()).into(holder.img_kategori);
         holder.cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(context, DetailBarangActivity.class);
                 i.putExtra("id_barang", ""+id_barang);
+                i.putExtra("nama_barang", data.getNama_barang());
+                i.putExtra("tarif_barang", data.getTarif_barang());
+                i.putExtra("deskripsi", data.getDeskripsi());
+                i.putExtra("stok", data.getStok());
+                i.putExtra("nama_store", data.getNama_store());
+                i.putExtra("alamat_store", data.getAlamat_store());
+                i.putExtra("gambar_barang", data.getGambar_barang());
+                i.putExtra("nama_user", data.getNama_user());
                 context.startActivity(i);
             }
         });

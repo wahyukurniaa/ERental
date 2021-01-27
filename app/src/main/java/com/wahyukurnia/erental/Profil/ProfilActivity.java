@@ -19,8 +19,8 @@ import com.wahyukurnia.erental.TinyDB;
 
 public class ProfilActivity extends AppCompatActivity {
     TinyDB tinyDB;
-    TextView nama,alamat,email,telp;
-    ImageView btnClose;
+    TextView nama,alamat,email,telp, title;
+    ImageView btnClose, back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +39,10 @@ public class ProfilActivity extends AppCompatActivity {
         telp = findViewById(R.id.telp);
         telp.setText(tinyDB.getString("keyTelpUser"));
 
-        btnClose = findViewById(R.id.btnClose);
+        title = findViewById(R.id.tv_toolbar);
+        title.setText("Profil User");
+
+        btnClose = findViewById(R.id.ib_back);
         btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

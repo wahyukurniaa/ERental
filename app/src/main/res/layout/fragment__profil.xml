@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -10,64 +11,158 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar_main" />
 
-
-
-
-    <TextView
-        android:layout_marginTop="@dimen/_15sdp"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/username_profl"
-        android:text="Username"
-        android:textColor="@color/black"
-        android:textSize="@dimen/_20sdp"
-        android:textStyle="bold"
-        android:gravity="center_horizontal"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_logout"
-        android:layout_gravity="center_horizontal"
-        android:text="Logout"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="WELCOME BOARD"
-        android:textColor="@color/black"
-        android:textSize="@dimen/_20sdp"
-        android:textStyle="bold"
-        android:gravity="center_horizontal"/>
-
-    <Button
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_width="@dimen/_180sdp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:id="@+id/btn_profil"
-        android:text="Profil"
-        />
-    <Button
-        android:layout_width="@dimen/_180sdp"
-        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/_55sdp"
+            android:layout_height="@dimen/_55sdp"
+            android:src="@drawable/ic_baseline_account_circle_24"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand_bold"
+            android:id="@+id/username_profl"
+            android:text="Username"
+            android:textColor="?colorOnSecondary"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:textSize="@dimen/_20sdp"/>
+    </LinearLayout>
+
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/_1sdp"-->
+<!--        android:background="?colorOnSecondary"-->
+<!--        android:layout_marginBottom="@dimen/_20sdp"/>-->
+
+<!--   -->
+
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/_2sdp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
         android:id="@+id/btn_edit_profil"
-        android:layout_gravity="center"
-        android:text="Edit Profil"
-        />
-    <Button
-        android:layout_width="@dimen/_180sdp"
-        android:layout_height="wrap_content"
+        android:background="?android:windowBackground"
+        android:textAlignment="textStart"
+        android:backgroundTint="?colorPrimaryVariant"
+        android:textColor="?colorOnPrimary">
+
+        <ImageView
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:src="@drawable/ic_baseline_edit_24"
+            app:tint="@color/white"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/_15sdp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit Profil"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:fontFamily="@font/quicksand_bold"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_15sdp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/_2sdp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
         android:id="@+id/btn_store"
-        android:layout_gravity="center"
-        android:text="Store"
-        />
-    <Button
-        android:layout_width="@dimen/_180sdp"
-        android:layout_height="wrap_content"
+        android:background="?android:windowBackground"
+        android:textAlignment="textStart"
+        android:backgroundTint="?colorPrimaryVariant"
+        android:textColor="?colorOnPrimary">
+
+        <ImageView
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:src="@drawable/ic_baseline_storefront_24"
+            app:tint="@color/white"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/_15sdp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Store"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:fontFamily="@font/quicksand_bold"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_15sdp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/_2sdp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
         android:id="@+id/btn_booked"
-        android:layout_gravity="center"
-        android:text="Booked"
-        />
+        android:background="?android:windowBackground"
+        android:textAlignment="textStart"
+        android:backgroundTint="?colorPrimaryVariant"
+        android:textColor="?colorOnPrimary">
+
+        <ImageView
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:src="@drawable/ic_baseline_bookmarks_24"
+            app:tint="@color/white"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/_15sdp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Booked"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:fontFamily="@font/quicksand_bold"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_15sdp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:id="@+id/btn_logout"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_gravity="center_horizontal"
+        android:background="?colorPrimaryVariant"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:fontFamily="@font/quicksand_bold"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_15sdp"
+            android:text="Logout"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:src="@drawable/ic_baseline_login_24"
+            android:layout_gravity="center"
+            android:scaleType="fitEnd"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:layout_marginLeft="@dimen/_15sdp"
+            app:tint="@color/white" />
+    </LinearLayout>
 
 
 </LinearLayout>

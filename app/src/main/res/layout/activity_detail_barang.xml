@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,121 +7,152 @@
     android:orientation="vertical"
     tools:context=".Detail.DetailBarangActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_menu"
-        android:background="#FF9800"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|center_horizontal"
-                android:fontFamily="@font/quicksand_bold"
-                android:text="E-Rental "
-                android:textColor="@color/white"
-                android:textSize="@dimen/_17sdp"
-                android:textStyle="bold" />
-
-
-        </LinearLayout>
-    </androidx.appcompat.widget.Toolbar>
-
     <LinearLayout
-
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="@dimen/_5sdp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical">
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/img_detail"
-            android:src="@drawable/fotografi"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/txt_judul"
-            android:text="Baju Kurung"
-            android:textSize="@dimen/_15sdp"
-            android:textStyle="bold"
-            android:textColor="@color/black"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/txt_stok"
-            android:text="Tersedia 5"
-            android:textSize="@dimen/_10sdp"
-            android:textColor="@color/black"/>
-        <TextView
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/txt_deskripsi"
-            android:text="Baju kurung adalah salah satu pakaianadat masyarakat Melayu di Brunei Darussalam, Indonesia, Malaysia, Singapura, dan Thailand bagian selatan."
-            android:textSize="@dimen/_13sdp"
-            android:textColor="@color/black"/>
-        <TextView
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Penyedia Sewa:"
-            android:textColor="@color/black"
-            android:textStyle="bold"/>
 
-        <TextView
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Silvia"
-            android:id="@+id/txt_nama_penyedia"
-            android:textColor="@color/black"
-            android:textStyle="bold"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Padang"
-            android:id="@+id/txt_alamat_penyedia"
-            android:textColor="@color/black"
-            android:textStyle="bold"/>
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_second" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="2"
-            android:orientation="horizontal">
 
-            <TextView
-                android:layout_marginTop="@dimen/_10sdp"
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Rp.45000/hari"
-                android:layout_weight="1"
-                android:id="@+id/txt_tarif"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_20sdp"
-                android:textStyle="bold"/>
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <Button
-                android:layout_width="@dimen/_200sdp"
-                android:layout_height="wrap_content"
-                android:id="@+id/btn_order"
-                android:layout_weight="1"
-                android:layout_marginRight="@dimen/_5sdp"
-                android:text="Order"/>
 
-        </LinearLayout>
+                <ImageView
+                    android:id="@+id/img_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_230sdp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/website" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_20sdp"
+                    android:layout_marginTop="-50dp"
+                    android:layout_marginRight="@dimen/_20sdp"
+                    app:cardCornerRadius="@dimen/_10sdp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/txt_judul"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/quicksand_bold"
+                            android:text="Baju Kurung"
+                            android:textColor="?colorPrimary"
+                            android:textSize="@dimen/_18sdp"
+                            android:textStyle="bold" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/txt_stok"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:fontFamily="@font/quicksand_medium"
+                                android:text="Tersedia 5" />
+
+                            <TextView
+                                android:id="@+id/txt_tarif"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:fontFamily="@font/quicksand_medium"
+                                android:text="Rp.45000/hari"
+                                android:textColor="?colorPrimary"
+                                android:textSize="@dimen/_14sdp" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <TextView
+                    android:id="@+id/txt_deskripsi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_20sdp"
+                    android:fontFamily="@font/quicksand_medium"
+                    android:gravity="center"
+                    android:text="Baju kurung adalah salah satu pakaianadat masyarakat Melayu di Brunei Darussalam, Indonesia, Malaysia, Singapura, dan Thailand bagian selatan." />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_2sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="?colorSecondaryVariant" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_20sdp"
+                    android:layout_marginRight="@dimen/_20sdp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:fontFamily="@font/quicksand_medium"
+                        android:text="Informasi Penyedia Sewa:" />
+
+                    <TextView
+                        android:id="@+id/txt_nama_penyedia"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:text="Silvia"
+                        android:textColor="?colorPrimary"
+                        android:textSize="@dimen/_15sdp" />
+
+                    <TextView
+                        android:id="@+id/txt_alamat_penyedia"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/quicksand_medium"
+                        android:text="Padang" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </androidx.core.widget.NestedScrollView>
 
     </LinearLayout>
 
 
+    <Button
+        android:id="@+id/btn_order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/_15sdp"
+        android:text="Order" />
 
 
+</RelativeLayout>
 
-    </LinearLayout>
 

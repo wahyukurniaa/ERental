@@ -5,164 +5,97 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-
     tools:context=".Profil.ProfilActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_menu"
-        android:background="#FF9800"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_second" />
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_marginHorizontal="@dimen/_10sdp"
-            android:weightSum="2"
-            android:layout_height="wrap_content">
+    <ImageView
+        android:layout_width="@dimen/_70sdp"
+        android:layout_height="@dimen/_70sdp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:src="@drawable/ic_baseline_account_circle_24"/>
 
-            <ImageView
-                android:id="@+id/btnClose"
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-
-                android:src="@drawable/ic_baseline_close_24"
-                app:tint="#fff" />
-
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|center_horizontal"
-                android:text="E-Rental "
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_17sdp"
-                android:textStyle="bold" />
-
-
-        </LinearLayout>
-    </androidx.appcompat.widget.Toolbar>
-
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Profil"
-        android:textStyle="bold"
-        android:textSize="@dimen/_25sdp"
-        android:textColor="@color/black"
-        android:gravity="center_horizontal"/>
-    <LinearLayout
-        android:layout_marginTop="@dimen/_15sdp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_marginLeft="@dimen/_5sdp"
-        android:weightSum="2" >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Nama"
-            android:layout_weight="1"
-            android:textStyle="bold"
-            android:textSize="@dimen/_15sdp"
-            android:textColor="@color/black"
-            />
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nama"
+            android:fontFamily="@font/quicksand_medium"
+            android:text="Nama Lengkap" />
+
+        <TextView
             android:id="@+id/nama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textStyle="bold"
+            android:text="Nama User "
+            android:textColor="?colorPrimary"
+            android:fontFamily="@font/quicksand_bold"
             android:textSize="@dimen/_15sdp"
-            android:textColor="@color/black"
-            />
+            android:layout_marginBottom="@dimen/_10sdp"/>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="@dimen/_5sdp"
-        android:orientation="horizontal"
-        android:weightSum="2" >
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="Alamat"
-            android:layout_weight="1"
-            android:textStyle="bold"
-            android:textSize="@dimen/_15sdp"
-            android:textColor="@color/black"
-            />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Alamat"
-        android:id="@+id/alamat"
-        android:layout_weight="1"
-        android:textStyle="bold"
-        android:textSize="@dimen/_15sdp"
-        android:textColor="@color/black"
-        />
-    </LinearLayout>
+            android:fontFamily="@font/quicksand_medium"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_marginLeft="@dimen/_5sdp"
-        android:weightSum="2" >
+        <TextView
+            android:id="@+id/alamat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Alamat"
+            android:fontFamily="@font/quicksand_bold"
+            android:textColor="?colorPrimary"
+            android:textSize="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_10sdp"/>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="Email"
-            android:layout_weight="1"
-            android:textStyle="bold"
-            android:textSize="@dimen/_15sdp"
-            android:textColor="@color/black"
-            />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Email"
-        android:layout_weight="1"
-        android:id="@+id/email"
-        android:textStyle="bold"
-        android:textSize="@dimen/_15sdp"
-        android:textColor="@color/black"
-        />
-    </LinearLayout>
+            android:fontFamily="@font/quicksand_medium"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_marginLeft="@dimen/_5sdp"
-        android:weightSum="2" >
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Email"
+            android:fontFamily="@font/quicksand_bold"
+            android:textColor="?colorPrimary"
+            android:textSize="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_10sdp"/>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Telepon"
             android:layout_weight="1"
-            android:textStyle="bold"
-            android:textSize="@dimen/_15sdp"
-            android:textColor="@color/black"
-            />
+            android:text="Telepon"
+            android:fontFamily="@font/quicksand_medium" />
 
         <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Telepon"
-        android:id="@+id/telp"
+            android:id="@+id/telp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-        android:textStyle="bold"
-        android:textSize="@dimen/_15sdp"
-        android:textColor="@color/black"
-        />
+            android:text="Telepon"
+            android:fontFamily="@font/quicksand_bold"
+            android:textColor="?colorPrimary"
+            android:textSize="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_10sdp" />
     </LinearLayout>
 
 </LinearLayout>

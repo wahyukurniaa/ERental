@@ -29,15 +29,19 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class DetailBarangActivity extends AppCompatActivity {
-String id;
-TextView judul,txt_stok,txt_deskripsi,txt_nama_penyedia,txt_alamat_penyedia,txt_tarif;
-Button btn_order;
-ImageView img_detail;
-API api;
+    String id;
+    TextView judul, txt_stok, txt_deskripsi, txt_nama_penyedia, txt_alamat_penyedia, txt_tarif;
+    Button btn_order;
+    ImageView img_detail, back;
+    TextView title;
+    API api;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,12 +50,22 @@ API api;
 
         AndroidNetworking.initialize(this);
 
+        back = findViewById(R.id.ib_back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        title = findViewById(R.id.tv_toolbar);
+
         Intent i = getIntent();
         id = i.getStringExtra("id_barang");
         Log.e("barang",""+id);
 
+
         judul = findViewById(R.id.txt_judul);
-        txt_stok  = findViewById(R.id.txt_stok);
+        txt_stok = findViewById(R.id.txt_stok);
         txt_deskripsi = findViewById(R.id.txt_deskripsi);
         txt_nama_penyedia = findViewById(R.id.txt_nama_penyedia);
         txt_alamat_penyedia = findViewById(R.id.txt_alamat_penyedia);
@@ -73,52 +87,31 @@ API api;
 
     }
 
-    public void getDataIsiKategori(){
-        AndroidNetworking.get(api.URL_DESKRIPSI+id)
-                .setPriority(Priority.LOW)
-                .build()
-                .getAsJSONObject(new JSONObjectRequestListener() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try{
-                            Log.d("tampilmenu","response:"+response);
-                            JSONArray res = response.getJSONArray("res");
-                            for(int i =0; i <res.length();i++){
-                                JSONObject data = res.getJSONObject(i);
-                                int id =  data.getInt("id_barang");
-                                String nama = data.getString("nama_barang");
-                                String tarif = data.getString("tarif_barang");
-                                String deskripsi = data.getString("deskripsi");
-                                String stok = data.getString("stok");
-                                String gambar =  api.URL_GAMBAR+data.getString("gambar_barang");
-                                String nama_Store = data.getString("nama_store");
-                                String alamat_Store = data.getString("alamat_store");
+    public void getDataIsiKategori() {
+        Intent i = getIntent();
+        id = i.getStringExtra("id_barang");
 
-                                judul.setText(nama);
-                                txt_stok.setText("Tersedia "+stok);
-                                txt_deskripsi.setText(deskripsi);
-                                txt_nama_penyedia.setText(nama_Store);
-                                txt_alamat_penyedia.setText(alamat_Store);
-                                txt_tarif.setText("Rp. "+tarif);
-                                Picasso.get().load(api.URL_GAMBAR+data.getString("gambar_barang")).into(img_detail);
+        Locale localeId = new Locale("in", "ID");
+        final NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeId);
 
-                            }
+        String nama = i.getStringExtra("nama_barang");
+        String tarif = formatRupiah.format((double) Integer.valueOf(i.getStringExtra("tarif_barang")));
+        String deskripsi = i.getStringExtra("deskripsi");
+        String stok = i.getStringExtra("stok");
+        String nama_Store = i.getStringExtra("nama_store");
+        String alamat_Store = i.getStringExtra("alamat_store");
+        String nama_user = i.getStringExtra("nama_user");
 
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
+        judul.setText(nama);
+        txt_stok.setText("Tersedia " + stok);
+        txt_deskripsi.setText(deskripsi);
+        txt_nama_penyedia.setText(nama_user);
+        txt_alamat_penyedia.setText(nama_Store);
+        txt_tarif.setText(tarif + " /hari");
+        Picasso.get().load(api.URL_GAMBAR_U + i.getStringExtra("gambar_barang")).into(img_detail);
 
-                    @Override
-                    public void onError(ANError anError) {
-                        Log.e("tampil menu","response:"+anError);
-                    }
-                });
+        title.setText("Detail Barang");
     }
-
-
-
-
 
 
 }

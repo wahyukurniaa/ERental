@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
@@ -31,7 +33,8 @@ Button btn_edit;
 API api;
 TinyDB tinyDB;
 String id;
-
+TextView title;
+ImageView back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,9 +42,18 @@ String id;
         api = new API();
         AndroidNetworking.initialize(this);
 
+        title = findViewById(R.id.tv_toolbar);
+        title.setText("Edit Profil");
+        back = findViewById(R.id.ib_back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         tinyDB = new TinyDB(this);
         id = tinyDB.getString("keyIdUser");
-        
 
         edt_namauser_register = findViewById(R.id.edt_namauser_register);
         edt_alamatuser_register = findViewById(R.id.edt_alamatuser_register);
@@ -59,8 +71,6 @@ String id;
                 update();
             }
         });
-
-
 
     }
 

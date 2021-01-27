@@ -24,6 +24,7 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.facebook.shimmer.ShimmerFrameLayout;
+import com.google.gson.Gson;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
@@ -47,6 +48,10 @@ public class Fragment_Home extends Fragment {
 
     private List<Model_Kategori> dataKategori;
     private RecyclerView recycler_kategori, recycler_slider;
+    List<Model_IsiKategori> dataIsiKategori;
+    List<Model_IsiKategori> dataIsiKategori2;
+    RecyclerView rvKend;
+    RecyclerView rvFoto;
     Adapter_Kategori adapter;
     TextView title;
 
@@ -57,7 +62,7 @@ public class Fragment_Home extends Fragment {
     LinearLayout main;
     ShimmerFrameLayout shimmerFrameLayout;
     SwipeRefreshLayout swipeRefreshLayout;
-    RelativeLayout koneksi;
+    RelativeLayout koneksi, kosongPhoto, kosongKend;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,6 +71,19 @@ public class Fragment_Home extends Fragment {
         View view = inflater.inflate(R.layout.fragment__home, container, false);
 
         tinyDB = new TinyDB(getContext());
+
+        kosongKend = view.findViewById(R.id.kosongKend);
+        kosongPhoto = view.findViewById(R.id.kosong);
+
+        rvFoto = view.findViewById(R.id.rv_foto);
+        rvFoto.setHasFixedSize(true);
+        rvFoto.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        dataIsiKategori = new ArrayList<>();
+
+        rvKend = view.findViewById(R.id.rv_Kendaraan);
+        rvKend.setHasFixedSize(true);
+        rvKend.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        dataIsiKategori2 = new ArrayList<>();
 
         swipeRefreshLayout = view.findViewById(R.id.swHome);
         shimmerFrameLayout = view.findViewById(R.id.shimmer_beranda);
@@ -150,7 +168,7 @@ public class Fragment_Home extends Fragment {
                     @Override
                     public void onResponse(JSONObject response) {
                         try{
-                            setSukses();
+                            getBarang();
                             Log.d("tampilmenu","response:"+response);
                             JSONArray res = response.getJSONArray("res");
                             dataKategori.clear();
@@ -166,6 +184,90 @@ public class Fragment_Home extends Fragment {
                             recycler_kategori.setAdapter(adapter);
                             adapter.notifyDataSetChanged();
 
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        setGagal();
+                        Log.e("tampil menu","response:"+anError);
+                    }
+                });
+    }
+
+    private void getBarang() {
+        setLoading();
+        AndroidNetworking.get(api.URL_Isi_Kategori+5)
+                .setPriority(Priority.LOW)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try{
+                            Log.d("tampil barang","response:"+response);
+                            if (response.getString("status").equalsIgnoreCase("gagal")){
+                                getKedn();
+                                kosongPhoto.setVisibility(View.VISIBLE);
+                            }else {
+                                kosongPhoto.setVisibility(View.GONE);
+                                rvFoto.setVisibility(View.VISIBLE);
+                                getKedn();
+                                JSONArray res = response.getJSONArray("res");
+                                dataIsiKategori.clear();
+                                Gson gson = new Gson();
+                                for (int i=0; i<res.length(); i++){
+                                    JSONObject data = res.getJSONObject(i);
+
+                                    Model_IsiKategori Isi = gson.fromJson(data + "", Model_IsiKategori.class);
+                                    dataIsiKategori.add(Isi);
+                                }
+                            }
+                            Adapter_IsiKategori adapter = new Adapter_IsiKategori(dataIsiKategori);
+                            rvFoto.setAdapter(adapter);
+                            adapter.notifyDataSetChanged();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        setGagal();
+                        Log.e("tampil menu","response:"+anError);
+                    }
+                });
+    }
+
+    private void getKedn() {
+        AndroidNetworking.get(api.URL_Isi_Kategori+7)
+                .setPriority(Priority.LOW)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try{
+                            Log.d("tampil barang","response:"+response);
+                            if (response.getString("status").equalsIgnoreCase("gagal")){
+                                kosongKend.setVisibility(View.VISIBLE);
+                                setSukses();
+                            }else {
+                                kosongKend.setVisibility(View.GONE);
+                                setSukses();
+                                JSONArray res = response.getJSONArray("res");
+                                dataIsiKategori2.clear();
+                                Gson gson = new Gson();
+                                for (int i=0; i<res.length(); i++){
+                                    JSONObject data = res.getJSONObject(i);
+
+                                    Model_IsiKategori Isi = gson.fromJson(data + "", Model_IsiKategori.class);
+                                    dataIsiKategori2.add(Isi);
+                                }
+                            }
+                            Adapter_IsiKategori adapter = new Adapter_IsiKategori(dataIsiKategori2);
+                            rvKend.setAdapter(adapter);
+                            adapter.notifyDataSetChanged();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
