@@ -14,7 +14,10 @@ public class API {
     public String URL_USER = HOST + "select_user.php?id_user=";
     public String URL_UPDATE = HOST + "update_profil.php";
     public String URL_DESKRIPSI =  HOST + "select_deskripsi.php?id_barang=";
-  
+    public String URL_BARANG =  HOST + "input_barang.php";
+    public String URL_SEWA_BARANG =  HOST + "input_sewa_barang.php";
+    public String URL_TAMPIL_CHECKOUT =  HOST + "select_tampil_checkout.php?id_sewa_barang=";
+
     public String URL_SLIDER = HOST + "slider/";
 
 }

@@ -51,6 +51,7 @@ String id;
         edt_pass_register = findViewById(R.id.edt_pass_register);
 
         getProfil();
+
         btn_edit = findViewById(R.id.btn_update);
         btn_edit.setOnClickListener(new View.OnClickListener() {
             @Override
