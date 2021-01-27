@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.wahyukurnia.erental.LoginActivity;
+import com.wahyukurnia.erental.MainActivity;
 import com.wahyukurnia.erental.R;
 import com.wahyukurnia.erental.TinyDB;
 
@@ -61,10 +62,12 @@ public class Fragment_Profil extends Fragment {
         btn_store.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getContext(),StoreActivity.class);
-                startActivity(i);
-            }
+                    Intent intent = new Intent(getContext(), FormStoreActivity.class);
+                    startActivity(intent);
+                }
+
         });
+
         btn_edit_profil = view.findViewById(R.id.btn_edit_profil);
         btn_edit_profil.setOnClickListener(new View.OnClickListener() {
             @Override

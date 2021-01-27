@@ -3,6 +3,7 @@ package com.wahyukurnia.erental.Profil;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.wahyukurnia.erental.MainActivity;
 import com.wahyukurnia.erental.R;
 import com.wahyukurnia.erental.TinyDB;
 
@@ -44,13 +46,14 @@ public class ProfilActivity extends AppCompatActivity {
         btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent i = new Intent(ProfilActivity.this, MainActivity.class);
+                startActivity(i);
                 finish();
+
             }
         });
 
-    }
-    public void onBackPressed(){
-        Toast.makeText(this, "Tidak bisa kembali, silahkan tekan tombol Close", Toast.LENGTH_SHORT).show();
+
     }
 
 }

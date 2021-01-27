@@ -58,6 +58,12 @@ public class DetailBarangActivity extends AppCompatActivity {
             }
         });
         title = findViewById(R.id.tv_toolbar);
+
+        Intent i = getIntent();
+        id = i.getStringExtra("id_barang");
+        Log.e("barang",""+id);
+
+
         judul = findViewById(R.id.txt_judul);
         txt_stok = findViewById(R.id.txt_stok);
         txt_deskripsi = findViewById(R.id.txt_deskripsi);
@@ -70,7 +76,8 @@ public class DetailBarangActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(DetailBarangActivity.this, OrderActivity.class);
-                startActivity(i);
+                i.putExtra("id_barang",""+id);
+                 startActivity(i);
             }
         });
 
