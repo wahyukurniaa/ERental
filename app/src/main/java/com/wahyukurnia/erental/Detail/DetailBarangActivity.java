@@ -34,7 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class DetailBarangActivity extends AppCompatActivity {
+public class    DetailBarangActivity extends AppCompatActivity {
     String id;
     TextView judul, txt_stok, txt_deskripsi, txt_nama_penyedia, txt_alamat_penyedia, txt_tarif;
     Button btn_order;
