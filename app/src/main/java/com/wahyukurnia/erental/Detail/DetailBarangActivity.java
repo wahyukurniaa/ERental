@@ -36,7 +36,7 @@ import java.util.Locale;
 
 public class DetailBarangActivity extends AppCompatActivity {
     String id;
-    TextView judul, txt_stok, txt_deskripsi, txt_nama_penyedia, txt_alamat_penyedia, txt_tarif;
+    TextView judul, txt_stok, txt_deskripsi, txt_nama_penyedia, txt_alamat_penyedia, txt_tarif,txt_store,txt_telp,txt_WA;
     Button btn_order;
     ImageView img_detail, back;
     TextView title;
@@ -69,6 +69,9 @@ public class DetailBarangActivity extends AppCompatActivity {
         txt_deskripsi = findViewById(R.id.txt_deskripsi);
         txt_nama_penyedia = findViewById(R.id.txt_nama_penyedia);
         txt_alamat_penyedia = findViewById(R.id.txt_alamat_penyedia);
+        txt_store = findViewById(R.id.txt_store);
+        txt_telp = findViewById(R.id.txt_telp);
+        txt_WA = findViewById(R.id.txt_WA);
         txt_tarif = findViewById(R.id.txt_tarif);
         img_detail = findViewById(R.id.img_detail);
         btn_order = findViewById(R.id.btn_order);
@@ -99,6 +102,8 @@ public class DetailBarangActivity extends AppCompatActivity {
         String deskripsi = i.getStringExtra("deskripsi");
         String stok = i.getStringExtra("stok");
         String nama_Store = i.getStringExtra("nama_store");
+        String telp_store = i.getStringExtra("telp_store");
+        String WA_store = i.getStringExtra("wa_store");
         String alamat_Store = i.getStringExtra("alamat_store");
         String nama_user = i.getStringExtra("nama_user");
 
@@ -106,7 +111,10 @@ public class DetailBarangActivity extends AppCompatActivity {
         txt_stok.setText("Tersedia " + stok);
         txt_deskripsi.setText(deskripsi);
         txt_nama_penyedia.setText(nama_user);
-        txt_alamat_penyedia.setText(nama_Store);
+        txt_alamat_penyedia.setText(alamat_Store);
+        txt_store.setText(nama_Store);
+        txt_telp.setText(telp_store);
+        txt_WA.setText(WA_store);
         txt_tarif.setText(tarif + " /hari");
         Picasso.get().load(api.URL_GAMBAR_U + i.getStringExtra("gambar_barang")).into(img_detail);
 

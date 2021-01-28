@@ -58,6 +58,8 @@ public class Adapter_IsiKategori extends RecyclerView.Adapter<Adapter_IsiKategor
                 i.putExtra("stok", data.getStok());
                 i.putExtra("nama_store", data.getNama_store());
                 i.putExtra("alamat_store", data.getAlamat_store());
+                i.putExtra("telp_store", data.getTelp_store());
+                i.putExtra("wa_store", data.getWa_store());
                 i.putExtra("gambar_barang", data.getGambar_barang());
                 i.putExtra("nama_user", data.getNama_user());
                 context.startActivity(i);

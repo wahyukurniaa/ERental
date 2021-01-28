@@ -66,7 +66,7 @@ ImageView img_order;
 Button btnConfirm;
 TextView namaBarang_Order, hargaBarang;
 EditText edt_banyakSewa,edt_LamaSewa,edt_alamatPenyewa,edt_Jaminan, edt_jenis_transaksi,edt_jenis_pengiriman;
-String gambar;
+String gambar,banyakSewa;
     String tarif;
 
     private static final String TAG = "OrderActivity";
@@ -101,6 +101,8 @@ String gambar;
 
         btnConfirm = findViewById(R.id.btnConfirm);
         aksiPasangSewa();
+
+
     }
 
     public void getDataOrder(){
@@ -123,7 +125,7 @@ String gambar;
                                 namaBarang_Order.setText(nama);
                                 hargaBarang.setText("Rp. "+tarif+"/Hari");
                                 gambar =data.getString("gambar_barang");
-                                Picasso.get().load(api.URL_GAMBAR+data.getString("gambar_barang")).into(img_order);
+                                Picasso.get().load(api.URL_GAMBAR_U+data.getString("gambar_barang")).into(img_order);
 
                             }
 
@@ -150,74 +152,29 @@ String gambar;
                 String transaksi = edt_jenis_transaksi.getText().toString(); //mengambil Value etNim menjadi string
                 String pengiriman = edt_jenis_pengiriman.getText().toString(); //mengambil Value etNim menjadi string
 
+                int total = Integer.valueOf(banyakSewa) * Integer.valueOf(tarif);
+                //Handle Response
+                Intent i = new Intent(OrderActivity.this, CheckoutActivity.class);
+                i.putExtra("id_sewa_barang","");
+                i.putExtra("id_user",id_user);
+                i.putExtra("id_barang",id);
+                i.putExtra("nama_barang",namaBarang_Order.getText().toString());
+                i.putExtra("tarif_barang",hargaBarang.getText().toString());
+                i.putExtra("gambar_barang", api.URL_GAMBAR_U+gambar);
+                i.putExtra("banyak_sewa", banyakSewa+" item");
+                i.putExtra("lama_sewa", lamaSewa);
+                i.putExtra("alamat_penyewa", alamatPenyewa);
+                i.putExtra("jaminan", jaminan);
+                i.putExtra("jenis_transaksi", transaksi);
+                i.putExtra("jenis_pengiriman", pengiriman);
+                i.putExtra("total",total);
 
-
-                if (banyakSewa.equals("")||lamaSewa.equals("")||alamatPenyewa.equals("")||jaminan.equals("")||transaksi.equals("")||pengiriman.equals("")){
-                    Toast.makeText(getApplicationContext(),"Semua data harus diisi" , Toast.LENGTH_SHORT).show();
-                    //memunculkan toast saat form masih ada yang kosong
-                } else {
-                    tambahData(banyakSewa,lamaSewa,alamatPenyewa,jaminan,transaksi,pengiriman); //memanggil fungsi tambahData()
-
-                    edt_banyakSewa.setText(""); //mengosongkan form setelah data berhasil ditambahkan
-                    edt_LamaSewa.setText(""); //mengosongkan form setelah data berhasil ditambahkan
-                    edt_alamatPenyewa.setText(""); //mengosongkan form setelah data berhasil ditambahkan
-                    edt_Jaminan.setText(""); //mengosongkan form setelah data berhasil ditambahkan
-                    edt_jenis_transaksi.setText(""); //mengosongkan form setelah data berhasil ditambahkan
-                    edt_jenis_pengiriman.setText(""); //mengosongkan form setelah data berhasil ditambahkan
-
-
-                }
-
+                startActivity(i);
             }
         });
 
     }
 
-    public void tambahData(String banyakSewa,String lamaSewa,String alamatPenyewa,String jaminan, String transaksi, String pengiriman){
-        //koneksi ke file create.php, jika menggunakan localhost gunakan ip sesuai dengan ip kamu
-
-        AndroidNetworking.post(api.URL_SEWA_BARANG)
-                .addBodyParameter("id_sewa_barang", "")
-                .addBodyParameter("id_user", id_user)
-                .addBodyParameter("id_barang", id)
-                .addBodyParameter("banyak_sewa", banyakSewa) //id bersifat Auto_Increment tidak perlu diisi/(diisi NULL) cek create.php
-                .addBodyParameter("lama_sewa",lamaSewa) //mengirimkan data nim_mahasiswa yang akan diisi dengan varibel nim
-                .addBodyParameter("alamat_penyewa", alamatPenyewa) //mengirimkan data kelas_mahasiswa yang akan diisi dengan varibel kelas
-                .addBodyParameter("jaminan", jaminan) //mengirimkan data nama_mahasiswa yang akan diisi dengan varibel nama
-                .addBodyParameter("jenis_transaksi", transaksi) //mengirimkan data nama_mahasiswa yang akan diisi dengan varibel nama
-                .addBodyParameter("jenis_pengiriman", pengiriman) //mengirimkan data nama_mahasiswa yang akan diisi dengan varibel nama
-
-                .setPriority(Priority.MEDIUM)
-                .build()
-                .getAsJSONObject(new JSONObjectRequestListener() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-
-                        int total = Integer.valueOf(banyakSewa) * Integer.valueOf(tarif);
-                        //Handle Response
-                        Intent i = new Intent(OrderActivity.this, CheckoutActivity.class);
-                        i.putExtra("nama_barang",namaBarang_Order.getText().toString());
-                        i.putExtra("tarif_barang",hargaBarang.getText().toString());
-                        i.putExtra("gambar_barang", api.URL_GAMBAR+gambar);
-                        i.putExtra("banyak_sewa", banyakSewa+" item");
-                        i.putExtra("total",total);
-                        startActivity(i);
-
-                        Log.e(TAG, "onResponse: " + response);
-                        Toast.makeText(getApplicationContext(),"Data berhasil ditambahkan" , Toast.LENGTH_SHORT).show();
-
-                        //memunculkan Toast saat data berhasil ditambahkan
-
-                    }
-                    @Override
-                    public void onError(ANError error) {
-                        //Handle Error
-                        Log.e(TAG, "onError: Failed" + error);
-                        Toast.makeText(getApplicationContext(),"Data gagal ditambahkan", Toast.LENGTH_SHORT).show();
-                        //memunculkan Toast saat data gagal ditambahkan
-                    }
-                });
-    }
 
 
 

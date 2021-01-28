@@ -17,7 +17,6 @@
         <activity android:name=".Kategori.IsiKategoriActivity" />
         <activity android:name=".Profil.FormStoreActivity" />
         <activity android:name=".Profil.PasangSewaActivity" />
-        <activity android:name=".Profil.StoreActivity" />
         <activity android:name=".Profil.ProfilActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity">
