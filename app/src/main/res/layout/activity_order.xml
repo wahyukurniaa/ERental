@@ -12,184 +12,153 @@
         android:id="@+id/toolbar"/>
 
 
-
-    <LinearLayout
-        android:layout_marginTop="@dimen/_5sdp"
+    <androidx.cardview.widget.CardView
+        android:translationZ="-5dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="2"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/_10sdp"
+            android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="@dimen/_150sdp"
+            android:layout_width="@dimen/_80sdp"
             android:layout_height="@dimen/_80sdp"
+            android:layout_margin="@dimen/_5sdp"
             android:id="@+id/img_order"
-            android:layout_weight="1"
-            android:src="@drawable/bangunan"/>
+            android:scaleType="centerCrop"
+            android:src="@drawable/website"/>
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:weightSum="2">
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:orientation="vertical">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/txt_judul_order"
                 android:text="Baju Kurung"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_15sdp"/>
+                android:fontFamily="@font/quicksand_bold"
+                android:textColor="?colorPrimary"
+                android:textSize="@dimen/_18sdp"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/txt_tarif_order"
                 android:text="Rp. 25000"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_15sdp"/>
+                android:fontFamily="@font/quicksand_medium"/>
 
         </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="@dimen/_5sdp"
-        android:weightSum="2">
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tanggal_awal"
             android:textSize="@dimen/_15sdp"
             />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Banyak Sewa"
-            android:textColor="@color/black"
-            android:layout_weight="1"/>
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/edt_banyakSewa"
             android:inputType="text"
             android:singleLine="true"
-            android:layout_weight="1"
-            android:textColor="@color/black"
-            android:textColorHint="@color/material_on_background_disabled"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="@dimen/_5sdp"
-        android:weightSum="2">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Lama Sewa"
-            android:textColor="@color/black"
-            android:layout_weight="1"/>
+            android:background="@drawable/edbg"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingBottom="@dimen/_5sdp"
+            android:paddingLeft="@dimen/_5sdp"
+            android:hint="Jenis Pengirimasn"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_10sdp"/>
+
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/edt_LamaSewa"
             android:inputType="text"
             android:singleLine="true"
-            android:layout_weight="1"
-            android:textColor="@color/black"
-            android:textColorHint="@color/material_on_background_disabled"/>
-    </LinearLayout>
+            android:background="@drawable/edbg"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingBottom="@dimen/_5sdp"
+            android:paddingLeft="@dimen/_5sdp"
+            android:hint="Lama Sewa"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_10sdp"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="@dimen/_5sdp"
-        android:weightSum="2">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Alamat"
-            android:textColor="@color/black"
-            android:layout_weight="1"/>
+
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/edt_alamatPenyewa"
             android:inputType="text"
             android:singleLine="true"
-            android:layout_weight="1"
-            android:textColor="@color/black"
-            android:textColorHint="@color/material_on_background_disabled"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="@dimen/_5sdp"
-        android:weightSum="2">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Jaminan"
-            android:textColor="@color/black"
-            android:layout_weight="1"/>
+            android:background="@drawable/edbg"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingBottom="@dimen/_5sdp"
+            android:paddingLeft="@dimen/_5sdp"
+            android:hint="Alamat Pengiriman"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_10sdp"/>
+
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/edt_Jaminan"
             android:inputType="text"
             android:singleLine="true"
-            android:layout_weight="1"
-            android:textColor="@color/black"
-            android:textColorHint="@color/material_on_background_disabled"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="@dimen/_5sdp"
-        android:weightSum="2">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Jenis Transaksi"
-            android:textColor="@color/black"
-            android:layout_weight="1"/>
+            android:background="@drawable/edbg"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingBottom="@dimen/_5sdp"
+            android:paddingLeft="@dimen/_5sdp"
+            android:hint="Jaminan"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_10sdp"/>
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/edt_jenis_transaksi"
             android:inputType="text"
             android:singleLine="true"
-            android:layout_weight="1"
-            android:textColor="@color/black"
-            android:textColorHint="@color/material_on_background_disabled"/>
-    </LinearLayout>
+            android:background="@drawable/edbg"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingBottom="@dimen/_5sdp"
+            android:paddingLeft="@dimen/_5sdp"
+            android:hint="Jenis Transaksi"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_10sdp"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="@dimen/_5sdp"
-        android:weightSum="2">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Jenis Pengiriman"
-            android:textColor="@color/black"
-            android:layout_weight="1"/>
+
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/edt_pengiriman"
             android:inputType="text"
             android:singleLine="true"
-            android:layout_weight="1"
-            android:textColor="@color/black"
-            android:textColorHint="@color/material_on_background_disabled"/>
-    </LinearLayout>
+            android:background="@drawable/edbg"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingBottom="@dimen/_5sdp"
+            android:paddingLeft="@dimen/_5sdp"
+            android:hint="Jenis Pengiriman"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_10sdp"/>
+
 
     <Button
         android:id="@+id/btnConfirm"
@@ -200,15 +169,5 @@
         android:textStyle="bold"
         android:textAppearance="?android:textAppearanceMedium"
         android:textColor="@color/white"
-        android:layout_gravity="center"
-       />
-
-
-
-
-
-
-
-
-
+        android:layout_gravity="center" />
 </LinearLayout>
