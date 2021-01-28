@@ -73,7 +73,7 @@
             android:paddingTop="@dimen/_5sdp"
             android:paddingBottom="@dimen/_5sdp"
             android:paddingLeft="@dimen/_5sdp"
-            android:hint="Jenis Pengiriman"
+            android:hint="Jenis Pengirimasn"
             android:layout_marginLeft="@dimen/_15sdp"
             android:layout_marginRight="@dimen/_15sdp"
             android:layout_marginTop="@dimen/_10sdp"/>
