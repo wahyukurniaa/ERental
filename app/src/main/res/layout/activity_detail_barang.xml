@@ -128,11 +128,29 @@
                         android:textSize="@dimen/_15sdp" />
 
                     <TextView
+                        android:id="@+id/txt_store"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/quicksand_medium"
+                        android:text="Sederhana" />
+                    <TextView
                         android:id="@+id/txt_alamat_penyedia"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/quicksand_medium"
                         android:text="Padang" />
+                    <TextView
+                        android:id="@+id/txt_telp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/quicksand_medium"
+                        android:text="08129048" />
+                    <TextView
+                        android:id="@+id/txt_WA"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/quicksand_medium"
+                        android:text="08129048" />
                 </LinearLayout>
 
 

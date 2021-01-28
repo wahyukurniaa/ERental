@@ -119,12 +119,13 @@ public class IsiKategoriActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         try{
                             setSukses();
-                            Log.d("tampil barang","response:"+response);
-                            JSONArray res = response.getJSONArray("res");
+                            Log.d("tampil barang","response:"+response+id);
+
                             dataIsiKategori.clear();
                             if (response.getString("status").equalsIgnoreCase("gagal")){
                                 setGagal();
                             }else {
+                                JSONArray res = response.getJSONArray("res");
                                 Gson gson = new Gson();
                                 for (int i=0; i<res.length(); i++){
                                     JSONObject data = res.getJSONObject(i);
