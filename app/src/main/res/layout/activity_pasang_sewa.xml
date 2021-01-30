@@ -96,27 +96,71 @@
             android:layout_marginTop="@dimen/_15sdp"
             android:layout_marginRight="@dimen/_15sdp"/>
 
-    <LinearLayout
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginLeft="@dimen/_5sdp"-->
+<!--        android:layout_marginBottom="@dimen/_8sdp"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:weightSum="2">-->
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:text="Gambar"-->
+<!--            android:textColor="@color/black"/>-->
+<!--        <EditText-->
+<!--            android:id="@+id/edt_input_gambar"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textColorHint="@color/material_on_background_disabled"/>-->
+<!--    </LinearLayout>-->
+
+    <RelativeLayout
+        android:layout_marginBottom="-18dp"
+        android:layout_marginTop="@dimen/_15sdp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/_5sdp"
-        android:layout_marginBottom="@dimen/_8sdp"
-        android:orientation="horizontal"
-        android:weightSum="2">
+        android:layout_height="wrap_content">
+
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Gambar"
-            android:textColor="@color/black"/>
-        <EditText
-            android:id="@+id/edt_input_gambar"
+            android:layout_marginLeft="@dimen/_25sdp"
+            android:background="?android:windowBackground"
+            android:fontFamily="@font/quicksand_bold"
+            android:paddingLeft="@dimen/_5sdp"
+            android:paddingRight="@dimen/_5sdp"
+            android:text="Contact Person"
+            android:textColor="?colorPrimary" />
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textColor="@color/black"
-            android:textColorHint="@color/material_on_background_disabled"/>
-    </LinearLayout>
+            android:layout_height="@dimen/_140sdp"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_15sdp"
+            android:background="@drawable/bg_login"
+            android:orientation="vertical"
+            android:id="@+id/addPhoto"
+            android:translationZ="-10dp">
+
+            <ImageView
+                android:id="@+id/placePhoto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_baseline_add_photo_alternate_24" />
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
 
     <Button
 
@@ -124,7 +168,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/btn_pasangSewa"
         android:text="Pasang Sewa!"
-        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_margin="@dimen/_15sdp"
         android:textColor="@color/white"
         android:layout_gravity="right"/>
 

@@ -62,6 +62,7 @@ public class Adapter_IsiKategori extends RecyclerView.Adapter<Adapter_IsiKategor
                 i.putExtra("wa_store", data.getWa_store());
                 i.putExtra("gambar_barang", data.getGambar_barang());
                 i.putExtra("nama_user", data.getNama_user());
+                i.putExtra("gambar_toko", data.getGambar_store());
                 context.startActivity(i);
             }
         });

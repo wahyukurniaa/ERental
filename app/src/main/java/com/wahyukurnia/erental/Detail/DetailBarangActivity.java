@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.graphics.ColorSpace;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -38,7 +39,7 @@ public class    DetailBarangActivity extends AppCompatActivity {
     String id;
     TextView judul, txt_stok, txt_deskripsi, txt_nama_penyedia, txt_alamat_penyedia, txt_tarif,txt_store,txt_telp,txt_WA;
     Button btn_order;
-    ImageView img_detail, back;
+    ImageView img_detail,img_store, back;
     TextView title;
     API api;
 
@@ -64,6 +65,7 @@ public class    DetailBarangActivity extends AppCompatActivity {
         Log.e("barang",""+id);
 
 
+        img_store = findViewById(R.id.imgStore);
         judul = findViewById(R.id.txt_judul);
         txt_stok = findViewById(R.id.txt_stok);
         txt_deskripsi = findViewById(R.id.txt_deskripsi);
@@ -117,7 +119,29 @@ public class    DetailBarangActivity extends AppCompatActivity {
         txt_WA.setText(WA_store);
         txt_tarif.setText(tarif + " /hari");
         Picasso.get().load(api.URL_GAMBAR_U + i.getStringExtra("gambar_barang")).into(img_detail);
+        Picasso.get().load(api.URL_GAMBAR_U+i.getStringExtra("gambar_toko")).into(img_store);
 
+        txt_WA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url = "https://api.whatsapp.com/send?phone="+WA_store;
+                Intent s = new Intent(Intent.ACTION_VIEW);
+                s.setData(Uri.parse(url));
+                startActivity(s);
+
+            }
+        });
+
+        txt_telp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:" + telp_store));
+                if (intent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(intent);
+                }
+            }
+        });
         title.setText("Detail Barang");
     }
 
