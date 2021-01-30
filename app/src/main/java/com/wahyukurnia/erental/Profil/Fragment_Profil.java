@@ -21,7 +21,7 @@ import com.wahyukurnia.erental.TinyDB;
 
 public class Fragment_Profil extends Fragment {
     TinyDB tinyDB;
-    LinearLayout logout,btn_profil, btn_edit_profil, btn_store;
+    LinearLayout logout,btn_profil, btn_edit_profil, btn_store,btn_booked;
     TextView txt_username_profil;
     TextView title;
 
@@ -76,6 +76,15 @@ public class Fragment_Profil extends Fragment {
                 startActivity(i);
             }
         });
+        btn_booked = view.findViewById(R.id.btn_booked);
+        btn_booked.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(),BookedActivity.class);
+                startActivity(i);
+            }
+        });
         return view;
+
     }
 }
