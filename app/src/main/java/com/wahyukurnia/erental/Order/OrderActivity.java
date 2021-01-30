@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -53,23 +54,36 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Locale;
 
 
-public class OrderActivity extends AppCompatActivity  {
-API api;
-String id,id_user;
-TinyDB tinyDB;
-ImageView img_order;
-Button btnConfirm;
-TextView namaBarang_Order, hargaBarang;
-EditText edt_banyakSewa,edt_LamaSewa,edt_alamatPenyewa,edt_Jaminan, edt_jenis_transaksi,edt_jenis_pengiriman;
-String gambar,banyakSewa;
+public class OrderActivity extends AppCompatActivity {
+    API api;
+    String id, id_user;
+    TinyDB tinyDB;
+    ImageView img_order;
+    Button btnConfirm;
+    TextView namaBarang_Order, hargaBarang;
+    EditText edt_banyakSewa, edt_LamaSewa, edt_alamatPenyewa, edt_Jaminan, edt_jenis_transaksi, edt_jenis_pengiriman;
+    String gambar, banyakSewa;
     String tarif;
 
+    TextView tglAwal, tglAkhir;
+    final Calendar c = Calendar.getInstance();
+    static final int DATE_DIALOG_ID= 999;
+    String kondisiDate = "";
+
+    private int year;
+    private int month;
+    private int day;
+
     private static final String TAG = "OrderActivity";
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,7 +92,35 @@ String gambar,banyakSewa;
         api = new API();
         Intent i = getIntent();
         id = i.getStringExtra("id_barang");
-        Log.e("order",""+id);
+        Log.e("order", "" + id);
+
+
+        year = c.get(Calendar.YEAR);
+        month = c.get(Calendar.MONTH);
+        day = c.get(Calendar.DAY_OF_MONTH);
+
+
+        tglAkhir = findViewById(R.id.tgl_akhir);
+        tglAwal = findViewById(R.id.tgl_awal);
+
+        String now= LocalDate.now().toString();
+        tglAwal.setText(now);
+        tglAkhir.setText(now);
+
+        tglAwal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialog(DATE_DIALOG_ID);
+                kondisiDate="awal";
+            }
+        });
+        tglAkhir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialog(DATE_DIALOG_ID);
+                kondisiDate="akhir";
+            }
+        });
 
 
         tinyDB = new TinyDB(this);
@@ -91,7 +133,7 @@ String gambar,banyakSewa;
         edt_banyakSewa = findViewById(R.id.edt_banyakSewa);
         edt_LamaSewa = findViewById(R.id.edt_LamaSewa);
         edt_alamatPenyewa = findViewById(R.id.edt_alamatPenyewa);
-        edt_Jaminan = findViewById(R.id.edt_Jaminan);
+//        edt_Jaminan = findViewById(R.id.edt_Jaminan);
         edt_jenis_transaksi = findViewById(R.id.edt_jenis_transaksi);
         edt_jenis_pengiriman = findViewById(R.id.edt_pengiriman);
 
@@ -100,32 +142,39 @@ String gambar,banyakSewa;
         getDataOrder();
 
         btnConfirm = findViewById(R.id.btnConfirm);
-        aksiPasangSewa();
 
+        if (edt_banyakSewa.getText().toString().equals("") || edt_LamaSewa.getText().toString().equals("") || edt_alamatPenyewa.getText().toString().equals("")) {
+            Toast.makeText(getApplicationContext(), "Pastikan Semua Form Terisi", Toast.LENGTH_LONG).show();
+        } else {
+            aksiPasangSewa();
+        }
 
     }
 
-    public void getDataOrder(){
-        AndroidNetworking.get(api.URL_DESKRIPSI+id)
+    public void getDataOrder() {
+        Locale localeId = new Locale("in", "ID");
+        final NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeId);
+        AndroidNetworking.get(api.URL_DESKRIPSI + id)
                 .setPriority(Priority.LOW)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        try{
-                            Log.d("tampilmenu","response:"+response);
+                        try {
+                            Log.d("tampilmenu", "response:" + response);
                             JSONArray res = response.getJSONArray("res");
-                            for(int i =0; i <res.length();i++){
+                            for (int i = 0; i < res.length(); i++) {
                                 JSONObject data = res.getJSONObject(i);
-                                int id =  data.getInt("id_barang");
+                                int id = data.getInt("id_barang");
                                 String nama = data.getString("nama_barang");
                                 tarif = data.getString("tarif_barang");
 
 
+                                Log.d("tarif", "ha = " + tarif);
                                 namaBarang_Order.setText(nama);
-                                hargaBarang.setText("Rp. "+tarif+"/Hari");
-                                gambar =data.getString("gambar_barang");
-                                Picasso.get().load(api.URL_GAMBAR_U+data.getString("gambar_barang")).into(img_order);
+                                hargaBarang.setText(formatRupiah.format((double) Integer.valueOf(tarif)) + "/Hari");
+                                gambar = data.getString("gambar_barang");
+                                Picasso.get().load(api.URL_GAMBAR_U + data.getString("gambar_barang")).into(img_order);
 
                             }
 
@@ -136,38 +185,40 @@ String gambar,banyakSewa;
 
                     @Override
                     public void onError(ANError anError) {
-                        Log.e("tampil menu","response:"+anError);
+                        Log.e("tampil menu", "response:" + anError);
                     }
                 });
     }
 
-    public void aksiPasangSewa(){
+    public void aksiPasangSewa() {
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String banyakSewa = edt_banyakSewa.getText().toString(); //mengambil Value etNim menjadi string
                 String lamaSewa = edt_LamaSewa.getText().toString(); //mengambil Value etNim menjadi string
                 String alamatPenyewa = edt_alamatPenyewa.getText().toString(); //mengambil Value etNim menjadi string
-                String jaminan = edt_Jaminan.getText().toString(); //mengambil Value etNim menjadi string
-                String transaksi = edt_jenis_transaksi.getText().toString(); //mengambil Value etNim menjadi string
-                String pengiriman = edt_jenis_pengiriman.getText().toString(); //mengambil Value etNim menjadi string
+//                String jaminan = edt_Jaminan.getText().toString(); //mengambil Value etNim menjadi string
+                String transaksi = "COD"; //mengambil Value etNim menjadi string
+                String pengiriman = "COD"; //mengambil Value etNim menjadi string
 
                 int total = Integer.valueOf(banyakSewa) * Integer.valueOf(tarif);
                 //Handle Response
                 Intent i = new Intent(OrderActivity.this, CheckoutActivity.class);
-                i.putExtra("id_sewa_barang","");
-                i.putExtra("id_user",id_user);
-                i.putExtra("id_barang",id);
-                i.putExtra("nama_barang",namaBarang_Order.getText().toString());
-                i.putExtra("tarif_barang",hargaBarang.getText().toString());
-                i.putExtra("gambar_barang", api.URL_GAMBAR_U+gambar);
-                i.putExtra("banyak_sewa", banyakSewa+" item");
+                i.putExtra("id_sewa_barang", "");
+                i.putExtra("id_user", id_user);
+                i.putExtra("id_barang", id);
+                i.putExtra("nama_barang", namaBarang_Order.getText().toString());
+                i.putExtra("tarif_barang", tarif);
+                i.putExtra("gambar_barang", api.URL_GAMBAR_U + gambar);
+                i.putExtra("banyak_sewa", banyakSewa);
                 i.putExtra("lama_sewa", lamaSewa);
                 i.putExtra("alamat_penyewa", alamatPenyewa);
-                i.putExtra("jaminan", jaminan);
+//                i.putExtra("jaminan", jaminan);
+                i.putExtra("tgl_awal", tglAwal.getText().toString());
+                i.putExtra("tgl_akhir", tglAkhir.getText().toString());
                 i.putExtra("jenis_transaksi", transaksi);
                 i.putExtra("jenis_pengiriman", pengiriman);
-                i.putExtra("total",total);
+                i.putExtra("total", total);
 
                 startActivity(i);
             }
@@ -175,8 +226,54 @@ String gambar,banyakSewa;
 
     }
 
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        switch (id) {
+            case DATE_DIALOG_ID:
+                // set date picker as current date
+                return new DatePickerDialog(this, datePickerListener, year, month,
+                        day);
+        }
+        return null;
+    }
+
+    public DatePickerDialog.OnDateSetListener datePickerListener =
+            new DatePickerDialog.OnDateSetListener() {
+
+                // when dialog box is closed, below method will be called.
+                public void onDateSet(DatePicker view, int selectedYear,
+                                      int selectedMonth, int selectedDay) {
+                    year = selectedYear;
+                    month = selectedMonth;
+                    day = selectedDay;
+
+                    StringBuilder date;
+                    if (new StringBuilder().append(day).length()==1) {
+                        if (new StringBuilder().append(month).length()==1){
+                            date = new StringBuilder().append(year).append("-0")
+                                    .append(month + 1).append("-0").append(day).append("");
+                        }else {
+                            date = new StringBuilder().append(year).append("-")
+                                    .append(month + 1).append("-0").append(day).append("");
+                        }
+                    }else {
+                        if (new StringBuilder().append(month).length()==1){
+                            date = new StringBuilder().append(year).append("-0")
+                                    .append(month + 1).append("-").append(day).append("");
+                        }else {
+                            date = new StringBuilder().append(year).append("-")
+                                    .append(month + 1).append("-").append(day).append("");
+                        }
+                    }
 
 
+                    if (kondisiDate.equals("akhir")) {
+                        tglAkhir.setText(date);
+                    }else {
+                        tglAwal.setText(date);
+                    }
 
+                }
+            };
 
 }

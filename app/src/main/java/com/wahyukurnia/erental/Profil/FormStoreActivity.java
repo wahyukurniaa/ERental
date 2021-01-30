@@ -3,12 +3,18 @@ package com.wahyukurnia.erental.Profil;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +31,9 @@ import com.wahyukurnia.erental.TinyDB;
 
 import org.json.JSONObject;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.text.Normalizer;
 
 public class FormStoreActivity extends AppCompatActivity {
@@ -37,7 +46,22 @@ EditText edt_namaStore, edt_alamatStore, edt_telpStore, edt_WAStore, edt_IGStore
     edt_gambar;
 TextView title;
 ImageView back;
+
+LinearLayout addPhoto;
+ImageView placePhoto;
     private static final String TAG = "FormStoreActivity";
+
+    private static final String TAG_SUCCESS = "success";
+    private static final String TAG_MESSAGE = "message";
+    private String KEY_IMAGE = "image";
+    private String KEY_NAME = "name";
+
+    String tag_json_obj = "json_obj_req";
+    Bitmap bitmap, decoded;
+
+    int success;
+    int PICK_IMAGE_REQUEST = 1;
+    int bitmap_size = 60; // range 1 - 100
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +70,15 @@ ImageView back;
 
         title = findViewById(R.id.tv_toolbar);
         title.setText("Buat Store");
+
+        placePhoto = findViewById(R.id.placePhoto);
+        addPhoto = findViewById(R.id.addPhoto);
+        addPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showFileChooser();
+            }
+        });
 
         back = findViewById(R.id.ib_back);
         back.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +103,6 @@ ImageView back;
         edt_telpStore = findViewById(R.id.edt_telpStore);
         edt_WAStore = findViewById(R.id.edt_WAStore);
         edt_IGStore = findViewById(R.id.edt_IGStore);
-        edt_gambar = findViewById(R.id.edt_gambarStore);
 
 
 
@@ -89,6 +121,67 @@ ImageView back;
 
     }
 
+    private void showFileChooser() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+    }
+
+    public String getStringImage(Bitmap bmp) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.JPEG, bitmap_size, baos);
+
+        byte[] imageBytes = baos.toByteArray();
+        String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+        return encodedImage;
+    }
+
+
+    private void setToImageView(Bitmap bmp) {
+        //compress image
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.JPEG, bitmap_size, bytes);
+        decoded = BitmapFactory.decodeStream(new ByteArrayInputStream(bytes.toByteArray()));
+        //menampilkan gambar yang dipilih dari camera/gallery ke ImageView
+        placePhoto.setImageBitmap(decoded);
+    }
+
+    // fungsi resize image
+    public Bitmap getResizedBitmap(Bitmap image, int maxSize) {
+        int width = image.getWidth();
+        int height = image.getHeight();
+
+        float bitmapRatio = (float) width / (float) height;
+        if (bitmapRatio > 1) {
+            width = maxSize;
+            height = (int) (width / bitmapRatio);
+        } else {
+            height = maxSize;
+            width = (int) (height * bitmapRatio);
+        }
+        return Bitmap.createScaledBitmap(image, width, height, true);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            Uri filePath = data.getData();
+            try {
+                //mengambil fambar dari Gallery
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+                // 512 adalah resolusi tertinggi setelah image di resize, bisa di ganti.
+                setToImageView(getResizedBitmap(bitmap, 512));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+
     public void aksiTambahStore(){
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,20 +192,20 @@ ImageView back;
                 String telp_Store = edt_telpStore.getText().toString(); //mengambil Value etNim menjadi string
                 String wa_store = edt_WAStore.getText().toString(); //mengambil Value etNim menjadi string
                 String ig_store = edt_IGStore.getText().toString(); //mengambil Value etNim menjadi string
-                String gambar = edt_gambar.getText().toString(); //mengambil Value etNim menjadi string
+//                String gambar = edt_gambar.getText().toString(); //mengambil Value etNim menjadi string
 
-                if (nama_store.equals("")||alamat_store.equals("")||telp_Store.equals("")||wa_store.equals("")||ig_store.equals("")||gambar.equals("")){
+                if (nama_store.equals("")||alamat_store.equals("")||telp_Store.equals("")||wa_store.equals("")||ig_store.equals("")){
                     Toast.makeText(getApplicationContext(),"Semua data harus diisi" , Toast.LENGTH_SHORT).show();
                     //memunculkan toast saat form masih ada yang kosong
                 } else {
-                    tambahData(nama_store,alamat_store,telp_Store,wa_store,ig_store,gambar); //memanggil fungsi tambahData()
+                    tambahData(nama_store,alamat_store,telp_Store,wa_store,ig_store); //memanggil fungsi tambahData()
 
                     edt_namaStore.setText(""); //mengosongkan form setelah data berhasil ditambahkan
                     edt_alamatStore.setText(""); //mengosongkan form setelah data berhasil ditambahkan
                     edt_telpStore.setText(""); //mengosongkan form setelah data berhasil ditambahkan
                     edt_WAStore.setText(""); //mengosongkan form setelah data berhasil ditambahkan
                     edt_IGStore.setText(""); //mengosongkan form setelah data berhasil ditambahkan
-                    edt_gambar.setText(""); //mengosongkan form setelah data berhasil ditambahkan
+//                    edt_gambar.setText(""); //mengosongkan form setelah data berhasil ditambahkan
 
                 }
 
@@ -125,7 +218,7 @@ ImageView back;
 
     }
 
-    public void tambahData(String nama_store,String alamat_store,String telp_Store,String wa_store,String ig_store, String gambar){
+    public void tambahData(String nama_store, String alamat_store, String telp_Store, String wa_store, String ig_store){
         //koneksi ke file create.php, jika menggunakan localhost gunakan ip sesuai dengan ip kamu
         AndroidNetworking.post(api.URL_Store)
                 .addBodyParameter("id_store","")
@@ -135,7 +228,7 @@ ImageView back;
                 .addBodyParameter("telp_store", telp_Store) //mengirimkan data nama_mahasiswa yang akan diisi dengan varibel nama
                 .addBodyParameter("wa_store", wa_store) //mengirimkan data kelas_mahasiswa yang akan diisi dengan varibel kelas
                 .addBodyParameter("ig_store", ig_store) //mengirimkan data kelas_mahasiswa yang akan diisi dengan varibel kelas
-                .addBodyParameter("gambar_store", gambar) //mengirimkan data kelas_mahasiswa yang akan diisi dengan varibel kelas
+                .addBodyParameter("gambar_store", getStringImage(decoded)) //mengirimkan data kelas_mahasiswa yang akan diisi dengan varibel kelas
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {

@@ -3,8 +3,12 @@ package com.wahyukurnia.erental.Profil;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +38,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class PasangSewaActivity extends AppCompatActivity {
@@ -50,6 +58,20 @@ public class PasangSewaActivity extends AppCompatActivity {
     ArrayList<String> dataKategori = new ArrayList<>();
     ArrayAdapter<String> adapter;
 
+    LinearLayout addPhoto;
+    ImageView placePhoto;
+
+    private static final String TAG_SUCCESS = "success";
+    private static final String TAG_MESSAGE = "message";
+    private String KEY_IMAGE = "image";
+    private String KEY_NAME = "name";
+
+    String tag_json_obj = "json_obj_req";
+    Bitmap bitmap, decoded;
+
+    int success;
+    int PICK_IMAGE_REQUEST = 1;
+    int bitmap_size = 60; // range 1 - 100
     private static final String TAG = "PasangSewaActivity";
 
     @Override
@@ -63,6 +85,15 @@ public class PasangSewaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        placePhoto = findViewById(R.id.placePhoto);
+        addPhoto = findViewById(R.id.addPhoto);
+        addPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showFileChooser();
             }
         });
 
@@ -81,7 +112,7 @@ public class PasangSewaActivity extends AppCompatActivity {
         edt_tarif = findViewById(R.id.edt_tarif);
         edt_stokBarang = findViewById(R.id.edt_stokBarang);
         edtdeskripsi = findViewById(R.id.edtdeskripsi);
-        edt_input_gambar = findViewById(R.id.edt_input_gambar);
+//        edt_input_gambar = findViewById(R.id.edt_input_gambar);
 
         pasang_sewa = findViewById(R.id.btn_pasangSewa);
         aksiPasangSewa();
@@ -153,20 +184,20 @@ public class PasangSewaActivity extends AppCompatActivity {
                 String tarifBarang = edt_tarif.getText().toString(); //mengambil Value etNim menjadi string
                 String stokBarang = edt_stokBarang.getText().toString(); //mengambil Value etNim menjadi string
                 String deskripsi = edtdeskripsi.getText().toString(); //mengambil Value etNim menjadi string
-                String inputGambar = edt_input_gambar.getText().toString(); //mengambil Value etNim menjadi string
+//                String inputGambar = edt_input_gambar.getText().toString(); //mengambil Value etNim menjadi string
 
 
-                if (namaBarang.equals("")||tarifBarang.equals("")||stokBarang.equals("")||deskripsi.equals("")||inputGambar.equals("")){
+                if (namaBarang.equals("")||tarifBarang.equals("")||stokBarang.equals("")||deskripsi.equals("")){
                     Toast.makeText(getApplicationContext(),"Semua data harus diisi" , Toast.LENGTH_SHORT).show();
                     //memunculkan toast saat form masih ada yang kosong
                 } else {
-                    tambahData(namaBarang,tarifBarang,stokBarang,deskripsi,inputGambar); //memanggil fungsi tambahData()
+                    tambahData(namaBarang,tarifBarang,stokBarang,deskripsi); //memanggil fungsi tambahData()
 
                     edt_namaBarang.setText(""); //mengosongkan form setelah data berhasil ditambahkan
                     edt_tarif.setText(""); //mengosongkan form setelah data berhasil ditambahkan
                     edt_stokBarang.setText(""); //mengosongkan form setelah data berhasil ditambahkan
                     edtdeskripsi.setText(""); //mengosongkan form setelah data berhasil ditambahkan
-                    edt_input_gambar.setText(""); //mengosongkan form setelah data berhasil ditambahkan
+//                    edt_input_gambar.setText(""); //mengosongkan form setelah data berhasil ditambahkan
 
                 }
 
@@ -175,7 +206,68 @@ public class PasangSewaActivity extends AppCompatActivity {
 
     }
 
-    public void tambahData(String namaBarang,String tarifBarang,String stokBarang,String deskripsi,String inputGambar){
+    private void showFileChooser() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+    }
+
+    public String getStringImage(Bitmap bmp) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.JPEG, bitmap_size, baos);
+
+        byte[] imageBytes = baos.toByteArray();
+        String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+        return encodedImage;
+    }
+
+
+    private void setToImageView(Bitmap bmp) {
+        //compress image
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.JPEG, bitmap_size, bytes);
+        decoded = BitmapFactory.decodeStream(new ByteArrayInputStream(bytes.toByteArray()));
+        //menampilkan gambar yang dipilih dari camera/gallery ke ImageView
+        placePhoto.setImageBitmap(decoded);
+    }
+
+    // fungsi resize image
+    public Bitmap getResizedBitmap(Bitmap image, int maxSize) {
+        int width = image.getWidth();
+        int height = image.getHeight();
+
+        float bitmapRatio = (float) width / (float) height;
+        if (bitmapRatio > 1) {
+            width = maxSize;
+            height = (int) (width / bitmapRatio);
+        } else {
+            height = maxSize;
+            width = (int) (height * bitmapRatio);
+        }
+        return Bitmap.createScaledBitmap(image, width, height, true);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            Uri filePath = data.getData();
+            try {
+                //mengambil fambar dari Gallery
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+                // 512 adalah resolusi tertinggi setelah image di resize, bisa di ganti.
+                setToImageView(getResizedBitmap(bitmap, 512));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+
+    public void tambahData(String namaBarang, String tarifBarang, String stokBarang, String deskripsi){
         //koneksi ke file create.php, jika menggunakan localhost gunakan ip sesuai dengan ip kamu
         Log.e("salah",""+api.URL_BARANG);
         AndroidNetworking.post(api.URL_BARANG)
@@ -186,7 +278,7 @@ public class PasangSewaActivity extends AppCompatActivity {
                 .addBodyParameter("tarif_barang",tarifBarang) //mengirimkan data nim_mahasiswa yang akan diisi dengan varibel nim
                 .addBodyParameter("stok", stokBarang) //mengirimkan data kelas_mahasiswa yang akan diisi dengan varibel kelas
                 .addBodyParameter("deskripsi", deskripsi) //mengirimkan data nama_mahasiswa yang akan diisi dengan varibel nama
-                .addBodyParameter("gambar_barang", inputGambar) //mengirimkan data kelas_mahasiswa yang akan diisi dengan varibel kelas
+                .addBodyParameter("gambar_barang", getStringImage(decoded)) //mengirimkan data kelas_mahasiswa yang akan diisi dengan varibel kelas
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {

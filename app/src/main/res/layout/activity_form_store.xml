@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,146 +8,169 @@
     android:orientation="vertical"
     tools:context=".Profil.FormStoreActivity">
 
-   <include
-       layout="@layout/toolbar_second"
-       android:id="@+id/toolbar"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_second" />
 
 
         <EditText
-            android:layout_margin="@dimen/_15sdp"
+            android:id="@+id/edt_namaStore"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/edt_namaStore"
-            android:inputType="text"
-            android:singleLine="true"
+            android:layout_margin="@dimen/_15sdp"
+            android:background="@drawable/edbg"
             android:hint="Nama Store"
+            android:inputType="text"
+            android:paddingLeft="@dimen/_10sdp"
             android:paddingTop="@dimen/_10sdp"
             android:paddingBottom="@dimen/_10sdp"
+            android:singleLine="true" />
+
+
+        <EditText
+            android:id="@+id/edt_alamatStore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_15sdp"
+            android:background="@drawable/edbg"
+            android:hint="Alamat"
+            android:inputType="text"
             android:paddingLeft="@dimen/_10sdp"
-            android:background="@drawable/edbg"/>
+            android:paddingTop="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_10sdp"
 
+            android:singleLine="true" />
 
-            <EditText
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_25sdp"
+                android:background="?android:windowBackground"
+                android:fontFamily="@font/quicksand_bold"
+                android:paddingLeft="@dimen/_5sdp"
+                android:paddingRight="@dimen/_5sdp"
+                android:text="Contact Person"
+                android:textColor="?colorPrimary" />
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/edt_alamatStore"
-                android:inputType="text"
-                android:paddingTop="@dimen/_10sdp"
-                android:paddingBottom="@dimen/_10sdp"
-                android:paddingLeft="@dimen/_10sdp"
                 android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_8sdp"
                 android:layout_marginRight="@dimen/_15sdp"
                 android:layout_marginBottom="@dimen/_15sdp"
-                android:singleLine="true"
-                android:background="@drawable/edbg"
+                android:background="@drawable/bg_login"
+                android:orientation="vertical"
+                android:translationZ="-10dp">
 
-                android:hint="Alamat"/>
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Contact Person"
-        android:layout_marginLeft="@dimen/_25sdp"
-        android:textColor="?colorPrimary"
-        android:paddingLeft="@dimen/_5sdp"
-        android:paddingRight="@dimen/_5sdp"
-        android:fontFamily="@font/quicksand_bold"
-        android:background="?android:windowBackground"/>
+                <EditText
+                    android:id="@+id/edt_telpStore"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginRight="@dimen/_15sdp"
+                    android:layout_marginBottom="@dimen/_15sdp"
+                    android:background="@drawable/edbg"
+                    android:hint="+62"
+                    android:paddingLeft="@dimen/_5sdp"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:singleLine="true" />
 
-    <LinearLayout
-        android:layout_marginTop="@dimen/_8sdp"
-        android:translationZ="-10dp"
-        android:layout_marginLeft="@dimen/_15sdp"
-        android:layout_marginRight="@dimen/_15sdp"
-        android:layout_marginBottom="@dimen/_15sdp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@drawable/edbg">
+                <EditText
+                    android:id="@+id/edt_WAStore"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:layout_marginRight="@dimen/_15sdp"
+                    android:layout_marginBottom="@dimen/_15sdp"
+                    android:background="@drawable/edbg"
+                    android:hint="WhatsApp"
+                    android:paddingLeft="@dimen/_5sdp"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_5sdp" />
 
-        <EditText
-            android:layout_marginTop="@dimen/_15sdp"
+                <EditText
+                    android:id="@+id/edt_IGStore"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:layout_marginRight="@dimen/_15sdp"
+                    android:layout_marginBottom="@dimen/_15sdp"
+                    android:background="@drawable/edbg"
+                    android:hint="Instagram"
+                    android:paddingLeft="@dimen/_5sdp"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_5sdp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/edt_telpStore"
-            android:hint="+62"
-            android:singleLine="true"
-            android:background="@drawable/edbg"
-            android:paddingTop="@dimen/_5sdp"
-            android:paddingBottom="@dimen/_5sdp"
-            android:paddingLeft="@dimen/_5sdp"
-            android:layout_marginLeft="@dimen/_15sdp"
-            android:layout_marginRight="@dimen/_15sdp"
-            android:layout_marginBottom="@dimen/_15sdp"
-            />
-        <EditText
-            android:id="@+id/edt_WAStore"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_25sdp"
+                android:background="?android:windowBackground"
+                android:fontFamily="@font/quicksand_bold"
+                android:paddingLeft="@dimen/_5sdp"
+                android:paddingRight="@dimen/_5sdp"
+                android:text="Contact Person"
+                android:textColor="?colorPrimary" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_140sdp"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginRight="@dimen/_15sdp"
+                android:layout_marginBottom="@dimen/_15sdp"
+                android:background="@drawable/bg_login"
+                android:orientation="vertical"
+                android:id="@+id/addPhoto"
+                android:translationZ="-10dp">
+
+                <ImageView
+                    android:id="@+id/placePhoto"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_baseline_add_photo_alternate_24" />
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+        <Button
+
+            android:id="@+id/btn_nextStore"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:hint="WhatsApp"
-            android:background="@drawable/edbg"
-            android:paddingTop="@dimen/_5sdp"
-            android:paddingBottom="@dimen/_5sdp"
-            android:paddingLeft="@dimen/_5sdp"
-            android:layout_marginLeft="@dimen/_15sdp"
-            android:layout_marginRight="@dimen/_15sdp"
-            android:layout_marginBottom="@dimen/_15sdp"
-            />
-        <EditText
-            android:id="@+id/edt_IGStore"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:hint="Instagram"
-            android:background="@drawable/edbg"
-            android:paddingTop="@dimen/_5sdp"
-            android:paddingBottom="@dimen/_5sdp"
-            android:paddingLeft="@dimen/_5sdp"
-            android:layout_marginLeft="@dimen/_15sdp"
-            android:layout_marginRight="@dimen/_15sdp"
-            android:layout_marginBottom="@dimen/_15sdp"
-            />
+            android:layout_margin="@dimen/_15sdp"
+            android:text="Next" />
 
     </LinearLayout>
-
-</RelativeLayout>
-
-
-
-    <LinearLayout
-        android:layout_marginLeft="@dimen/_5sdp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="@dimen/_8sdp"
-        android:weightSum="2">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Gambar Store"
-            android:layout_weight="1"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/edt_gambarStore"
-            android:hint="Gambar"
-            android:singleLine="true"
-            android:layout_weight="1"
-            android:textColor="@color/black"
-            android:textColorHint="@color/material_on_background_disabled"/>
-    </LinearLayout>
-
-    <Button
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_nextStore"
-        android:text="Next"
-        android:layout_margin="@dimen/_15sdp"
-        android:layout_gravity="right"/>
-
-
-</LinearLayout>
+</androidx.core.widget.NestedScrollView>

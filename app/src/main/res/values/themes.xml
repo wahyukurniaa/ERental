@@ -7,7 +7,7 @@
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/white</item>
-        <item name="colorSecondaryVariant">@color/shimmer_foreground</item>
+        <item name="colorSecondaryVariant">#EFEFEF</item>
         <item name="colorOnSecondary">#47ACFC</item>
         <!-- Status bar color. -->
         <item name="android:windowBackground">@color/white</item>

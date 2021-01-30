@@ -9,131 +9,170 @@
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/toolbar_main" />
+        layout="@layout/toolbar_second" />
 
-     <LinearLayout
-        android:layout_marginTop="@dimen/_5sdp"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:weightSum="2"
+        android:background="?colorSecondaryVariant"
         android:orientation="horizontal">
 
-    <ImageView
-        android:layout_width="@dimen/_150sdp"
-        android:layout_height="@dimen/_80sdp"
-        android:id="@+id/img_checkout"
-        android:layout_weight="0.5"
-        android:src="@drawable/bangunan"/>
+        <ImageView
+            android:id="@+id/img_checkout"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:src="@drawable/bangunan" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txt_judul_checkout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand_bold"
+                android:text="Baju Kurung"
+                android:textColor="?colorPrimary"
+                android:textSize="@dimen/_18sdp" />
+
+            <TextView
+                android:id="@+id/txt_tarif_checkout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand_medium"
+                android:text="Rp. 25000" />
+
+            <TextView
+                android:id="@+id/txt_banyak_checkout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand_medium"
+                android:text="1 item" />
+
+        </LinearLayout>
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:weightSum="2">
+        android:layout_margin="@dimen/_15sdp"
+        android:orientation="vertical">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txt_judul_checkout"
-            android:text="Baju Kurung"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_15sdp"/>
+            android:fontFamily="@font/quicksand_bold"
+            android:text="Detail Transaksi :" />
+
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txt_tarif_checkout"
-            android:text="Rp. 25000"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_15sdp"/>
+            android:fontFamily="@font/quicksand_medium"
+            android:text="Nama Penyewa" />
+
+        <TextView
+            android:id="@+id/namaCheckout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand_bold"
+            android:text="Siti Nur Bahbah"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:textColor="?colorPrimary"
+            android:textSize="@dimen/_14sdp" />
+
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txt_banyak_checkout"
-            android:text="1 item"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_8sdp"/>
+            android:fontFamily="@font/quicksand_medium"
+            android:text="Alamat" />
+
+        <TextView
+            android:id="@+id/alamatCheckout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand_bold"
+            android:text="Alamat"
+            android:textColor="?colorPrimary"
+            android:textSize="@dimen/_14sdp"
+            android:layout_marginBottom="@dimen/_10sdp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand_medium"
+            android:text="Total" />
+
+        <TextView
+            android:id="@+id/totalCheckout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand_bold"
+            android:text="Total"
+            android:textColor="?colorPrimary"
+            android:textSize="@dimen/_14sdp" />
+
+        <TextView
+            android:background="?android:windowBackground"
+            android:fontFamily="@font/quicksand_medium"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="-30dp"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_width="wrap_content"
+            android:paddingLeft="@dimen/_5sdp"
+            android:paddingRight="@dimen/_5sdp"
+            android:text="Masukan Foto Jaminan" />
 
     </LinearLayout>
-     </LinearLayout>
+
+    <RelativeLayout
+        android:background="@drawable/bg_login"
+        android:id="@+id/addPhoto"
+        android:layout_height="@dimen/_100sdp"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:layout_marginRight="@dimen/_15sdp"
+        android:layout_width="match_parent"
+        android:translationZ="-5dp">
+
+        <ImageView
+            android:id="@+id/setFoto"
+            android:layout_centerInParent="true"
+            android:layout_height="@dimen/_90sdp"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_18sdp"
+            android:layout_width="match_parent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_baseline_add_photo_alternate_24" />
+
+    </RelativeLayout>
+
+
     <TextView
-        android:layout_width="match_parent"
+        android:fontFamily="@font/quicksand_medium"
         android:layout_height="wrap_content"
-        android:text="Detail Transaksi :"
-        android:textColor="@color/black"
-        android:textStyle="bold"/>
-    <LinearLayout
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="2">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Nama"
-            android:layout_weight="1"
-            android:textColor="@color/black"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/namaCheckout"
-            android:text="Nama"
-            android:layout_weight="1"
-            android:textColor="@color/black"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_marginTop="@dimen/_5sdp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="2">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Alamat"
-            android:layout_weight="1"
-            android:textColor="@color/black"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Alamat"
-            android:id="@+id/alamatCheckout"
-            android:layout_weight="1"
-            android:textColor="@color/black"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_marginTop="@dimen/_5sdp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="2">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Total"
-            android:layout_weight="1"
-            android:textColor="@color/black"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Total"
-            android:id="@+id/totalCheckout"
-            android:layout_weight="1"
-            android:textColor="@color/black"/>
-    </LinearLayout>
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:layout_width="wrap_content"
+        android:text="ⓘ Masukan Foto KTP/ SIM/ Pasport" />
 
     <Button
         android:id="@+id/btnCheckout"
-        android:layout_width="180dp"
+        android:layout_gravity="center"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
+        android:layout_width="180dp"
         android:text="Checkout Now"
-        android:textStyle="bold"
         android:textAppearance="?android:textAppearanceMedium"
         android:textColor="@color/white"
-        android:layout_gravity="center"
-        />
-
-
-
-
+        android:textStyle="bold" />
 
 </LinearLayout>
+
+
+
