@@ -1,14 +1,16 @@
-package com.wahyukurnia.erental.Profil;
-
-import java.io.Serializable;
+package com.wahyukurnia.erental.Notif;
 
 
-public class Model_Booked {
+
+public class Model_Notif  {
+
+
+
+
         private String id_sewa_barang;
         private String id_user;
         private String id_barang;
         private String id_status;
-        private String status;
         private String banyak_sewa;
         private String tanggal_awal;
         private String tanggal_akhir;
@@ -25,12 +27,11 @@ public class Model_Booked {
         private String stok;
         private String gambar_barang;
 
-    public Model_Booked(String id_sewa_barang, String id_user, String id_barang, String id_status, String status, String banyak_sewa, String tanggal_awal, String tanggal_akhir, String alamat_penyewa, String jaminan, String jenis_transaksi, String jenis_pengiriman, String total_harga, String id_kategori, String id_store, String nama_barang, String tarif_barang, String deskripsi, String stok, String gambar_barang) {
+    public Model_Notif(String id_sewa_barang, String id_user, String id_barang, String id_status, String banyak_sewa, String tanggal_awal, String tanggal_akhir, String alamat_penyewa, String jaminan, String jenis_transaksi, String jenis_pengiriman, String total_harga, String id_kategori, String id_store, String nama_barang, String tarif_barang, String deskripsi, String stok, String gambar_barang) {
         this.id_sewa_barang = id_sewa_barang;
         this.id_user = id_user;
         this.id_barang = id_barang;
         this.id_status = id_status;
-        this.status = status;
         this.banyak_sewa = banyak_sewa;
         this.tanggal_awal = tanggal_awal;
         this.tanggal_akhir = tanggal_akhir;
@@ -78,14 +79,6 @@ public class Model_Booked {
 
     public void setId_status(String id_status) {
         this.id_status = id_status;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public String getBanyak_sewa() {
@@ -208,4 +201,3 @@ public class Model_Booked {
         this.gambar_barang = gambar_barang;
     }
 }
-

@@ -25,6 +25,7 @@ import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.squareup.picasso.Picasso;
 import com.wahyukurnia.erental.API;
 import com.wahyukurnia.erental.MainActivity;
+import com.wahyukurnia.erental.Notif.NotificationActivity;
 import com.wahyukurnia.erental.Profil.PasangSewaActivity;
 import com.wahyukurnia.erental.R;
 import com.wahyukurnia.erental.TinyDB;
@@ -224,7 +225,7 @@ public class CheckoutActivity extends AppCompatActivity {
                         try {
                             if(response.getString("status").equalsIgnoreCase("sukses")){
                                 Intent i = new Intent(CheckoutActivity.this, MainActivity.class);
-                                startActivity(i);
+                                 startActivity(i);
                                 Toast.makeText(getApplicationContext(),"Data berhasil ditambahkan" , Toast.LENGTH_SHORT).show();
                             }
                             else{

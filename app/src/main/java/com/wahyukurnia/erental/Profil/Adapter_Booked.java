@@ -46,6 +46,7 @@ public class Adapter_Booked extends RecyclerView.Adapter<Adapter_Booked.ViewHold
         holder.txt_namaBarang.setText(data.getNama_barang());
         holder.txt_tanggalPinjam.setText(data.getTanggal_awal());
         holder.txt_tanggalKembali.setText(data.getTanggal_akhir());
+        holder.txt_status.setText(data.getStatus());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,7 +64,7 @@ public class Adapter_Booked extends RecyclerView.Adapter<Adapter_Booked.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView txt_namaBarang, txt_tanggalPinjam, txt_tanggalKembali;
+        TextView txt_namaBarang, txt_tanggalPinjam, txt_tanggalKembali,txt_status;
         ImageView img;
 
         public ViewHolder(@NonNull View itemView) {
@@ -73,6 +74,7 @@ public class Adapter_Booked extends RecyclerView.Adapter<Adapter_Booked.ViewHold
             txt_tanggalPinjam = itemView.findViewById(R.id.txt_tgl_pinjam);
             txt_tanggalKembali = itemView.findViewById(R.id.txt_tanggal_kembali);
             img = itemView.findViewById(R.id.img_barang);
+            txt_status = itemView.findViewById(R.id.status);
         }
     }
 }

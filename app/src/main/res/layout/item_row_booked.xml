@@ -81,6 +81,7 @@
                 android:paddingRight="@dimen/_10sdp"
                 android:paddingBottom="@dimen/_5sdp"
                 android:text="Statsdasus"
+                android:id="@+id/status"
                 android:textColor="@color/white" />
 
         </RelativeLayout>
