@@ -19,6 +19,7 @@ import com.wahyukurnia.erental.Detail.DetailBarangActivity;
 import com.wahyukurnia.erental.Kategori.Adapter_IsiKategori;
 import com.wahyukurnia.erental.Kategori.Model_IsiKategori;
 import com.wahyukurnia.erental.R;
+import com.wahyukurnia.erental.TinyDB;
 
 import java.util.List;
 
@@ -29,7 +30,6 @@ public class Adapter_Booked extends RecyclerView.Adapter<Adapter_Booked.ViewHold
     public Adapter_Booked(List<Model_Booked> dataBooked) {
         this.dataBooked = dataBooked;
     }
-
 
     @NonNull
     @Override
@@ -43,6 +43,7 @@ public class Adapter_Booked extends RecyclerView.Adapter<Adapter_Booked.ViewHold
     public void onBindViewHolder(@NonNull Adapter_Booked.ViewHolder holder, int position) {
         Model_Booked data = dataBooked.get(position);
         API api = new API();
+        TinyDB tinyDB = new TinyDB(context);
         holder.txt_namaBarang.setText(data.getNama_barang());
         holder.txt_tanggalPinjam.setText(data.getTanggal_awal());
         holder.txt_tanggalKembali.setText(data.getTanggal_akhir());
@@ -54,11 +55,11 @@ public class Adapter_Booked extends RecyclerView.Adapter<Adapter_Booked.ViewHold
                 intent.putExtra("namaBarang", data.getNama_barang());
                 intent.putExtra("hargaBarang", data.getTarif_barang());
                 intent.putExtra("banyakSewa", data.getBanyak_sewa());
-                intent.putExtra("namaPenyewa", data.getId_user());
+                intent.putExtra("namaPenyewa", data.getNama_user());
                 intent.putExtra("tglAwal", data.getTanggal_awal());
                 intent.putExtra("tglAkhir", data.getTanggal_akhir());
                 intent.putExtra("alamat", data.getAlamat_penyewa());
-                intent.putExtra("status", "status"); ///isi kk
+                intent.putExtra("status", data.getStatus()); ///isi kk
                 intent.putExtra("gambarBarang", data.getGambar_barang());
                 intent.putExtra("gambarJaminan", data.getJaminan());
                 intent.putExtra("totaSewa", data.getTotal_harga());
@@ -66,13 +67,13 @@ public class Adapter_Booked extends RecyclerView.Adapter<Adapter_Booked.ViewHold
             }
         });
         Picasso.get().load(api.URL_GAMBAR_U+data.getGambar_barang()).into(holder.img);
-
     }
 
     @Override
     public int getItemCount() {
         return dataBooked.size();
     }
+
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView txt_namaBarang, txt_tanggalPinjam, txt_tanggalKembali,txt_status;

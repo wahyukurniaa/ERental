@@ -35,8 +35,6 @@ public class Fragment_Profil extends Fragment {
         txt_username_profil = view.findViewById(R.id.username_profl);
         txt_username_profil.setText(tinyDB.getString("keyNamaUser"));
 
-        title = view.findViewById(R.id.tv_toolbar);
-        title.setText("Profil User");
 
 
         logout = view.findViewById(R.id.btn_logout);
