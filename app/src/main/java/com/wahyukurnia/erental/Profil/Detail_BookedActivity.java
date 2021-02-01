@@ -37,6 +37,7 @@ public class Detail_BookedActivity extends AppCompatActivity {
             }
         });
 
+
         binding.namaBarang.setText(intent.getStringExtra("namaBarang"));
         binding.hargaBarang.setText(formatRupiah.format((double)Integer.valueOf(intent.getStringExtra("hargaBarang")))+" /Hari");
         binding.banyakBarang.setText(intent.getStringExtra("banyakSewa")+" item");
