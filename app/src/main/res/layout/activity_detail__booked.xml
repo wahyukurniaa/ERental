@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,9 +7,242 @@
     android:orientation="vertical"
     tools:context=".Profil.Detail_BookedActivity">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="antah"/>
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_second" />
 
-</LinearLayout>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_marginLeft="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginBottom="@dimen/_20sdp"
+                    android:id="@+id/imgBarang"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="@dimen/_100sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/website" />
+
+                <LinearLayout
+                    android:layout_marginRight="@dimen/_20sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/namaBarang"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:text="Nama Barang"
+                        android:textColor="?colorPrimary"
+                        android:textSize="@dimen/_15sdp" />
+
+                    <TextView
+                        android:id="@+id/hargaBarang"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/quicksand_medium"
+                        android:text="Rp. 100.000 /Hari" />
+
+                    <TextView
+                        android:id="@+id/banyakBarang"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/quicksand_medium"
+                        android:text="5 item" />
+
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_20sdp"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nama Penyewa "
+                        android:fontFamily="@font/quicksand_medium"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Audi Rahman"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:textColor="?colorPrimary"
+                        android:layout_alignParentRight="true"
+                        android:id="@+id/namaPenyewa"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tanggal Penyewaan "
+                        android:fontFamily="@font/quicksand_medium"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Audi Rahman"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:textColor="?colorPrimary"
+                        android:layout_alignParentRight="true"
+                        android:id="@+id/tgl_awal"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nama Pengembalian "
+                        android:fontFamily="@font/quicksand_medium"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Audi Rahman"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:textColor="?colorPrimary"
+                        android:layout_alignParentRight="true"
+                        android:id="@+id/tgl_akhir"/>
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Alamat Penyewa "
+                        android:fontFamily="@font/quicksand_medium"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Audi Rahman"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:textColor="?colorPrimary"
+                        android:layout_alignParentRight="true"
+                        android:id="@+id/alamat"/>
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Status Sewa "
+                        android:fontFamily="@font/quicksand_medium"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Audi Rahman"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:textColor="?colorPrimary"
+                        android:layout_alignParentRight="true"
+                        android:id="@+id/statusSewa"/>
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Banyak Sewa "
+                        android:fontFamily="@font/quicksand_medium"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Audi Rahman"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:textColor="?colorPrimary"
+                        android:layout_alignParentRight="true"
+                        android:id="@+id/ketBanyak"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total Harga Sewa "
+                        android:fontFamily="@font/quicksand_medium"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Audi Rahman"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:textColor="?colorPrimary"
+                        android:layout_alignParentRight="true"
+                        android:id="@+id/totalHarga"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_150sdp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="@dimen/_20sdp">
+                <LinearLayout
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_login"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jaminan Sewa"
+                    android:background="?android:windowBackground"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:paddingLeft="@dimen/_10sdp"
+                    android:paddingRight="@dimen/_10sdp"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/website"
+                    android:scaleType="fitCenter"
+                    android:id="@+id/imgJaminan"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_5sdp"/>
+
+            </RelativeLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</RelativeLayout>

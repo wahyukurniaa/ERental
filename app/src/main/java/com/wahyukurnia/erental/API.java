@@ -2,7 +2,7 @@ package com.wahyukurnia.erental;
 
 public class API {
 
-        private String HOST = "http://192.168.43.22/rental/";
+        private String HOST = "http://192.168.100.36/rental/";
 
     public String URL_LOGIN = HOST + "Login.php";
     public String URL_REGISTER = HOST + "register.php";
@@ -21,7 +21,7 @@ public class API {
     public String URL_SLIDER = HOST + "slider/";
 
 
-    public String URL_BOOKED = HOST + "select_sewa_barang.php?id_user=";
+        public String URL_BOOKED = HOST + "select_sewa_barang.php?id_user=";
 
 
 
