@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -30,6 +31,7 @@ import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 import com.wahyukurnia.erental.API;
 import com.wahyukurnia.erental.LoginActivity;
+import com.wahyukurnia.erental.Notif.NotificationActivity;
 import com.wahyukurnia.erental.R;
 import com.wahyukurnia.erental.TinyDB;
 import com.wahyukurnia.erental.slider.ModelSlider;
@@ -58,6 +60,7 @@ public class Fragment_Home extends Fragment {
     TinyDB tinyDB;
     String a;
     Button logout;
+    ImageView ib_notif;
 
     LinearLayout main;
     ShimmerFrameLayout shimmerFrameLayout;
@@ -74,6 +77,16 @@ public class Fragment_Home extends Fragment {
 
         kosongKend = view.findViewById(R.id.kosongKend);
         kosongPhoto = view.findViewById(R.id.kosong);
+
+        ib_notif = view.findViewById(R.id.ib_notif);
+        ib_notif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), NotificationActivity.class);
+                startActivity(i);
+
+            }
+        });
 
         rvFoto = view.findViewById(R.id.rv_foto);
         rvFoto.setHasFixedSize(true);

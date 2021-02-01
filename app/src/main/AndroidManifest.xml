@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ERental"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Profil.Detail_BookedActivity"></activity>
+        <activity android:name=".Notif.NotificationActivity"></activity>
+        <activity android:name=".Profil.Detail_BookedActivity" />
         <activity android:name=".Profil.BookedActivity" />
         <activity android:name=".Order.OrderActivity" />
         <activity android:name=".Checkout.CheckoutActivity" />
@@ -34,11 +35,11 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 </manifest>

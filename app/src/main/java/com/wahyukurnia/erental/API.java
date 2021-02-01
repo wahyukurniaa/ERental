@@ -4,6 +4,7 @@ public class API {
 
         private String HOST = "http://192.168.100.36/rental/";
 
+
     public String URL_LOGIN = HOST + "Login.php";
     public String URL_REGISTER = HOST + "register.php";
     public String URL_Kategori = HOST + "select_kategori.php";
@@ -21,8 +22,11 @@ public class API {
     public String URL_SLIDER = HOST + "slider/";
 
 
-        public String URL_BOOKED = HOST + "select_sewa_barang.php?id_user=";
 
+    public String URL_BOOKED = HOST + "select_sewa_barang.php?id_user=";
+    public String URL_NOTIF = HOST + "select_notif.php?id_user=";
+    public String URL_KONFIRMASI = HOST + "update_konfirmasi.php";
+    public String URL_TOLAK = HOST + "update_ditolak.php";
 
 
 
