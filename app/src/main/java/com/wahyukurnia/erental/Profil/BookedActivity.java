@@ -74,18 +74,6 @@ public class BookedActivity extends AppCompatActivity {
                         try{
                             Log.d("tampilmenu","response:"+response);
                             JSONArray res = response.getJSONArray("res");
-//                            for (int i=0; i< res.length(); i++) {
-//                                JSONObject data = res.getJSONObject(i);
-//                                dataBooked.add(new Model_Booked(
-//                                        data.getInt("id_sewa_barang"),
-//                                        data.getString("nama_barang"),
-//                                        data.getString("tanggal_awal"),
-//                                        data.getString("tanggal_akhir"),
-//                                        api.URL_GAMBAR_U+data.getString("gambar_barang")
-//
-//                                ));
-//                            }
-
                             Gson gson = new Gson();
                             dataBooked.clear();
                             for (int i=0; i<res.length(); i++){

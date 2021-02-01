@@ -54,10 +54,15 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.text.DateFormat;
 import java.text.NumberFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 
@@ -68,14 +73,17 @@ public class OrderActivity extends AppCompatActivity {
     ImageView img_order;
     Button btnConfirm;
     TextView namaBarang_Order, hargaBarang;
-    EditText edt_banyakSewa, edt_LamaSewa, edt_alamatPenyewa, edt_Jaminan, edt_jenis_transaksi, edt_jenis_pengiriman;
+    EditText edt_banyakSewa, edt_alamatPenyewa, edt_Jaminan, edt_jenis_transaksi, edt_jenis_pengiriman;
     String gambar, banyakSewa;
     String tarif;
 
     TextView tglAwal, tglAkhir;
     final Calendar c = Calendar.getInstance();
-    static final int DATE_DIALOG_ID= 999;
+    static final int DATE_DIALOG_ID = 999;
     String kondisiDate = "";
+
+    ImageView back;
+    TextView title;
 
     private int year;
     private int month;
@@ -88,6 +96,16 @@ public class OrderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
+
+        title = findViewById(R.id.tv_toolbar);
+        title.setText("Order");
+        back = findViewById(R.id.ib_back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         api = new API();
         Intent i = getIntent();
@@ -103,7 +121,7 @@ public class OrderActivity extends AppCompatActivity {
         tglAkhir = findViewById(R.id.tgl_akhir);
         tglAwal = findViewById(R.id.tgl_awal);
 
-        String now= LocalDate.now().toString();
+        String now = LocalDate.now().toString();
         tglAwal.setText(now);
         tglAkhir.setText(now);
 
@@ -111,14 +129,14 @@ public class OrderActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 showDialog(DATE_DIALOG_ID);
-                kondisiDate="awal";
+                kondisiDate = "awal";
             }
         });
         tglAkhir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showDialog(DATE_DIALOG_ID);
-                kondisiDate="akhir";
+                kondisiDate = "akhir";
             }
         });
 
@@ -131,7 +149,7 @@ public class OrderActivity extends AppCompatActivity {
         hargaBarang = findViewById(R.id.txt_tarif_order);
 
         edt_banyakSewa = findViewById(R.id.edt_banyakSewa);
-        edt_LamaSewa = findViewById(R.id.edt_LamaSewa);
+//        edt_LamaSewa = findViewById(R.id.edt_LamaSewa);
         edt_alamatPenyewa = findViewById(R.id.edt_alamatPenyewa);
 //        edt_Jaminan = findViewById(R.id.edt_Jaminan);
         edt_jenis_transaksi = findViewById(R.id.edt_jenis_transaksi);
@@ -141,13 +159,29 @@ public class OrderActivity extends AppCompatActivity {
         AndroidNetworking.initialize(this);
         getDataOrder();
 
+
+
         btnConfirm = findViewById(R.id.btnConfirm);
 
-        if (edt_banyakSewa.getText().toString().equals("") || edt_LamaSewa.getText().toString().equals("") || edt_alamatPenyewa.getText().toString().equals("")) {
-            Toast.makeText(getApplicationContext(), "Pastikan Semua Form Terisi", Toast.LENGTH_LONG).show();
-        } else {
-            aksiPasangSewa();
-        }
+        btnConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (edt_banyakSewa.getText().toString().equals("") || edt_alamatPenyewa.getText().toString().equals("")) {
+                    Toast.makeText(getApplicationContext(), "Pastikan Semua Form Terisi", Toast.LENGTH_LONG).show();
+                } else {
+                    List<Date> dates = getDates(tglAwal.getText().toString(), tglAkhir.getText().toString());
+                    for(Date date:dates) {
+                        Log.d("susk", "jln"+date);
+                    }
+                    Log.d("susk", "jml : "+dates.size());
+                    if (dates.size()<=0){
+                        Toast.makeText(getApplicationContext(),"Minimal Penyewaan 1 Hari", Toast.LENGTH_LONG).show();
+                    }else {
+                        aksiPasangSewa(dates.size());
+                    }
+                }
+            }
+        });
 
     }
 
@@ -190,41 +224,71 @@ public class OrderActivity extends AppCompatActivity {
                 });
     }
 
-    public void aksiPasangSewa() {
-        btnConfirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String banyakSewa = edt_banyakSewa.getText().toString(); //mengambil Value etNim menjadi string
-                String lamaSewa = edt_LamaSewa.getText().toString(); //mengambil Value etNim menjadi string
-                String alamatPenyewa = edt_alamatPenyewa.getText().toString(); //mengambil Value etNim menjadi string
+    public void aksiPasangSewa(int size) {
+
+        String banyakSewa = edt_banyakSewa.getText().toString(); //mengambil Value etNim menjadi string
+//                String lamaSewa = edt_LamaSewa.getText().toString(); //mengambil Value etNim menjadi string
+        String alamatPenyewa = edt_alamatPenyewa.getText().toString(); //mengambil Value etNim menjadi string
 //                String jaminan = edt_Jaminan.getText().toString(); //mengambil Value etNim menjadi string
-                String transaksi = "COD"; //mengambil Value etNim menjadi string
-                String pengiriman = "COD"; //mengambil Value etNim menjadi string
+        String transaksi = "COD"; //mengambil Value etNim menjadi string
+        String pengiriman = "COD"; //mengambil Value etNim menjadi string
 
-                int total = Integer.valueOf(banyakSewa) * Integer.valueOf(tarif);
-                //Handle Response
-                Intent i = new Intent(OrderActivity.this, CheckoutActivity.class);
-                i.putExtra("id_sewa_barang", "");
-                i.putExtra("id_user", id_user);
-                i.putExtra("id_barang", id);
-                i.putExtra("nama_barang", namaBarang_Order.getText().toString());
-                i.putExtra("tarif_barang", tarif);
-                i.putExtra("gambar_barang", api.URL_GAMBAR_U + gambar);
-                i.putExtra("banyak_sewa", banyakSewa);
-                i.putExtra("lama_sewa", lamaSewa);
-                i.putExtra("alamat_penyewa", alamatPenyewa);
+
+        int total = Integer.valueOf(banyakSewa) * Integer.valueOf(tarif) * size;
+
+        Log.d("susk tot", "total = "+total+" | "+size);
+        //Handle Response
+        Intent i = new Intent(OrderActivity.this, CheckoutActivity.class);
+        i.putExtra("id_sewa_barang", "");
+        i.putExtra("id_user", id_user);
+        i.putExtra("id_barang", id);
+        i.putExtra("nama_barang", namaBarang_Order.getText().toString());
+        i.putExtra("tarif_barang", tarif);
+        i.putExtra("gambar_barang", api.URL_GAMBAR_U + gambar);
+        i.putExtra("banyak_sewa", banyakSewa);
+//                i.putExtra("lama_sewa", size);
+        i.putExtra("alamat_penyewa", alamatPenyewa);
 //                i.putExtra("jaminan", jaminan);
-                i.putExtra("tgl_awal", tglAwal.getText().toString());
-                i.putExtra("tgl_akhir", tglAkhir.getText().toString());
-                i.putExtra("jenis_transaksi", transaksi);
-                i.putExtra("jenis_pengiriman", pengiriman);
-                i.putExtra("total", total);
+        i.putExtra("tgl_awal", tglAwal.getText().toString());
+        i.putExtra("tgl_akhir", tglAkhir.getText().toString());
+        i.putExtra("jenis_transaksi", transaksi);
+        i.putExtra("jenis_pengiriman", pengiriman);
+        i.putExtra("total", total);
 
-                startActivity(i);
-            }
-        });
-
+        startActivity(i);
     }
+
+    private static List<Date> getDates(String dateString1, String dateString2)
+    {
+        ArrayList<Date> dates = new ArrayList<Date>();
+        DateFormat df1 = new SimpleDateFormat("yyyy-MM-dd");
+
+        Date date1 = null;
+        Date date2 = null;
+
+        try {
+            date1 = df1 .parse(dateString1);
+            date2 = df1 .parse(dateString2);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        Calendar cal1 = Calendar.getInstance();
+        cal1.setTime(date1);
+
+
+        Calendar cal2 = Calendar.getInstance();
+        cal2.setTime(date2);
+
+        while(!cal1.after(cal2))
+        {
+            dates.add(cal1.getTime());
+            cal1.add(Calendar.DATE, 1);
+        }
+        return dates;
+    }
+
+
 
     @Override
     protected Dialog onCreateDialog(int id) {
@@ -248,19 +312,19 @@ public class OrderActivity extends AppCompatActivity {
                     day = selectedDay;
 
                     StringBuilder date;
-                    if (new StringBuilder().append(day).length()==1) {
-                        if (new StringBuilder().append(month).length()==1){
+                    if (new StringBuilder().append(day).length() == 1) {
+                        if (new StringBuilder().append(month).length() == 1) {
                             date = new StringBuilder().append(year).append("-0")
                                     .append(month + 1).append("-0").append(day).append("");
-                        }else {
+                        } else {
                             date = new StringBuilder().append(year).append("-")
                                     .append(month + 1).append("-0").append(day).append("");
                         }
-                    }else {
-                        if (new StringBuilder().append(month).length()==1){
+                    } else {
+                        if (new StringBuilder().append(month).length() == 1) {
                             date = new StringBuilder().append(year).append("-0")
                                     .append(month + 1).append("-").append(day).append("");
-                        }else {
+                        } else {
                             date = new StringBuilder().append(year).append("-")
                                     .append(month + 1).append("-").append(day).append("");
                         }
@@ -269,7 +333,7 @@ public class OrderActivity extends AppCompatActivity {
 
                     if (kondisiDate.equals("akhir")) {
                         tglAkhir.setText(date);
-                    }else {
+                    } else {
                         tglAwal.setText(date);
                     }
 
