@@ -6,12 +6,15 @@ import android.graphics.ColorSpace;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+import com.wahyukurnia.erental.API;
 import com.wahyukurnia.erental.Detail.DetailBarangActivity;
 import com.wahyukurnia.erental.Kategori.Adapter_IsiKategori;
 import com.wahyukurnia.erental.Kategori.Model_IsiKategori;
@@ -27,9 +30,6 @@ public class Adapter_Booked extends RecyclerView.Adapter<Adapter_Booked.ViewHold
         this.dataBooked = dataBooked;
     }
 
-    public Adapter_Booked(Context context) {
-        this.context = context;
-    }
 
     @NonNull
     @Override
@@ -42,25 +42,18 @@ public class Adapter_Booked extends RecyclerView.Adapter<Adapter_Booked.ViewHold
     @Override
     public void onBindViewHolder(@NonNull Adapter_Booked.ViewHolder holder, int position) {
         Model_Booked data = dataBooked.get(position);
-        int  id_sewa_barang =  data.getId_sewa_barang();
-        holder.txt_namaBarang.setText(data.getNamaBarang());
-        holder.txt_tanggalPinjam.setText(data.getTanggal_pinjam());
-        holder.txt_tanggalKembali.setText(data.getTanggal_kembali());
-//        holder.txt_detail.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-////                Intent i = new Intent(context, Detail_BookedActivity.class);
-//////                i.putExtra("id_sewa_barang",""+id_sewa_barang);
-////                context.startActivity(i);
-//                Toast.makeText(context, "haha", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-        holder.txt_tanggalKembali.setOnClickListener(new View.OnClickListener() {
+        API api = new API();
+        holder.txt_namaBarang.setText(data.getNama_barang());
+        holder.txt_tanggalPinjam.setText(data.getTanggal_awal());
+        holder.txt_tanggalKembali.setText(data.getTanggal_akhir());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "haha", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, Detail_BookedActivity.class);
+                context.startActivity(intent);
             }
         });
+        Picasso.get().load(api.URL_GAMBAR_U+data.getGambar_barang()).into(holder.img);
 
     }
 
@@ -70,14 +63,16 @@ public class Adapter_Booked extends RecyclerView.Adapter<Adapter_Booked.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView txt_namaBarang, txt_tanggalPinjam, txt_tanggalKembali,txt_detail;
+        TextView txt_namaBarang, txt_tanggalPinjam, txt_tanggalKembali;
+        ImageView img;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            context = itemView.getContext();
             txt_namaBarang = itemView.findViewById(R.id.namaBarang);
             txt_tanggalPinjam = itemView.findViewById(R.id.txt_tgl_pinjam);
             txt_tanggalKembali = itemView.findViewById(R.id.txt_tanggal_kembali);
-            txt_detail = itemView.findViewById(R.id.txt_detail);
+            img = itemView.findViewById(R.id.img_barang);
         }
     }
 }
