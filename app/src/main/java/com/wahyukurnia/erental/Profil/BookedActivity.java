@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -42,6 +43,8 @@ public class BookedActivity extends AppCompatActivity {
     List<Model_Booked> dataBooked;
     Adapter_Booked adapter;
 
+    TextView title;
+    ImageView back;
     private RecyclerView recycler_booked;
 
     @Override
@@ -50,6 +53,16 @@ public class BookedActivity extends AppCompatActivity {
         setContentView(R.layout.activity_booked);
         api = new API();
         AndroidNetworking.initialize(this);
+
+        title = findViewById(R.id.tv_toolbar);
+        title.setText("Booked");
+        back = findViewById(R.id.ib_back);
+        back.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         tinyDB = new TinyDB(this);
         id_user = tinyDB.getString("keyIdUser");

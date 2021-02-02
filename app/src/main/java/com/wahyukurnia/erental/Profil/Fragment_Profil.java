@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.wahyukurnia.erental.API;
 import com.wahyukurnia.erental.LoginActivity;
 import com.wahyukurnia.erental.MainActivity;
 import com.wahyukurnia.erental.R;
@@ -35,6 +36,13 @@ public class Fragment_Profil extends Fragment {
         txt_username_profil = view.findViewById(R.id.username_profl);
         txt_username_profil.setText(tinyDB.getString("keyNamaUser"));
 
+        if (!tinyDB.getBoolean("keyLogin")){
+            Intent intent = new Intent(getContext(),LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }
+
 
 
         logout = view.findViewById(R.id.btn_logout);
@@ -42,7 +50,7 @@ public class Fragment_Profil extends Fragment {
             @Override
             public void onClick(View view) {
                 tinyDB.clear();
-                Intent i = new Intent(getContext(), LoginActivity.class);
+                Intent i = new Intent(getContext(), MainActivity.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(i);

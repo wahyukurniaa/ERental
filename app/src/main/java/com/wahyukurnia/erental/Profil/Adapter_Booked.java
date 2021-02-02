@@ -3,6 +3,7 @@ package com.wahyukurnia.erental.Profil;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.ColorSpace;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,6 +64,8 @@ public class Adapter_Booked extends RecyclerView.Adapter<Adapter_Booked.ViewHold
                 intent.putExtra("gambarBarang", data.getGambar_barang());
                 intent.putExtra("gambarJaminan", data.getJaminan());
                 intent.putExtra("totaSewa", data.getTotal_harga());
+                Log.d("tglawal", data.getTanggal_awal());
+                Log.d("tglAkhir", data.getTanggal_akhir());
                 context.startActivity(intent);
             }
         });

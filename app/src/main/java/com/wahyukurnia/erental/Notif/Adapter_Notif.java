@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,6 +53,11 @@ public class Adapter_Notif extends RecyclerView.Adapter<Adapter_Notif.ViewHolder
         API api = new API();
         String id_sewa_barang =  data.getId_sewa_barang();
 
+        holder.namaPenyewa.setText(data.getNama_user());
+        holder.tglNotif.setText(data.getTanggal_awal());
+        holder.tglAwal.setText(data.getTanggal_awal());
+        holder.tglAkhir.setText(data.getTanggal_akhir());
+        Picasso.get().load(api.URL_GAMBAR_U+data.getGambar_barang()).into(holder.imgBarang);
         holder.txtNama_Barang.setText(data.getNama_barang());
         holder.btn_terima.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,14 +138,20 @@ public class Adapter_Notif extends RecyclerView.Adapter<Adapter_Notif.ViewHolder
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView txtNama_Barang;
+        TextView txtNama_Barang, tglNotif, tglAwal, tglAkhir, namaPenyewa;
+        ImageView imgBarang;
         Button btn_terima, btn_tolak;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             context = itemView.getContext();
+            tglAkhir = itemView.findViewById(R.id.tgl_akhir);
+            tglAwal = itemView.findViewById(R.id.tgl_awal);
+            tglNotif = itemView.findViewById(R.id.tglNotif);
+            namaPenyewa = itemView.findViewById(R.id.namaPenyewa);
             txtNama_Barang = itemView.findViewById(R.id.judulNotif);
             btn_terima = itemView.findViewById(R.id.btnTerima);
             btn_tolak = itemView.findViewById(R.id.btnTolak);
+            imgBarang = itemView.findViewById(R.id.img_barang);
 
         }
     }
