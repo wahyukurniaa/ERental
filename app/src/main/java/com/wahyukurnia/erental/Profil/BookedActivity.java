@@ -5,6 +5,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,6 +24,7 @@ import com.wahyukurnia.erental.Kategori.Adapter_IsiKategori;
 import com.wahyukurnia.erental.Kategori.Model_IsiKategori;
 import com.wahyukurnia.erental.Kategori.Model_Kategori;
 import com.wahyukurnia.erental.R;
+import com.wahyukurnia.erental.Rating.RatingActivity;
 import com.wahyukurnia.erental.TinyDB;
 
 import org.json.JSONArray;
@@ -30,6 +33,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import dmax.dialog.SpotsDialog;
 
 import static androidx.recyclerview.widget.RecyclerView.*;
 
@@ -43,11 +48,13 @@ public class BookedActivity extends AppCompatActivity {
     Adapter_Booked adapter;
 
     private RecyclerView recycler_booked;
+    AlertDialog alertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booked);
+
         api = new API();
         AndroidNetworking.initialize(this);
 
@@ -98,4 +105,6 @@ public class BookedActivity extends AppCompatActivity {
                     }
                 });
     }
+
+
 }
