@@ -81,7 +81,10 @@ public class Detail_BookedActivity extends AppCompatActivity {
         Picasso.get().load(api.URL_GAMBAR_U+intent.getStringExtra("gambarJaminan")).into(binding.imgJaminan);
         binding.totalHarga.setText(formatRupiah.format((double)Integer.valueOf(intent.getStringExtra("totaSewa"))));
 
-        getRating();
+        Log.d("tatus", "isi"+ intent.getStringExtra("status"));
+        if (intent.getStringExtra("status").equalsIgnoreCase("Selesai")) {
+            getRating();
+        }
 
 
     }
@@ -97,7 +100,7 @@ public class Detail_BookedActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         try {
                             alertDialog.hide();
-                            Log.d("tampilmenu", "response:" + response);
+                            Log.d("rat", "response:" + response);
                             if (response.getString("status").equalsIgnoreCase("sukses")) {
                                 JSONArray res = response.getJSONArray("res");
                                 for (int i = 0; i < res.length(); i++) {
@@ -115,7 +118,7 @@ public class Detail_BookedActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(ANError anError) {
-                        Log.e("tampil menu","response:"+anError);
+                        Log.e("tampil rat","response:"+anError);
                         alertDialog.hide();
                     }
                 });
