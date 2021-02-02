@@ -53,6 +53,8 @@ public class Adapter_Booked extends RecyclerView.Adapter<Adapter_Booked.ViewHold
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, Detail_BookedActivity.class);
+                intent.putExtra("id_barang", data.getId_barang());
+                intent.putExtra("id_user", data.getId_user());
                 intent.putExtra("namaBarang", data.getNama_barang());
                 intent.putExtra("hargaBarang", data.getTarif_barang());
                 intent.putExtra("banyakSewa", data.getBanyak_sewa());
@@ -70,6 +72,7 @@ public class Adapter_Booked extends RecyclerView.Adapter<Adapter_Booked.ViewHold
             }
         });
         Picasso.get().load(api.URL_GAMBAR_U+data.getGambar_barang()).into(holder.img);
+
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.wahyukurnia.erental.Profil;
 
 public class Model_Booked {
+
         private String id_sewa_barang;
         private String id_user;
         private String id_barang;
