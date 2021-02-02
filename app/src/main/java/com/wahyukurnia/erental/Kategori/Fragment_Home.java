@@ -77,16 +77,16 @@ public class Fragment_Home extends Fragment {
 
         kosongKend = view.findViewById(R.id.kosongKend);
         kosongPhoto = view.findViewById(R.id.kosong);
-
-        ib_notif = view.findViewById(R.id.ib_notif);
-        ib_notif.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getContext(), NotificationActivity.class);
-                startActivity(i);
-
-            }
-        });
+//
+//        ib_notif = view.findViewById(R.id.ib_notif);
+//        ib_notif.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent i = new Intent(getContext(), NotificationActivity.class);
+//                startActivity(i);
+//
+//            }
+//        });
 
         rvFoto = view.findViewById(R.id.rv_foto);
         rvFoto.setHasFixedSize(true);
@@ -136,8 +136,6 @@ public class Fragment_Home extends Fragment {
         sliderView.setScrollTimeInSec(4); //set scroll delay in seconds :
         sliderView.startAutoCycle();
 
-        title = view.findViewById(R.id.tv_toolbar);
-        title.setText(R.string.app_name);
 
         dataKategori = new ArrayList<>();
         AndroidNetworking.initialize(getContext());

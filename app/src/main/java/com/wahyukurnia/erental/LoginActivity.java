@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     Button btnlogin;
     EditText edtpass, edtusername;
     TextView txt_register;
+    ImageView back;
 
     TinyDB tinyDB;
 
@@ -37,12 +39,18 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        AndroidNetworking.initialize(this);
-        alertDialog =new SpotsDialog.Builder().setContext(this).setMessage("Sedang Mencoba Masuk ....").setCancelable(false).build();
-
+        back = findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
         api = new API();
         tinyDB = new TinyDB(this);
+        AndroidNetworking.initialize(this);
+        alertDialog =new SpotsDialog.Builder().setContext(this).setMessage("Sedang Mencoba Masuk ....").setCancelable(false).build();
 
 
         edtpass = findViewById(R.id.edtpass);
@@ -64,16 +72,20 @@ public class LoginActivity extends AppCompatActivity {
                 getLogin();
             }
         });
-        if (tinyDB.getBoolean("keyLogin")){
-            Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
 
-        }
+
+
+//        if (tinyDB.getBoolean("keyLogin")){
+//            Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//            startActivity(intent);
+//
+//        }
 
     }
     private void getLogin() {
+        alertDialog.show();
         AndroidNetworking.post(api.URL_LOGIN)
                 .addBodyParameter("username", edtusername.getText().toString())
                 .addBodyParameter("password", edtpass.getText().toString())
@@ -83,10 +95,12 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
+                            alertDialog.hide();
                             int stat = response.getInt("status");
                             String message = response.getString("message");
                             Log.d("sukses", "code"+response);
                             if (stat == 1){
+
 
                                 JSONObject data = response.getJSONObject("data");
                                 String id_user = data.getString("id_user");
@@ -121,6 +135,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(ANError anError) {
+                        alertDialog.hide();
                         Log.d("eror", "code :"+anError);
                         Toast.makeText(LoginActivity.this, ""+anError, Toast.LENGTH_SHORT).show();
                     }

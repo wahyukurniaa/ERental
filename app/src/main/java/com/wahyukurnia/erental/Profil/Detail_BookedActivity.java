@@ -67,12 +67,14 @@ public class Detail_BookedActivity extends AppCompatActivity {
             }
         });
 
+
         binding.namaBarang.setText(intent.getStringExtra("namaBarang"));
         binding.hargaBarang.setText(formatRupiah.format((double)Integer.valueOf(intent.getStringExtra("hargaBarang")))+" /Hari");
         binding.banyakBarang.setText(intent.getStringExtra("banyakSewa")+" item");
         binding.namaPenyewa.setText(intent.getStringExtra("namaPenyewa"));
         binding.tglAwal.setText(intent.getStringExtra("tglAwal"));
         binding.tglAkhir.setText(intent.getStringExtra("tglAkhir"));
+        binding.ketBanyak.setText(intent.getStringExtra("banyakSewa")+" item");
         binding.alamat.setText(intent.getStringExtra("alamat"));
         binding.statusSewa.setText(intent.getStringExtra("status")); ///isi kk
         Picasso.get().load(api.URL_GAMBAR_U+intent.getStringExtra("gambarBarang")).into(binding.imgBarang);

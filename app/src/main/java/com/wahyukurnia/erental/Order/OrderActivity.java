@@ -72,7 +72,7 @@ public class OrderActivity extends AppCompatActivity {
     TinyDB tinyDB;
     ImageView img_order;
     Button btnConfirm;
-    TextView namaBarang_Order, hargaBarang;
+    TextView namaBarang_Order, hargaBarang, txtStok;
     EditText edt_banyakSewa, edt_alamatPenyewa, edt_Jaminan, edt_jenis_transaksi, edt_jenis_pengiriman;
     String gambar, banyakSewa;
     String tarif;
@@ -81,6 +81,7 @@ public class OrderActivity extends AppCompatActivity {
     final Calendar c = Calendar.getInstance();
     static final int DATE_DIALOG_ID = 999;
     String kondisiDate = "";
+    String stok = "";
 
     ImageView back;
     TextView title;
@@ -110,8 +111,11 @@ public class OrderActivity extends AppCompatActivity {
         api = new API();
         Intent i = getIntent();
         id = i.getStringExtra("id_barang");
+        stok = i.getStringExtra("stok");
         Log.e("order", "" + id);
 
+        txtStok = findViewById(R.id.stok);
+        txtStok.setText(stok);
 
         year = c.get(Calendar.YEAR);
         month = c.get(Calendar.MONTH);
@@ -149,17 +153,13 @@ public class OrderActivity extends AppCompatActivity {
         hargaBarang = findViewById(R.id.txt_tarif_order);
 
         edt_banyakSewa = findViewById(R.id.edt_banyakSewa);
-//        edt_LamaSewa = findViewById(R.id.edt_LamaSewa);
         edt_alamatPenyewa = findViewById(R.id.edt_alamatPenyewa);
-//        edt_Jaminan = findViewById(R.id.edt_Jaminan);
         edt_jenis_transaksi = findViewById(R.id.edt_jenis_transaksi);
         edt_jenis_pengiriman = findViewById(R.id.edt_pengiriman);
 
 
         AndroidNetworking.initialize(this);
         getDataOrder();
-
-
 
         btnConfirm = findViewById(R.id.btnConfirm);
 
@@ -177,12 +177,46 @@ public class OrderActivity extends AppCompatActivity {
                     if (dates.size()<=0){
                         Toast.makeText(getApplicationContext(),"Minimal Penyewaan 1 Hari", Toast.LENGTH_LONG).show();
                     }else {
-                        aksiPasangSewa(dates.size());
+                        if (Integer.valueOf(stok)>=Integer.valueOf(edt_banyakSewa.getText().toString())) {
+                            aksiPasangSewa(dates.size());
+                        }else {
+                            Toast.makeText(getApplicationContext(),"Stok Tidak mencukupi", Toast.LENGTH_LONG).show();
+                        }
                     }
                 }
             }
         });
 
+    }
+
+    private void aksiPasangSewa(int size) {
+
+        String banyakSewa = edt_banyakSewa.getText().toString(); //mengambil Value etNim menjadi string
+        String alamatPenyewa = edt_alamatPenyewa.getText().toString(); //mengambil Value etNim menjadi string
+        String transaksi = "COD"; //mengambil Value etNim menjadi string
+        String pengiriman = "COD"; //mengambil Value etNim menjadi string
+
+
+        int total = Integer.valueOf(banyakSewa) * Integer.valueOf(tarif) * size;
+
+        Log.d("susk tot", "total = "+total+" | "+size+" | awal : "+tglAwal.getText().toString()+" | "+tglAkhir.getText().toString());
+        //Handle Response
+        Intent i = new Intent(OrderActivity.this, CheckoutActivity.class);
+        i.putExtra("id_sewa_barang", "");
+        i.putExtra("id_user", id_user);
+        i.putExtra("id_barang", id);
+        i.putExtra("nama_barang", namaBarang_Order.getText().toString());
+        i.putExtra("tarif_barang", tarif);
+        i.putExtra("gambar_barang", api.URL_GAMBAR_U + gambar);
+        i.putExtra("banyak_sewa", banyakSewa);
+        i.putExtra("alamat_penyewa", alamatPenyewa);
+        i.putExtra("tgl_awal", tglAwal.getText().toString());
+        i.putExtra("tgl_akhir", tglAkhir.getText().toString());
+        i.putExtra("jenis_transaksi", transaksi);
+        i.putExtra("jenis_pengiriman", pengiriman);
+        i.putExtra("total", total);
+
+        startActivity(i);
     }
 
     public void getDataOrder() {
@@ -224,39 +258,6 @@ public class OrderActivity extends AppCompatActivity {
                 });
     }
 
-    public void aksiPasangSewa(int size) {
-
-        String banyakSewa = edt_banyakSewa.getText().toString(); //mengambil Value etNim menjadi string
-//                String lamaSewa = edt_LamaSewa.getText().toString(); //mengambil Value etNim menjadi string
-        String alamatPenyewa = edt_alamatPenyewa.getText().toString(); //mengambil Value etNim menjadi string
-//                String jaminan = edt_Jaminan.getText().toString(); //mengambil Value etNim menjadi string
-        String transaksi = "COD"; //mengambil Value etNim menjadi string
-        String pengiriman = "COD"; //mengambil Value etNim menjadi string
-
-
-        int total = Integer.valueOf(banyakSewa) * Integer.valueOf(tarif) * size;
-
-        Log.d("susk tot", "total = "+total+" | "+size);
-        //Handle Response
-        Intent i = new Intent(OrderActivity.this, CheckoutActivity.class);
-        i.putExtra("id_sewa_barang", "");
-        i.putExtra("id_user", id_user);
-        i.putExtra("id_barang", id);
-        i.putExtra("nama_barang", namaBarang_Order.getText().toString());
-        i.putExtra("tarif_barang", tarif);
-        i.putExtra("gambar_barang", api.URL_GAMBAR_U + gambar);
-        i.putExtra("banyak_sewa", banyakSewa);
-//                i.putExtra("lama_sewa", size);
-        i.putExtra("alamat_penyewa", alamatPenyewa);
-//                i.putExtra("jaminan", jaminan);
-        i.putExtra("tgl_awal", tglAwal.getText().toString());
-        i.putExtra("tgl_akhir", tglAkhir.getText().toString());
-        i.putExtra("jenis_transaksi", transaksi);
-        i.putExtra("jenis_pengiriman", pengiriman);
-        i.putExtra("total", total);
-
-        startActivity(i);
-    }
 
     private static List<Date> getDates(String dateString1, String dateString2)
     {

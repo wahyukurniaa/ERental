@@ -45,7 +45,8 @@ public class CheckoutActivity extends AppCompatActivity {
     String id_barang,id_user,namaUser,alamatUser;
     String nama_barang,tarif_barang,banyakSewa,gambar_barang;
     String id_sewa_barang,lama_sewa,alamat_penyewa,jaminan,jenis_transaksi,jenis_pengiriman;
-    String tglAwal, tglAkhir;
+    String tglAwal;
+        String tglAkhir;
     int total;
     TinyDB tinyDB;;
     ImageView img_checkout;
@@ -58,6 +59,8 @@ public class CheckoutActivity extends AppCompatActivity {
     private String KEY_NAME = "name";
 
     String tag_json_obj = "json_obj_req";
+    TextView title;
+    ImageView back;
     Bitmap bitmap, decoded;
 
     int success;
@@ -74,6 +77,17 @@ public class CheckoutActivity extends AppCompatActivity {
         Locale localeId = new Locale("in", "ID");
         final NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeId);
         api = new API();
+
+        back = findViewById(R.id.ib_back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        title = findViewById(R.id.tv_toolbar);
+        title.setText("Checkout");
 
         tinyDB = new TinyDB(this);
         id_user = tinyDB.getString("keyIdUser");
@@ -96,12 +110,14 @@ public class CheckoutActivity extends AppCompatActivity {
         tglAwal = i.getStringExtra("tgl_awal");
         tglAkhir = i.getStringExtra("tgl_akhir");
 
+
         setImg = findViewById(R.id.setFoto);
         pickImg = findViewById(R.id.addPhoto);
         pickImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showFileChooser();
+                Log.d("total =","tgl Awl ="+tglAwal+" | tgl akhir ="+tglAkhir);
             }
         });
 

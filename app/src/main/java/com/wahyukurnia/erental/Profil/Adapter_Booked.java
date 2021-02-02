@@ -3,6 +3,7 @@ package com.wahyukurnia.erental.Profil;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.ColorSpace;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import com.wahyukurnia.erental.Detail.DetailBarangActivity;
 import com.wahyukurnia.erental.Kategori.Adapter_IsiKategori;
 import com.wahyukurnia.erental.Kategori.Model_IsiKategori;
 import com.wahyukurnia.erental.R;
+import com.wahyukurnia.erental.TinyDB;
 
 import java.util.List;
 
@@ -29,7 +31,6 @@ public class Adapter_Booked extends RecyclerView.Adapter<Adapter_Booked.ViewHold
     public Adapter_Booked(List<Model_Booked> dataBooked) {
         this.dataBooked = dataBooked;
     }
-
 
     @NonNull
     @Override
@@ -43,6 +44,7 @@ public class Adapter_Booked extends RecyclerView.Adapter<Adapter_Booked.ViewHold
     public void onBindViewHolder(@NonNull Adapter_Booked.ViewHolder holder, int position) {
         Model_Booked data = dataBooked.get(position);
         API api = new API();
+        TinyDB tinyDB = new TinyDB(context);
         holder.txt_namaBarang.setText(data.getNama_barang());
         holder.txt_tanggalPinjam.setText(data.getTanggal_awal());
         holder.txt_tanggalKembali.setText(data.getTanggal_akhir());
@@ -64,11 +66,12 @@ public class Adapter_Booked extends RecyclerView.Adapter<Adapter_Booked.ViewHold
                 intent.putExtra("gambarBarang", data.getGambar_barang());
                 intent.putExtra("gambarJaminan", data.getJaminan());
                 intent.putExtra("totaSewa", data.getTotal_harga());
+                Log.d("tglawal", data.getTanggal_awal());
+                Log.d("tglAkhir", data.getTanggal_akhir());
                 context.startActivity(intent);
             }
         });
         Picasso.get().load(api.URL_GAMBAR_U+data.getGambar_barang()).into(holder.img);
-
 
     }
 
@@ -76,6 +79,7 @@ public class Adapter_Booked extends RecyclerView.Adapter<Adapter_Booked.ViewHold
     public int getItemCount() {
         return dataBooked.size();
     }
+
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView txt_namaBarang, txt_tanggalPinjam, txt_tanggalKembali,txt_status;

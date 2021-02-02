@@ -12,15 +12,20 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.wahyukurnia.erental.Kategori.Adapter_Kategori;
 import com.wahyukurnia.erental.Kategori.Fragment_Home;
+import com.wahyukurnia.erental.Notif.NotificationActivity;
 import com.wahyukurnia.erental.Profil.Fragment_Profil;
 
 public class MainActivity extends AppCompatActivity{
     TinyDB tinyDB;
     EditText btn_cari;
+    TextView title;
+    ImageView notif, msg;
     Adapter_Kategori adapter;
 
     @Override
@@ -29,9 +34,18 @@ public class MainActivity extends AppCompatActivity{
         setContentView(R.layout.activity_main);
 //        btn_cari = findViewById(R.id.btncari);
 
+        title = findViewById(R.id.tv_toolbar);
+        title.setText("E Rental");
 
-        getFragmentPage(new Fragment_Home());
-
+        notif = findViewById(R.id.ib_notif);
+        notif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, NotificationActivity.class);
+                startActivity(intent);
+            }
+        });
+                getFragmentPage(new Fragment_Home());
         /*Inisialisasi BottomNavigationView beserta listenernya untuk
          *menangkap setiap kejadian saat salah satu menu item diklik
          */

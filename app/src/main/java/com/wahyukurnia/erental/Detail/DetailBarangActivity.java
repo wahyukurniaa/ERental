@@ -23,8 +23,10 @@ import com.wahyukurnia.erental.API;
 import com.wahyukurnia.erental.Checkout.CheckoutActivity;
 import com.wahyukurnia.erental.Kategori.Adapter_IsiKategori;
 import com.wahyukurnia.erental.Kategori.Model_IsiKategori;
+import com.wahyukurnia.erental.LoginActivity;
 import com.wahyukurnia.erental.Order.OrderActivity;
 import com.wahyukurnia.erental.R;
+import com.wahyukurnia.erental.TinyDB;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -42,12 +44,15 @@ public class    DetailBarangActivity extends AppCompatActivity {
     ImageView img_detail,img_store, back;
     TextView title;
     API api;
-
+    TinyDB tinyDB;
+    String stok;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_barang);
         api = new API();
+        tinyDB = new TinyDB(this);
+
 
         AndroidNetworking.initialize(this);
 
@@ -77,18 +82,29 @@ public class    DetailBarangActivity extends AppCompatActivity {
         txt_tarif = findViewById(R.id.txt_tarif);
         img_detail = findViewById(R.id.img_detail);
         btn_order = findViewById(R.id.btn_order);
+
+        AndroidNetworking.initialize(this);
+        getDataIsiKategori();
+
         btn_order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(DetailBarangActivity.this, OrderActivity.class);
-                i.putExtra("id_barang",""+id);
-                 startActivity(i);
+                if (!tinyDB.getBoolean("keyLogin")){
+                    Intent intent = new Intent(DetailBarangActivity.this, LoginActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                }else {
+                    Intent i = new Intent(DetailBarangActivity.this, OrderActivity.class);
+                    i.putExtra("id_barang", "" + id);
+                    i.putExtra("stok", stok);
+                    startActivity(i);
+                }
             }
         });
 
 
-        AndroidNetworking.initialize(this);
-        getDataIsiKategori();
+
 
     }
 
@@ -102,7 +118,7 @@ public class    DetailBarangActivity extends AppCompatActivity {
         String nama = i.getStringExtra("nama_barang");
         String tarif = formatRupiah.format((double) Integer.valueOf(i.getStringExtra("tarif_barang")));
         String deskripsi = i.getStringExtra("deskripsi");
-        String stok = i.getStringExtra("stok");
+        stok = i.getStringExtra("stok");
         String nama_Store = i.getStringExtra("nama_store");
         String telp_store = i.getStringExtra("telp_store");
         String WA_store = i.getStringExtra("wa_store");

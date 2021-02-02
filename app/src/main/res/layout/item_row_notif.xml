@@ -1,36 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Baju Kurung"
-        android:id="@+id/judulNotif"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/_5sdp"
-        android:layout_marginRight="@dimen/_5sdp"
+        android:layout_margin="@dimen/_15sdp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/img_barang"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/website" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/judulNotif"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/quicksand_bold"
+                android:text="Baju Kurung"
+                android:textColor="?colorPrimary"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:textSize="@dimen/_14sdp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/quicksand_medium"
+                    android:text="Akan di Sewa Oleh " />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nama"
+                    android:fontFamily="@font/quicksand_medium"
+                    android:id="@+id/namaPenyewa"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/quicksand_medium"
+                    android:text=" Pada" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/quicksand_medium"
+                    android:text="Tanggal " />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2021-02-01"
+                    android:id="@+id/tgl_awal"
+                    android:fontFamily="@font/quicksand_medium" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/quicksand_medium"
+                    android:text=" Sampai " />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2021-02-01"
+                    android:id="@+id/tgl_akhir"
+                    android:fontFamily="@font/quicksand_medium" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_baseline_access_time_24"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="2021-01-20"
+                android:drawablePadding="@dimen/_5sdp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:id="@+id/tglNotif"
+                android:fontFamily="@font/quicksand_medium"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:layout_marginRight="@dimen/_15sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
         android:weightSum="2">
 
         <Button
+            android:id="@+id/btnTolak"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Terima"
             android:layout_weight="1"
-            android:id="@+id/btnTerima"/>
+            android:layout_marginRight="@dimen/_10sdp"
+            android:text="Tolak" />
+
         <Button
+            android:id="@+id/btnTerima"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Tolak"
             android:layout_weight="1"
-            android:id="@+id/btnTolak"/>
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:text="Terima" />
 
     </LinearLayout>
 
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="?colorSecondaryVariant" />
 </LinearLayout>

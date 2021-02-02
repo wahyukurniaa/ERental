@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
@@ -34,6 +36,8 @@ public class NotificationActivity extends AppCompatActivity {
     List<Model_Notif> dataNotif;
     private RecyclerView recycler_notif;
     Adapter_Notif adapter;
+    TextView title;
+    ImageView back;
     TinyDB tinyDB;
     String id_user;
     Button btn_terima;
@@ -54,7 +58,16 @@ public class NotificationActivity extends AppCompatActivity {
 
         btn_terima = findViewById(R.id.btnTerima);
 
+        back = findViewById(R.id.ib_back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
+        title = findViewById(R.id.tv_toolbar);
+        title.setText("Notifikasi");
 
 
         dataNotif = new ArrayList<>();
