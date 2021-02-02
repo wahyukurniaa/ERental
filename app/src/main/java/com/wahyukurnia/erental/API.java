@@ -21,8 +21,6 @@ public class API {
     public String URL_SEWA_BARANG =  HOST + "input_sewa_barang.php";
     public String URL_SLIDER = HOST + "slider/";
 
-
-
     public String URL_BOOKED = HOST + "select_sewa_barang.php?id_user=";
     public String URL_NOTIF = HOST + "select_notif.php?id_user=";
     public String URL_KONFIRMASI = HOST + "update_konfirmasi.php";

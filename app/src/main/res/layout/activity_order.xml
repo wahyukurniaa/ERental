@@ -33,7 +33,7 @@
                 android:src="@drawable/website" />
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="@dimen/_10sdp"
@@ -54,6 +54,26 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/quicksand_medium"
                     android:text="Rp. 25000" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Stok : "
+                        android:fontFamily="@font/quicksand_medium"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="5"
+                        android:fontFamily="@font/quicksand_medium"
+                        android:id="@+id/stok"/>
+
+                </LinearLayout>
 
             </LinearLayout>
         </LinearLayout>
