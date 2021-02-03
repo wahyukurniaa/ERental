@@ -16,9 +16,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.wahyukurnia.erental.Barang.Fragment_Barang;
 import com.wahyukurnia.erental.Kategori.Adapter_Kategori;
 import com.wahyukurnia.erental.Kategori.Fragment_Home;
 import com.wahyukurnia.erental.Notif.NotificationActivity;
+import com.wahyukurnia.erental.Pesanan.Fragment_Pesanan;
 import com.wahyukurnia.erental.Profil.Fragment_Profil;
 
 public class MainActivity extends AppCompatActivity{
@@ -64,6 +66,14 @@ public class MainActivity extends AppCompatActivity{
 
                     case R.id.profil:
                         fragment = new Fragment_Profil();
+                        break;
+
+                    case R.id.pesanan:
+                        fragment = new Fragment_Pesanan();
+                        break;
+
+                    case R.id.barang:
+                        fragment = new Fragment_Barang();
                         break;
 
                     /*case R.id.notidications:

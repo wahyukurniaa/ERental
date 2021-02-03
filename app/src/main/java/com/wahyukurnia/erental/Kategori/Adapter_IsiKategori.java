@@ -47,7 +47,7 @@ public class Adapter_IsiKategori extends RecyclerView.Adapter<Adapter_IsiKategor
         final NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeId);
         String id_barang = data.getId_barang();
         holder.txt_namaKategori.setText(data.getNama_barang());
-        holder.txt_tarif_kategori.setText(formatRupiah.format((double) Integer.valueOf(data.getTarif_barang())));
+        holder.txt_tarif_kategori.setText(formatRupiah.format((double)Integer.valueOf(data.getTarif_barang())));
         Picasso.get().load(api.URL_GAMBAR_U + data.getGambar_barang()).into(holder.img_kategori);
         holder.cardview.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +55,7 @@ public class Adapter_IsiKategori extends RecyclerView.Adapter<Adapter_IsiKategor
                 if (Integer.valueOf(data.getStok()) > 0) {
                     Intent i = new Intent(context, DetailBarangActivity.class);
                     i.putExtra("id_barang", "" + id_barang);
+                    i.putExtra("id_store",data.getId_store());
                     i.putExtra("nama_barang", data.getNama_barang());
                     i.putExtra("tarif_barang", data.getTarif_barang());
                     i.putExtra("deskripsi", data.getDeskripsi());

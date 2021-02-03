@@ -1,18 +1,16 @@
-package com.wahyukurnia.erental.Profil;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+package com.wahyukurnia.erental.Pesanan;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.androidnetworking.AndroidNetworking;
@@ -21,11 +19,7 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.google.gson.Gson;
 import com.wahyukurnia.erental.API;
-import com.wahyukurnia.erental.Kategori.Adapter_IsiKategori;
-import com.wahyukurnia.erental.Kategori.Model_IsiKategori;
-import com.wahyukurnia.erental.Kategori.Model_Kategori;
 import com.wahyukurnia.erental.R;
-import com.wahyukurnia.erental.Rating.RatingActivity;
 import com.wahyukurnia.erental.TinyDB;
 
 import org.json.JSONArray;
@@ -35,12 +29,10 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import dmax.dialog.SpotsDialog;
 
-import static androidx.recyclerview.widget.RecyclerView.*;
+public class Fragment_Pesanan extends Fragment {
 
-public class BookedActivity extends AppCompatActivity {
-    TextView txt_namaBarang, txt_tanggal_pinjam, txt_tanggal_kembali,detail;
+    TextView txt_namaBarang, txt_tanggal_pinjam, txt_tanggal_kembali, detail;
     API api;
     TinyDB tinyDB;
     String id_user;
@@ -54,35 +46,38 @@ public class BookedActivity extends AppCompatActivity {
     AlertDialog alertDialog;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_booked);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment__pesanan, container, false);
 
         api = new API();
-        AndroidNetworking.initialize(this);
+        AndroidNetworking.initialize(getContext());
 
-        title = findViewById(R.id.tv_toolbar);
-        title.setText("Booked");
-        back = findViewById(R.id.ib_back);
-        back.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
 
-        tinyDB = new TinyDB(this);
+//        back = view.findViewById(R.id.ib_back);
+//        back.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                finish();
+//            }
+//        });
+
+        tinyDB = new TinyDB(getContext());
         id_user = tinyDB.getString("keyIdUser");
 
-       recycler_booked = findViewById(R.id.recycler_booked);
+        recycler_booked = view.findViewById(R.id.recycler_booked);
         recycler_booked.setHasFixedSize(true);
 
 
         dataBooked = new ArrayList<>();
 
         getBooked();
+        return view;
 
     }
+
+
+
     public void getBooked(){
         Log.e("salah",api.URL_BOOKED+id_user);
         AndroidNetworking.get(api.URL_BOOKED+id_user)
@@ -118,6 +113,4 @@ public class BookedActivity extends AppCompatActivity {
                     }
                 });
     }
-
-
 }
