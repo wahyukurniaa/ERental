@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -61,7 +62,7 @@ public class Fragment_Home extends Fragment {
     String a;
     Button logout;
     ImageView ib_notif;
-
+    RelativeLayout search;
     LinearLayout main;
     ShimmerFrameLayout shimmerFrameLayout;
     SwipeRefreshLayout swipeRefreshLayout;
@@ -87,6 +88,14 @@ public class Fragment_Home extends Fragment {
 //
 //            }
 //        });
+        search= view.findViewById(R.id.searchBtn);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), SearchActivity.class);
+                startActivity(intent);
+            }
+        });
 
         rvFoto = view.findViewById(R.id.rv_foto);
         rvFoto.setHasFixedSize(true);
