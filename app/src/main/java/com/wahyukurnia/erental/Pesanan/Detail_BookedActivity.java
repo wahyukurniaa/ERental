@@ -1,4 +1,4 @@
-package com.wahyukurnia.erental.Profil;
+package com.wahyukurnia.erental.Pesanan;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,14 +14,8 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
-import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 import com.wahyukurnia.erental.API;
-import com.wahyukurnia.erental.Checkout.CheckoutActivity;
-import com.wahyukurnia.erental.Kategori.Adapter_IsiKategori;
-import com.wahyukurnia.erental.Kategori.Model_IsiKategori;
-import com.wahyukurnia.erental.LoginActivity;
-import com.wahyukurnia.erental.MainActivity;
 import com.wahyukurnia.erental.R;
 import com.wahyukurnia.erental.Rating.RatingActivity;
 import com.wahyukurnia.erental.TinyDB;
@@ -81,7 +75,7 @@ public class Detail_BookedActivity extends AppCompatActivity {
         Picasso.get().load(api.URL_GAMBAR_U+intent.getStringExtra("gambarJaminan")).into(binding.imgJaminan);
         binding.totalHarga.setText(formatRupiah.format((double)Integer.valueOf(intent.getStringExtra("totaSewa"))));
 
-        Log.d("tatus", "isi"+ intent.getStringExtra("status"));
+        Log.d("status", "isi"+ intent.getStringExtra("status"));
         if (intent.getStringExtra("status").equalsIgnoreCase("Selesai")) {
             getRating();
         }
@@ -127,7 +121,7 @@ public class Detail_BookedActivity extends AppCompatActivity {
 
 
 
-         private void showDialog(){
+    private void showDialog(){
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
         // set title dialog

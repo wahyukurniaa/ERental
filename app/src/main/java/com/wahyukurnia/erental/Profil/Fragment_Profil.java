@@ -82,14 +82,7 @@ public class Fragment_Profil extends Fragment {
                 startActivity(i);
             }
         });
-        btn_booked = view.findViewById(R.id.btn_booked);
-        btn_booked.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getContext(),BookedActivity.class);
-                startActivity(i);
-            }
-        });
+
         return view;
 
     }

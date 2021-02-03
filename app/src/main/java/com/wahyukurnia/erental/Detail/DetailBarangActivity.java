@@ -25,6 +25,7 @@ import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 import com.wahyukurnia.erental.API;
 import com.wahyukurnia.erental.Checkout.CheckoutActivity;
+import com.wahyukurnia.erental.DetailStore.DetailStoreActivity;
 import com.wahyukurnia.erental.Kategori.Adapter_IsiKategori;
 import com.wahyukurnia.erental.Kategori.Model_IsiKategori;
 import com.wahyukurnia.erental.LoginActivity;
@@ -44,7 +45,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class    DetailBarangActivity extends AppCompatActivity {
-    String id;
+    String id,id_store;
     TextView judul, txt_stok, txt_deskripsi, txt_nama_penyedia, txt_alamat_penyedia, txt_tarif,txt_store,txt_telp,txt_WA;
     Button btn_order;
     ImageView img_detail,img_store, back;
@@ -76,6 +77,7 @@ public class    DetailBarangActivity extends AppCompatActivity {
 
         Intent i = getIntent();
         id = i.getStringExtra("id_barang");
+        id_store = i.getStringExtra("id_store");
         Log.e("barang",""+id);
 
         rvRating = findViewById(R.id.rvUlasan);
@@ -168,6 +170,7 @@ public class    DetailBarangActivity extends AppCompatActivity {
         Intent i = getIntent();
         id = i.getStringExtra("id_barang");
 
+
         Locale localeId = new Locale("in", "ID");
         final NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeId);
 
@@ -212,6 +215,14 @@ public class    DetailBarangActivity extends AppCompatActivity {
                 if (intent.resolveActivity(getPackageManager()) != null) {
                     startActivity(intent);
                 }
+            }
+        });
+        txt_store.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(DetailBarangActivity.this, DetailStoreActivity.class);
+                i.putExtra("id_store",id_store);
+                startActivity(i);
             }
         });
         title.setText("Detail Barang");

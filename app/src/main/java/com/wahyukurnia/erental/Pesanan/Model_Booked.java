@@ -1,4 +1,4 @@
-package com.wahyukurnia.erental.Profil;
+package com.wahyukurnia.erental.Pesanan;
 
 public class Model_Booked {
 

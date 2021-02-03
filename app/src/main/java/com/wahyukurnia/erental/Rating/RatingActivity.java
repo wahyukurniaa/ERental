@@ -19,9 +19,6 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.wahyukurnia.erental.API;
 import com.wahyukurnia.erental.MainActivity;
-import com.wahyukurnia.erental.Profil.Detail_BookedActivity;
-import com.wahyukurnia.erental.Profil.FormStoreActivity;
-import com.wahyukurnia.erental.Profil.PasangSewaActivity;
 import com.wahyukurnia.erental.R;
 import com.wahyukurnia.erental.TinyDB;
 

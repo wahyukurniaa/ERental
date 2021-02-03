@@ -20,9 +20,6 @@ import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.squareup.picasso.Picasso;
 import com.wahyukurnia.erental.API;
 import com.wahyukurnia.erental.MainActivity;
-import com.wahyukurnia.erental.Profil.Adapter_Booked;
-import com.wahyukurnia.erental.Profil.Detail_BookedActivity;
-import com.wahyukurnia.erental.Profil.Model_Booked;
 import com.wahyukurnia.erental.R;
 
 import org.json.JSONException;

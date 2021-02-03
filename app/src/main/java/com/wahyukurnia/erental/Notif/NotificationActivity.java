@@ -3,7 +3,6 @@ package com.wahyukurnia.erental.Notif;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,9 +17,6 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.google.gson.Gson;
 import com.wahyukurnia.erental.API;
-import com.wahyukurnia.erental.MainActivity;
-import com.wahyukurnia.erental.Profil.Adapter_Booked;
-import com.wahyukurnia.erental.Profil.Model_Booked;
 import com.wahyukurnia.erental.R;
 import com.wahyukurnia.erental.TinyDB;
 
