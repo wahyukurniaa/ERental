@@ -2,6 +2,7 @@ package com.wahyukurnia.erental.Detail;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -12,12 +13,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RatingBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 import com.wahyukurnia.erental.API;
 import com.wahyukurnia.erental.Checkout.CheckoutActivity;
@@ -27,6 +31,8 @@ import com.wahyukurnia.erental.Kategori.Model_IsiKategori;
 import com.wahyukurnia.erental.LoginActivity;
 import com.wahyukurnia.erental.Order.OrderActivity;
 import com.wahyukurnia.erental.R;
+import com.wahyukurnia.erental.Rating.AdapterRating;
+import com.wahyukurnia.erental.Rating.ModelRating;
 import com.wahyukurnia.erental.TinyDB;
 
 import org.json.JSONArray;
@@ -44,17 +50,20 @@ public class    DetailBarangActivity extends AppCompatActivity {
     Button btn_order;
     ImageView img_detail,img_store, back;
     TextView title;
+    TextView rateCount, rateKosong;
+    RatingBar ratingBar;
     API api;
+    RelativeLayout ulasan;
     TinyDB tinyDB;
     String stok;
+    List<ModelRating>ratings;
+    RecyclerView rvRating;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_barang);
         api = new API();
         tinyDB = new TinyDB(this);
-
-
         AndroidNetworking.initialize(this);
 
         back = findViewById(R.id.ib_back);
@@ -71,6 +80,10 @@ public class    DetailBarangActivity extends AppCompatActivity {
         id_store = i.getStringExtra("id_store");
         Log.e("barang",""+id);
 
+        rvRating = findViewById(R.id.rvUlasan);
+        rvRating.setLayoutManager(new LinearLayoutManager(this));
+        rvRating.setHasFixedSize(true);
+        ratings = new ArrayList<>();
 
         img_store = findViewById(R.id.imgStore);
         judul = findViewById(R.id.txt_judul);
@@ -85,7 +98,6 @@ public class    DetailBarangActivity extends AppCompatActivity {
         img_detail = findViewById(R.id.img_detail);
         btn_order = findViewById(R.id.btn_order);
 
-        AndroidNetworking.initialize(this);
         getDataIsiKategori();
 
         btn_order.setOnClickListener(new View.OnClickListener() {
@@ -105,9 +117,53 @@ public class    DetailBarangActivity extends AppCompatActivity {
             }
         });
 
+        rateKosong = findViewById(R.id.rateKosong);
+        rateCount = findViewById(R.id.ratingCount);
+        ratingBar = findViewById(R.id.ratingBar);
+        ulasan = findViewById(R.id.ulasanLayout);
+        getUlasan();
 
+    }
 
+    private void getUlasan() {
+        AndroidNetworking.get(api.URL_SELECT_RATING_BRG+id)
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            Log.d("rate", "sukses"+response.getString("status")+response);
+                            if (response.getString("status").equalsIgnoreCase("sukses")) {
+                                rateCount.setText(response.getString("rate"));
+                                ratingBar.setRating((float) response.getDouble("rate"));
+                                ulasan.setVisibility(View.VISIBLE);
+                                rateKosong.setVisibility(View.GONE);
+                                JSONArray d = response.getJSONArray("res");
+                                Gson gson = new Gson();
+                                ratings.clear();
+                                for (int i=0; i<d.length(); i++){
+                                    JSONObject data = d.getJSONObject(i);
 
+                                    ModelRating ratingg = gson.fromJson(data + "", ModelRating.class);
+                                    ratings.add(ratingg);
+                                }
+                                AdapterRating adapterRating = new AdapterRating(ratings);
+                                rvRating.setAdapter(adapterRating);
+                                adapterRating.notifyDataSetChanged();
+                            }else {
+                                ulasan.setVisibility(View.GONE);
+                                rateKosong.setVisibility(View.VISIBLE);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    @Override
+                    public void onError(ANError anError) {
+                        Log.d("rate","eror | " +api.URL_SELECT_RATING_BRG+id+" | "+anError);
+                    }
+                });
     }
 
     public void getDataIsiKategori() {
