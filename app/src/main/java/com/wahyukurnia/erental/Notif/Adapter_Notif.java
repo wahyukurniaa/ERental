@@ -2,6 +2,7 @@ package com.wahyukurnia.erental.Notif;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -90,6 +91,17 @@ public class Adapter_Notif extends RecyclerView.Adapter<Adapter_Notif.ViewHolder
                             if (response.getString("status").equalsIgnoreCase("sukses")){
                                 Intent i = new Intent(context,MainActivity.class);
                                 Toast.makeText(context, "Sewa Diterima!", Toast.LENGTH_SHORT).show();
+                                String phoneNumberWithCountryCode = data.getTelp_user();
+                                String message = "Hallo Saya Menyetujui Permintaan Penyewaan "+data.getNama_barang()+" Pada Tanggal "+data.getTanggal_awal();
+
+                                context.startActivity(
+                                        new Intent(Intent.ACTION_VIEW,
+                                                Uri.parse(
+                                                        String.format("https://api.whatsapp.com/send?phone=%s&text=%s", phoneNumberWithCountryCode, message)
+                                                )
+                                        )
+                                );
+
                                 context.startActivity(i);
                             }
                         } catch (JSONException e) {
@@ -116,6 +128,7 @@ public class Adapter_Notif extends RecyclerView.Adapter<Adapter_Notif.ViewHolder
                             if (response.getString("status").equalsIgnoreCase("sukses")){
                                 Intent i = new Intent(context,MainActivity.class);
                                 Toast.makeText(context, "Sewa Ditolak!", Toast.LENGTH_SHORT).show();
+
                                 context.startActivity(i);
                             }
                         } catch (JSONException e) {

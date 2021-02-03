@@ -109,10 +109,8 @@ ImageView placePhoto;
         next = findViewById(R.id.btn_nextStore);
 
         if (tinyDB.getBoolean("keyStore")) {
-            Intent intent = new Intent(FormStoreActivity.this, PasangSewaActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
+            Intent intent = new Intent(FormStoreActivity.this, PasangSewaActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            finish();
             startActivity(intent);
         }
         aksiTambahStore();

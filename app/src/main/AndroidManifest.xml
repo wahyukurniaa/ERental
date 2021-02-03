@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.wahyukurnia.erental">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ERental"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Rating.RatingActivity"></activity>
+        <activity android:name=".Kategori.SearchActivity"></activity>
+        <activity android:name=".Rating.RatingActivity" />
         <activity android:name=".Notif.NotificationActivity" />
         <activity android:name=".Profil.Detail_BookedActivity" />
         <activity android:name=".Profil.BookedActivity" />
@@ -36,11 +43,5 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
 </manifest>

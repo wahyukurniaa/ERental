@@ -41,15 +41,23 @@
                                 android:layout_height="@dimen/_20sdp"
                                 android:background="?colorPrimaryVariant" />
 
-                            <EditText
+                            <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_40sdp"
                                 android:layout_marginLeft="@dimen/_20sdp"
                                 android:layout_marginTop="@dimen/_5sdp"
                                 android:layout_marginRight="@dimen/_20sdp"
                                 android:background="@drawable/edbg"
-                                android:drawableLeft="@drawable/ic_baseline_search_24"
-                                android:paddingLeft="@dimen/_5sdp" />
+                                android:id="@+id/searchBtn"
+                                android:paddingLeft="@dimen/_5sdp" >
+                                <ImageView
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:src="@drawable/ic_baseline_search_24"
+                                    android:layout_centerVertical="true"/>
+
+
+                            </RelativeLayout>
                         </RelativeLayout>
 
                         <!--                        slider -->

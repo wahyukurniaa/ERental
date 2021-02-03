@@ -27,6 +27,8 @@ public class API {
     public String URL_TOLAK = HOST + "update_ditolak.php";
     public String URL_RATING = HOST + "input_ulasan.php";
     public String URL_SELECT_RATING = HOST + "select_ulasan.php";
+    public String URL_SELECT_RATING_BRG = HOST + "select_ulasan_brg.php?id_barang=";
+    public String URL_SEARCH  = HOST + "select_search.php?key=";
 
 
 
