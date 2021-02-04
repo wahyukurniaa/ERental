@@ -6,21 +6,18 @@ import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.wahyukurnia.erental.Barang.Fragment_Barang;
 import com.wahyukurnia.erental.Kategori.Adapter_Kategori;
 import com.wahyukurnia.erental.Kategori.Fragment_Home;
 import com.wahyukurnia.erental.Notif.NotificationActivity;
 import com.wahyukurnia.erental.Pesanan.Fragment_Pesanan;
+import com.wahyukurnia.erental.PesananMasuk.Fragment_PesananMasuk;
 import com.wahyukurnia.erental.Profil.Fragment_Profil;
 
 public class MainActivity extends AppCompatActivity{
@@ -72,9 +69,11 @@ public class MainActivity extends AppCompatActivity{
                         fragment = new Fragment_Pesanan();
                         break;
 
-                    case R.id.barang:
-                        fragment = new Fragment_Barang();
+                    case R.id.pesanan_masuk:
+                        fragment = new Fragment_PesananMasuk();
                         break;
+
+
 
                     /*case R.id.notidications:
                         fragment = new Notification();

@@ -49,15 +49,15 @@
                 android:src="@drawable/ic_baseline_message_24" />
 
             <ImageButton
-                android:layout_toLeftOf="@+id/ib_message"
-                android:layout_centerVertical="true"
                 android:id="@+id/ib_notif"
-                android:tint="@color/white"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/ib_message"
                 android:background="?attr/actionBarItemBackground"
                 android:scaleType="fitCenter"
-                android:src="@drawable/ic_baseline_notifications_24" />
+                android:src="@drawable/ic_baseline_notifications_24"
+                android:tint="@color/white" />
 
         </RelativeLayout>
      </androidx.appcompat.widget.Toolbar>

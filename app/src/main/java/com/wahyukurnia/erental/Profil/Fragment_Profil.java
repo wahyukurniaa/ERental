@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.wahyukurnia.erental.API;
+import com.wahyukurnia.erental.Barang.BarangActivity;
 import com.wahyukurnia.erental.LoginActivity;
 import com.wahyukurnia.erental.MainActivity;
 import com.wahyukurnia.erental.R;
@@ -22,7 +23,7 @@ import com.wahyukurnia.erental.TinyDB;
 
 public class Fragment_Profil extends Fragment {
     TinyDB tinyDB;
-    LinearLayout logout,btn_profil, btn_edit_profil, btn_store,btn_booked;
+    LinearLayout logout,btn_profil, btn_edit_profil, btn_store,btn_barang_saya;
     TextView txt_username_profil;
     TextView title;
 
@@ -80,6 +81,15 @@ public class Fragment_Profil extends Fragment {
             public void onClick(View view) {
                 Intent i = new Intent(getContext(), EditProfilActivity.class);
                 startActivity(i);
+            }
+        });
+        btn_barang_saya = view.findViewById(R.id.btn_barangSaya);
+        btn_barang_saya.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), BarangActivity.class);
+                startActivity(i);
+
             }
         });
 
