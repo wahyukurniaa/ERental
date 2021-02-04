@@ -1,8 +1,7 @@
-package com.wahyukurnia.erental.Notif;
+package com.wahyukurnia.erental.PesananMasuk;
 
 
-public class Model_Notif  {
-
+public class Model_PesananMasuk  {
 
 
         private String id_sewa_barang;
@@ -24,6 +23,7 @@ public class Model_Notif  {
         private String deskripsi;
         private String stok;
         private String gambar_barang;
+        private String status;
         private String nama_user;
         private String alamat_user;
         private String email_user;
@@ -31,7 +31,7 @@ public class Model_Notif  {
         private String username;
         private String password;
 
-    public Model_Notif(String id_sewa_barang, String id_user, String id_barang, String id_status, String banyak_sewa, String tanggal_awal, String tanggal_akhir, String alamat_penyewa, String jaminan, String jenis_transaksi, String jenis_pengiriman, String total_harga, String id_kategori, String id_store, String nama_barang, String tarif_barang, String deskripsi, String stok, String gambar_barang, String nama_user, String alamat_user, String email_user, String telp_user, String username, String password) {
+    public Model_PesananMasuk(String id_sewa_barang, String id_user, String id_barang, String id_status, String banyak_sewa, String tanggal_awal, String tanggal_akhir, String alamat_penyewa, String jaminan, String jenis_transaksi, String jenis_pengiriman, String total_harga, String id_kategori, String id_store, String nama_barang, String tarif_barang, String deskripsi, String stok, String gambar_barang, String status, String nama_user, String alamat_user, String email_user, String telp_user, String username, String password) {
         this.id_sewa_barang = id_sewa_barang;
         this.id_user = id_user;
         this.id_barang = id_barang;
@@ -51,6 +51,7 @@ public class Model_Notif  {
         this.deskripsi = deskripsi;
         this.stok = stok;
         this.gambar_barang = gambar_barang;
+        this.status = status;
         this.nama_user = nama_user;
         this.alamat_user = alamat_user;
         this.email_user = email_user;
@@ -211,6 +212,14 @@ public class Model_Notif  {
         this.gambar_barang = gambar_barang;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public String getNama_user() {
         return nama_user;
     }
@@ -259,4 +268,3 @@ public class Model_Notif  {
         this.password = password;
     }
 }
-

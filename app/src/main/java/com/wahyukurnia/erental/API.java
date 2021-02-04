@@ -33,6 +33,9 @@ public class API {
 
     public String URL_DETAIL_STORE = HOST + "select_detail_store.php?id_store=";
     public String URL_BARANG_DISEWAKAN = HOST + "select_barang.php?id_user=";
+    public String URL_ORDER = HOST + "select_order.php?id_user=";
+    public String URL_STATUS_PENJUALAN = HOST + "select_status.php";
+    public String URL_UPDATE_STATUS = HOST + "update_status.php";
 
 
 
