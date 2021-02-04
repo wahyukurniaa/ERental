@@ -2,7 +2,7 @@ package com.wahyukurnia.erental;
 
 public class API {
 
-        private String HOST = "http://192.168.100.15/rental/";
+        private String HOST = "http://192.168.100.36/rental/";
 
 
     public String URL_LOGIN = HOST + "Login.php";

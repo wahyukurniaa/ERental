@@ -1,46 +1,46 @@
- <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?colorPrimaryVariant"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-     android:background="?colorPrimaryVariant"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
-     <androidx.appcompat.widget.Toolbar
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:orientation="horizontal">
         <RelativeLayout
-            android:layout_marginLeft="@dimen/_20sdp"
-            android:layout_marginRight="@dimen/_20sdp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_20sdp">
 
             <ImageView
                 android:id="@+id/ib_back"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:visibility="visible"
                 android:layout_centerVertical="true"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_back"
+                android:visibility="visible"
                 app:tint="@color/white" />
 
             <TextView
                 android:id="@+id/tv_toolbar"
                 android:layout_width="wrap_content"
-                android:fontFamily="@font/quicksand_bold"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textSize="@dimen/_18sdp"
                 android:layout_centerHorizontal="true"
+                android:fontFamily="@font/quicksand_bold"
                 android:textColor="@color/white"
+                android:textSize="@dimen/_18sdp"
+                android:textStyle="bold"
                 tools:text="Toolbar" />
 
 
         </RelativeLayout>
-     </androidx.appcompat.widget.Toolbar>
- </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+</LinearLayout>
 
 

@@ -14,7 +14,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?colorSecondaryVariant"
         android:orientation="horizontal">
 
         <ImageView
@@ -56,6 +55,12 @@
 
         </LinearLayout>
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?colorSecondaryVariant"/>
+
 
     <LinearLayout
         android:layout_width="match_parent"
