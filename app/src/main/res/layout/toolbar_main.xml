@@ -45,6 +45,7 @@
                 android:layout_height="24dp"
                 android:background="?attr/actionBarItemBackground"
                 android:scaleType="fitCenter"
+                android:visibility="gone"
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:src="@drawable/ic_baseline_message_24" />
 
@@ -53,7 +54,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_centerVertical="true"
-                android:layout_toLeftOf="@+id/ib_message"
+                android:layout_alignParentRight="true"
                 android:background="?attr/actionBarItemBackground"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_baseline_notifications_24"
