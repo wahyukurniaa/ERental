@@ -17,6 +17,11 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.wahyukurnia.erental.API;
+import com.wahyukurnia.erental.MainActivity;
+import com.wahyukurnia.erental.R;
+import com.wahyukurnia.erental.RegisterActivity;
+import com.wahyukurnia.erental.TinyDB;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -59,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
         txt_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(LoginActivity.this,RegisterActivity.class);
+                Intent i = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(i);
             }
         });

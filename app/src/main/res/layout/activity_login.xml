@@ -71,7 +71,7 @@
             android:layout_gravity="left"
             android:layout_marginBottom="@dimen/_10sdp"
             android:background="@drawable/edmain"
-            android:textColor="?colorSecondary"
+            android:textColor="@color/white"
             android:fontFamily="@font/quicksand_bold"
             android:text="Login" />
 
