@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +38,7 @@ public class NotificationActivity extends AppCompatActivity {
     TinyDB tinyDB;
     String id_user;
     Button btn_terima;
+    RelativeLayout kosong;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +53,8 @@ public class NotificationActivity extends AppCompatActivity {
 
         recycler_notif = findViewById(R.id.recycler_notif);
         recycler_notif.setHasFixedSize(true);
+
+        kosong = findViewById(R.id.kosong);
 
         btn_terima = findViewById(R.id.btnTerima);
 
@@ -80,6 +84,8 @@ public class NotificationActivity extends AppCompatActivity {
                         try{
                             Log.d("tampilmenu","response:"+response);
                             if (response.getString("status").equalsIgnoreCase("sukses")) {
+                                kosong.setVisibility(View.GONE);
+                                recycler_notif.setVisibility(View.VISIBLE);
                                 JSONArray res = response.getJSONArray("res");
                                 Gson gson = new Gson();
                                 dataNotif.clear();
@@ -92,6 +98,8 @@ public class NotificationActivity extends AppCompatActivity {
                                 recycler_notif.setAdapter(adapter);
                                 adapter.notifyDataSetChanged();
                             }else {
+                                kosong.setVisibility(View.VISIBLE);
+                                recycler_notif.setVisibility(View.GONE);
                                 Toast.makeText(NotificationActivity.this, "Data Kosong", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
@@ -101,8 +109,14 @@ public class NotificationActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(ANError anError) {
+                        kosong.setVisibility(View.VISIBLE);
+                        recycler_notif.setVisibility(View.GONE);
                         Log.e("tampil menu","response:"+anError);
                     }
                 });
+        if (dataNotif.isEmpty()){
+            kosong.setVisibility(View.VISIBLE);
+
+        }
     }
 }

@@ -43,21 +43,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/quicksand_medium"
-                    android:text="Akan di Sewa Oleh " />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Nama"
+                    android:text="Akan di Sewa Oleh Nama Pada"
                     android:fontFamily="@font/quicksand_medium"
                     android:id="@+id/namaPenyewa"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/quicksand_medium"
-                    android:text=" Pada" />
             </LinearLayout>
 
             <LinearLayout
@@ -68,26 +57,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/quicksand_medium"
-                    android:text="Tanggal " />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:text="2021-02-01"
                     android:id="@+id/tgl_awal"
                     android:fontFamily="@font/quicksand_medium" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/quicksand_medium"
-                    android:text=" Sampai " />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="2021-02-01"
-                    android:id="@+id/tgl_akhir"
-                    android:fontFamily="@font/quicksand_medium" />
             </LinearLayout>
 
             <TextView

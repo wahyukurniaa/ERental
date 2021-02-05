@@ -51,10 +51,9 @@ public class Adapter_Notif extends RecyclerView.Adapter<Adapter_Notif.ViewHolder
         API api = new API();
         String id_sewa_barang =  data.getId_sewa_barang();
 
-        holder.namaPenyewa.setText(data.getNama_user());
+        holder.namaPenyewa.setText("Akan di Sewa Oleh "+data.getNama_user()+" pada");
         holder.tglNotif.setText(data.getTanggal_awal());
-        holder.tglAwal.setText(data.getTanggal_awal());
-        holder.tglAkhir.setText(data.getTanggal_akhir());
+        holder.tglAwal.setText("Tanggal "+data.getTanggal_awal()+" sampai "+data.getTanggal_akhir());
         Picasso.get().load(api.URL_GAMBAR_U+data.getGambar_barang()).into(holder.imgBarang);
         holder.txtNama_Barang.setText(data.getNama_barang());
         holder.btn_terima.setOnClickListener(new View.OnClickListener() {
@@ -86,7 +85,7 @@ public class Adapter_Notif extends RecyclerView.Adapter<Adapter_Notif.ViewHolder
                     public void onResponse(JSONObject response) {
                         try {
                             if (response.getString("status").equalsIgnoreCase("sukses")){
-                                Intent i = new Intent(context,MainActivity.class);
+//                                Intent i = new Intent(context,MainActivity.class);
                                 Toast.makeText(context, "Sewa Diterima!", Toast.LENGTH_SHORT).show();
                                 String phoneNumberWithCountryCode = data.getTelp_user();
                                 String message = "Hallo Saya Menyetujui Permintaan Penyewaan "+data.getNama_barang()+" Pada Tanggal "+data.getTanggal_awal();
@@ -96,10 +95,10 @@ public class Adapter_Notif extends RecyclerView.Adapter<Adapter_Notif.ViewHolder
                                                 Uri.parse(
                                                         String.format("https://api.whatsapp.com/send?phone=%s&text=%s", phoneNumberWithCountryCode, message)
                                                 )
-                                        )
+                                        ).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                                 );
+                                ((NotificationActivity)context).finish();
 
-                                context.startActivity(i);
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -154,7 +153,6 @@ public class Adapter_Notif extends RecyclerView.Adapter<Adapter_Notif.ViewHolder
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             context = itemView.getContext();
-            tglAkhir = itemView.findViewById(R.id.tgl_akhir);
             tglAwal = itemView.findViewById(R.id.tgl_awal);
             tglNotif = itemView.findViewById(R.id.tglNotif);
             namaPenyewa = itemView.findViewById(R.id.namaPenyewa);

@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.androidnetworking.AndroidNetworking;
@@ -45,7 +46,7 @@ public class Fragment_PesananMasuk extends Fragment {
     ImageView back;
     private RecyclerView recycler_pesananMasuk;
     AlertDialog alertDialog;
-
+    RelativeLayout kosong;
 
 
     @Override
@@ -56,6 +57,10 @@ public class Fragment_PesananMasuk extends Fragment {
 
         api = new API();
         AndroidNetworking.initialize(getContext());
+
+        kosong = view.findViewById(R.id.kosong);
+        kosong.setVisibility(View.GONE);
+
 
         tinyDB = new TinyDB(getContext());
         id_user = tinyDB.getString("keyIdUser");
@@ -79,20 +84,23 @@ public class Fragment_PesananMasuk extends Fragment {
                     @Override
                     public void onResponse(JSONObject response) {
                         try{
-                            Log.d("tampilmenu","response:"+response);
-                            JSONArray res = response.getJSONArray("res");
-                            Gson gson = new Gson();
-                            dataPesananMasuk.clear();
-                            for (int i=0; i<res.length(); i++){
-                                JSONObject data = res.getJSONObject(i);
+                            if (response.getString("status").equalsIgnoreCase("sukses")) {
+                                kosong.setVisibility(View.GONE);
+                                recycler_pesananMasuk.setVisibility(View.VISIBLE);
+                                Log.d("tampilmenu", "response:" + response);
+                                JSONArray res = response.getJSONArray("res");
+                                Gson gson = new Gson();
+                                dataPesananMasuk.clear();
+                                for (int i = 0; i < res.length(); i++) {
+                                    JSONObject data = res.getJSONObject(i);
 
-                                Model_PesananMasuk booked = gson.fromJson(data + "", Model_PesananMasuk.class);
-                                dataPesananMasuk.add(booked);
+                                    Model_PesananMasuk booked = gson.fromJson(data + "", Model_PesananMasuk.class);
+                                    dataPesananMasuk.add(booked);
+                                }
+                                Adapter_PesananMasuk adapter = new Adapter_PesananMasuk(dataPesananMasuk);
+                                recycler_pesananMasuk.setAdapter(adapter);
+                                adapter.notifyDataSetChanged();
                             }
-                            Adapter_PesananMasuk adapter = new Adapter_PesananMasuk(dataPesananMasuk);
-                            recycler_pesananMasuk.setAdapter(adapter);
-                            adapter.notifyDataSetChanged();
-
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -104,5 +112,9 @@ public class Fragment_PesananMasuk extends Fragment {
                         Log.e("tampil menu","response:"+anError);
                     }
                 });
+        if (dataPesananMasuk.isEmpty()){
+            kosong.setVisibility(View.VISIBLE);
+            recycler_pesananMasuk.setVisibility(View.GONE);
+        }
     }
 }

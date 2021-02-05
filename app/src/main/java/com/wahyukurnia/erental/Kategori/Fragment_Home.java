@@ -261,7 +261,7 @@ public class Fragment_Home extends Fragment {
     }
 
     private void getKedn() {
-        AndroidNetworking.get(api.URL_Isi_Kategori+7)
+        AndroidNetworking.get(api.URL_Isi_Kategori+6)
                 .setPriority(Priority.LOW)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {

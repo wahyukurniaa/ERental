@@ -18,6 +18,10 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:spanCount="5" />
 
+    <include
+        layout="@layout/layout_kosong"
+        android:visibility="gone"/>
+
 
 
 </LinearLayout>

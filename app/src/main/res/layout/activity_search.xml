@@ -34,17 +34,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/_10sdp"
-                android:layout_marginRight="@dimen/_20sdp"
                 android:layout_toRightOf="@id/ib_back"
                 android:background="@drawable/edbg" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_baseline_search_24"
-                app:tint="@color/white" />
 
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
