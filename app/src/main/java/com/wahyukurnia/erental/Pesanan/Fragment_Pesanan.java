@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.androidnetworking.AndroidNetworking;
@@ -44,6 +45,7 @@ public class Fragment_Pesanan extends Fragment {
     ImageView back;
     private RecyclerView recycler_booked;
     AlertDialog alertDialog;
+    RelativeLayout kosong;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -61,6 +63,9 @@ public class Fragment_Pesanan extends Fragment {
 //                finish();
 //            }
 //        });
+
+        kosong = view.findViewById(R.id.kosong);
+        kosong.setVisibility(View.GONE);
 
         tinyDB = new TinyDB(getContext());
         id_user = tinyDB.getString("keyIdUser");
@@ -87,20 +92,23 @@ public class Fragment_Pesanan extends Fragment {
                     @Override
                     public void onResponse(JSONObject response) {
                         try{
-                            Log.d("tampilmenu","response:"+response);
-                            JSONArray res = response.getJSONArray("res");
-                            Gson gson = new Gson();
-                            dataBooked.clear();
-                            for (int i=0; i<res.length(); i++){
-                                JSONObject data = res.getJSONObject(i);
+                            if (response.getString("status").equalsIgnoreCase("sukses")) {
+                                kosong.setVisibility(View.GONE);
+                                recycler_booked.setVisibility(View.VISIBLE);
+                                Log.d("tampilmenu", "response:" + response);
+                                JSONArray res = response.getJSONArray("res");
+                                Gson gson = new Gson();
+                                dataBooked.clear();
+                                for (int i = 0; i < res.length(); i++) {
+                                    JSONObject data = res.getJSONObject(i);
 
-                                Model_Booked booked = gson.fromJson(data + "", Model_Booked.class);
-                                dataBooked.add(booked);
+                                    Model_Booked booked = gson.fromJson(data + "", Model_Booked.class);
+                                    dataBooked.add(booked);
+                                }
+                                Adapter_Booked adapter = new Adapter_Booked(dataBooked);
+                                recycler_booked.setAdapter(adapter);
+                                adapter.notifyDataSetChanged();
                             }
-                            Adapter_Booked adapter = new Adapter_Booked(dataBooked);
-                            recycler_booked.setAdapter(adapter);
-                            adapter.notifyDataSetChanged();
-
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -112,5 +120,9 @@ public class Fragment_Pesanan extends Fragment {
                         Log.e("tampil menu","response:"+anError);
                     }
                 });
+        if (dataBooked.isEmpty()){
+            kosong.setVisibility(View.VISIBLE);
+            recycler_booked.setVisibility(View.GONE);
+        }
     }
 }

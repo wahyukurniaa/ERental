@@ -55,6 +55,7 @@ public class Adapter_IsiKategori extends RecyclerView.Adapter<Adapter_IsiKategor
                 if (Integer.valueOf(data.getStok()) > 0) {
                     Intent i = new Intent(context, DetailBarangActivity.class);
                     i.putExtra("id_barang", "" + id_barang);
+                    i.putExtra("id_user", data.getId_user());
                     i.putExtra("id_store",data.getId_store());
                     i.putExtra("nama_barang", data.getNama_barang());
                     i.putExtra("tarif_barang", data.getTarif_barang());

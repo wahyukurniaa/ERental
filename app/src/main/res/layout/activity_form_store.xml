@@ -83,13 +83,17 @@
                     android:layout_marginRight="@dimen/_15sdp"
                     android:layout_marginBottom="@dimen/_15sdp"
                     android:background="@drawable/edbg"
-                    android:hint="+62"
+                    android:hint="Nomor Telpon"
+                    android:inputType="phone"
+                    android:maxLines="1"
                     android:paddingLeft="@dimen/_5sdp"
                     android:paddingTop="@dimen/_5sdp"
                     android:paddingBottom="@dimen/_5sdp"
                     android:singleLine="true" />
 
                 <EditText
+                    android:inputType="phone"
+                    android:maxLines="1"
                     android:id="@+id/edt_WAStore"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

@@ -111,7 +111,7 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onError(ANError error) {
                         //Handle Error
-                        Log.d(TAG, "onError: Failed" + error);
+                        Log.d(TAG, "onError: Failed" + error+" nama "+nama_user+" alamat = "+alamat_user+"email ="+email_user+"telp = "+telp_user);
                         Toast.makeText(getApplicationContext(),"Data gagal ditambahkan", Toast.LENGTH_SHORT).show();
                         //memunculkan Toast saat data gagal ditambahkan
                     }

@@ -63,6 +63,7 @@ public class Detail_PesananMasukActivity extends AppCompatActivity {
 
         List = binding.spinnerStatus;
         List.setVisibility(View.GONE);
+        dataStatus.add(intent.getStringExtra("status"));
         if (intent.getStringExtra("status").equalsIgnoreCase("Diterima" )||intent.getStringExtra("status").equalsIgnoreCase("Diserahkan" )){
             List.setVisibility(View.VISIBLE);
         }

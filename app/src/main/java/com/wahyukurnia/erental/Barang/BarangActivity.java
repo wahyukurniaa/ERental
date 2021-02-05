@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.androidnetworking.AndroidNetworking;
@@ -31,12 +33,11 @@ public class BarangActivity extends AppCompatActivity {
     TinyDB tinyDB;
     String id_user;
     TextView title;
-
+    ImageView back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_barang);
-
         api = new API();
         AndroidNetworking.initialize(this);
 
@@ -45,6 +46,13 @@ public class BarangActivity extends AppCompatActivity {
 
         title = findViewById(R.id.tv_toolbar);
         title.setText("Barang Saya");
+        back = findViewById(R.id.ib_back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         recycler_barang = findViewById(R.id.recycler_barang);
         recycler_barang.setHasFixedSize(true);

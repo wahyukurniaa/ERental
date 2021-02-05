@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -109,10 +110,14 @@ public class    DetailBarangActivity extends AppCompatActivity {
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                 }else {
-                    Intent i = new Intent(DetailBarangActivity.this, OrderActivity.class);
-                    i.putExtra("id_barang", "" + id);
-                    i.putExtra("stok", stok);
-                    startActivity(i);
+                    if (i.getStringExtra("id_user").equalsIgnoreCase(tinyDB.getString("keyIdUser"))){
+                        Toast.makeText(DetailBarangActivity.this, "Anda, Tidak Bisa Menyewa Barang Sendiri", Toast.LENGTH_SHORT).show();
+                    }else {
+                        Intent i = new Intent(DetailBarangActivity.this, OrderActivity.class);
+                        i.putExtra("id_barang", "" + id);
+                        i.putExtra("stok", stok);
+                        startActivity(i);
+                    }
                 }
             }
         });
