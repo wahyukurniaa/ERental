@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -16,6 +18,7 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.google.gson.Gson;
 import com.wahyukurnia.erental.API;
+import com.wahyukurnia.erental.Notif.NotificationActivity;
 import com.wahyukurnia.erental.R;
 import com.wahyukurnia.erental.TinyDB;
 
@@ -34,6 +37,8 @@ public class BarangActivity extends AppCompatActivity {
     String id_user;
     TextView title;
     ImageView back;
+    RelativeLayout kosong;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +48,8 @@ public class BarangActivity extends AppCompatActivity {
 
         tinyDB = new TinyDB(this);
         id_user = tinyDB.getString("keyIdUser");
+
+        kosong = findViewById(R.id.kosong);
 
         title = findViewById(R.id.tv_toolbar);
         title.setText("Barang Saya");
@@ -70,23 +77,26 @@ public class BarangActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try{
-
-                            Log.d("tampil Store","response:"+response+id_user);
-
-                            dataBarang.clear();
-
-                            JSONArray res = response.getJSONArray("res");
-                            Gson gson = new Gson();
-                            for (int i=0; i<res.length(); i++){
-                                JSONObject data = res.getJSONObject(i);
-
-                                Model_Barang Isi = gson.fromJson(data + "", Model_Barang.class);
-                                dataBarang.add(Isi);
-
+                            if (response.getString("status").equalsIgnoreCase("sukses")) {
+                                kosong.setVisibility(View.GONE);
+                                recycler_barang.setVisibility(View.VISIBLE);
+                                Log.d("tampil Store", "response:" + response + id_user);
+                                JSONArray res = response.getJSONArray("res");
+                                Gson gson = new Gson();
+                                dataBarang.clear();
+                                for (int i = 0; i < res.length(); i++) {
+                                    JSONObject data = res.getJSONObject(i);
+                                    Model_Barang Isi = gson.fromJson(data + "", Model_Barang.class);
+                                    dataBarang.add(Isi);
+                                }
+                                Adapter_Barang adapter = new Adapter_Barang(dataBarang);
+                                recycler_barang.setAdapter(adapter);
+                                adapter.notifyDataSetChanged();
+                            }else {
+                                    kosong.setVisibility(View.VISIBLE);
+                                    recycler_barang.setVisibility(View.GONE);
+                                    Toast.makeText(BarangActivity.this, "Data Kosong", Toast.LENGTH_SHORT).show();
                             }
-                            Adapter_Barang adapter = new Adapter_Barang(dataBarang);
-                            recycler_barang.setAdapter(adapter);
-                            adapter.notifyDataSetChanged();
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -95,9 +105,11 @@ public class BarangActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(ANError anError) {
-
                         Log.e("tampil menu","response:"+anError);
                     }
                 });
+        if (dataBarang.isEmpty()){
+            kosong.setVisibility(View.VISIBLE);
+        }
     }
 }

@@ -337,16 +337,6 @@
 
                         </LinearLayout>
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Lihat Semua >"
-                            android:textColor="?colorPrimary"
-                            android:layout_marginTop="@dimen/_5sdp"
-                            android:fontFamily="@font/quicksand_bold"
-                            android:textAlignment="viewEnd"/>
-
-
                     </LinearLayout>
 
                     <RelativeLayout

@@ -82,10 +82,11 @@ public class NotificationActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try{
-                            Log.d("tampilmenu","response:"+response);
+
                             if (response.getString("status").equalsIgnoreCase("sukses")) {
                                 kosong.setVisibility(View.GONE);
                                 recycler_notif.setVisibility(View.VISIBLE);
+                                Log.d("tampilmenu","response:"+response);
                                 JSONArray res = response.getJSONArray("res");
                                 Gson gson = new Gson();
                                 dataNotif.clear();
