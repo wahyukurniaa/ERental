@@ -53,10 +53,15 @@ public class Fragment_Home extends Fragment {
     private RecyclerView recycler_kategori, recycler_slider;
     List<Model_IsiKategori> dataIsiKategori;
     List<Model_IsiKategori> dataIsiKategori2;
+    List<Model_IsiKategori> dataIsiKategori3;
     RecyclerView rvKend;
     RecyclerView rvFoto;
+    RecyclerView rvJava;
+
     Adapter_Kategori adapter;
     TextView title;
+    List<ModelSlider> sliders;
+    SliderView sliderView;
 
     TinyDB tinyDB;
     String a;
@@ -66,7 +71,7 @@ public class Fragment_Home extends Fragment {
     LinearLayout main;
     ShimmerFrameLayout shimmerFrameLayout;
     SwipeRefreshLayout swipeRefreshLayout;
-    RelativeLayout koneksi, kosongPhoto, kosongKend;
+    RelativeLayout koneksi, kosongPhoto, kosongKend, kosongJasa;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -78,6 +83,7 @@ public class Fragment_Home extends Fragment {
 
         kosongKend = view.findViewById(R.id.kosongKend);
         kosongPhoto = view.findViewById(R.id.kosong);
+        kosongJasa = view.findViewById(R.id.kosongJasa);
 //
 //        ib_notif = view.findViewById(R.id.ib_notif);
 //        ib_notif.setOnClickListener(new View.OnClickListener() {
@@ -107,6 +113,11 @@ public class Fragment_Home extends Fragment {
         rvKend.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         dataIsiKategori2 = new ArrayList<>();
 
+        rvJava = view.findViewById(R.id.rv_Jasa);
+        rvJava.setHasFixedSize(true);
+        rvJava.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        dataIsiKategori3 = new ArrayList<>();
+
         swipeRefreshLayout = view.findViewById(R.id.swHome);
         shimmerFrameLayout = view.findViewById(R.id.shimmer_beranda);
         koneksi = view.findViewById(R.id.layout_koneksi);
@@ -125,18 +136,18 @@ public class Fragment_Home extends Fragment {
         recycler_kategori.setHasFixedSize(true);
         recycler_kategori.setLayoutManager(new GridLayoutManager(getContext(),4));
 
-        List<ModelSlider> sliders;
+
+        sliderView = view.findViewById(R.id.imageSlider);
         sliders = new ArrayList<>();
 
-        sliders.add(new ModelSlider(1, api.URL_SLIDER+"sld1.jpg"));
-        sliders.add(new ModelSlider(2, api.URL_SLIDER+"sld2.jpg"));
-        sliders.add(new ModelSlider(3, api.URL_SLIDER+"sld3.jpg"));
-        sliders.add(new ModelSlider(4, api.URL_SLIDER+"sld4.jpg"));
+        getSlider();
+//        sliders.add(new ModelSlider(1, api.URL_SLIDER+"sld1.jpg"));
+//        sliders.add(new ModelSlider(2, api.URL_SLIDER+"sld2.jpg"));
+//        sliders.add(new ModelSlider(3, api.URL_SLIDER+"sld3.jpg"));
+//        sliders.add(new ModelSlider(4, api.URL_SLIDER+"sld4.jpg"));
 
 
-        SliderView sliderView = view.findViewById(R.id.imageSlider);
-        SliderAdapter adapter = new SliderAdapter(sliders);
-        sliderView.setSliderAdapter(adapter);
+
         sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM); //set indicator animation by using IndicatorAnimationType. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
         sliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
         sliderView.setAutoCycleDirection(SliderView.AUTO_CYCLE_DIRECTION_BACK_AND_FORTH);
@@ -152,6 +163,41 @@ public class Fragment_Home extends Fragment {
         return view;
 
 
+    }
+
+    private void getSlider() {
+        AndroidNetworking.get(api.URL_GET_SLIDER)
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            Log.d("tampilmenu","response:"+response);
+                            if (response.getString("status").equalsIgnoreCase("sukses")){
+                                JSONArray res = response.getJSONArray("res");
+                                sliders.clear();
+                                for(int i =0; i <res.length();i++){
+                                    JSONObject data = res.getJSONObject(i);
+                                    sliders.add(new ModelSlider(
+                                            data.getInt("id_slider"),
+                                            data.getString("img_slider")
+                                    ));
+                                }
+                                SliderAdapter adapter = new SliderAdapter(sliders);
+                                sliderView.setSliderAdapter(adapter);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        setGagal();
+                        Log.e("tampil menu","response:"+anError);
+                    }
+                });
     }
 
     private void setLoading() {
@@ -271,10 +317,10 @@ public class Fragment_Home extends Fragment {
                             Log.d("tampil barang","response:"+response);
                             if (response.getString("status").equalsIgnoreCase("gagal")){
                                 kosongKend.setVisibility(View.VISIBLE);
-                                setSukses();
+                                getJasa();
                             }else {
                                 kosongKend.setVisibility(View.GONE);
-                                setSukses();
+                                getJasa();
                                 JSONArray res = response.getJSONArray("res");
                                 dataIsiKategori2.clear();
                                 Gson gson = new Gson();
@@ -287,6 +333,47 @@ public class Fragment_Home extends Fragment {
                             }
                             Adapter_IsiKategori adapter = new Adapter_IsiKategori(dataIsiKategori2);
                             rvKend.setAdapter(adapter);
+                            adapter.notifyDataSetChanged();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        setGagal();
+                        Log.e("tampil menu","response:"+anError);
+                    }
+                });
+    }
+
+    private void getJasa() {
+        AndroidNetworking.get(api.URL_Isi_Kategori+3)
+                .setPriority(Priority.LOW)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try{
+                            Log.d("tampil barang","response:"+response);
+                            if (response.getString("status").equalsIgnoreCase("gagal")){
+                                kosongJasa.setVisibility(View.VISIBLE);
+                                setSukses();
+                            }else {
+                                kosongJasa.setVisibility(View.GONE);
+                                setSukses();
+                                JSONArray res = response.getJSONArray("res");
+                                dataIsiKategori3.clear();
+                                Gson gson = new Gson();
+                                for (int i=0; i<res.length(); i++){
+                                    JSONObject data = res.getJSONObject(i);
+
+                                    Model_IsiKategori Isi = gson.fromJson(data + "", Model_IsiKategori.class);
+                                    dataIsiKategori3.add(Isi);
+                                }
+                            }
+                            Adapter_IsiKategori adapter = new Adapter_IsiKategori(dataIsiKategori3);
+                            rvJava.setAdapter(adapter);
                             adapter.notifyDataSetChanged();
                         } catch (JSONException e) {
                             e.printStackTrace();

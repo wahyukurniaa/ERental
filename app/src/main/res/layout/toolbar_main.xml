@@ -34,7 +34,7 @@
                 android:textStyle="bold"
                 android:textSize="@dimen/_18sdp"
                 android:textColor="@color/white"
-                tools:text="Toolbar" />
+                tools:text="E-Rental" />
 
             <ImageButton
                 android:layout_alignParentRight="true"

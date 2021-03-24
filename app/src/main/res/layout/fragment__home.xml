@@ -29,33 +29,70 @@
                         android:id="@+id/mainLayout"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:background="?colorPrimary"
                         android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_20sdp"
+                            android:layout_marginTop="@dimen/_20sdp"
+                            android:fontFamily="@font/quicksand_medium"
+                            android:text="Selamat Datang"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_18sdp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_20sdp"
+                            android:fontFamily="@font/quicksand_bold"
+                            android:text="Di E-Rental Padang"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_20sdp" />
+
 
                         <!--                        Search bar-->
                         <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/_40sdp">
+                            android:layout_height="@dimen/_40sdp"
+                            android:layout_marginTop="@dimen/_20sdp"
+                            android:layout_marginBottom="@dimen/_20sdp">
+
 
                             <RelativeLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/_20sdp"
-                                android:background="?colorPrimaryVariant" />
-
-                            <RelativeLayout
+                                android:id="@+id/searchBtn"
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_40sdp"
                                 android:layout_marginLeft="@dimen/_20sdp"
                                 android:layout_marginTop="@dimen/_5sdp"
                                 android:layout_marginRight="@dimen/_20sdp"
                                 android:background="@drawable/edbg"
-                                android:id="@+id/searchBtn"
-                                android:paddingLeft="@dimen/_5sdp" >
-                                <ImageView
-                                    android:layout_width="30dp"
-                                    android:layout_height="30dp"
-                                    android:src="@drawable/ic_baseline_search_24"
-                                    android:layout_centerVertical="true"/>
+                                android:paddingLeft="@dimen/_5sdp">
 
+                                <RelativeLayout
+                                    android:layout_width="@dimen/_35sdp"
+                                    android:layout_height="match_parent"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_centerVertical="true"
+                                    android:background="@drawable/edbg"
+                                    android:backgroundTint="@color/teal_200">
+
+                                    <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_centerInParent="true"
+                                        android:layout_margin="@dimen/_5sdp"
+                                        android:src="@drawable/ic_baseline_search_24" />
+                                </RelativeLayout>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginLeft="@dimen/_10sdp"
+                                    android:text="Cari barang yang di sewa..."
+                                    android:textColor="#858585" />
 
                             </RelativeLayout>
                         </RelativeLayout>
@@ -89,119 +126,186 @@
                         </androidx.cardview.widget.CardView>
 
                         <!--                        recycler kategori -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_20sdp"
+                            android:layout_marginTop="@dimen/_20sdp"
+                            android:fontFamily="@font/quicksand_bold"
+                            android:text="Kategori"
+                            android:textColor="@color/white" />
+
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/recycler_kategori"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center|center_horizontal"
-                            android:layout_marginTop="@dimen/_20sdp"
                             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                             app:spanCount="4"
-                            tools:itemCount="4"
+                            tools:itemCount="7"
                             tools:listitem="@layout/item_row_kategori" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_20sdp"
+                            android:background="@drawable/topshape"
                             android:orientation="vertical">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/_20sdp"
-                                android:layout_marginTop="@dimen/_20sdp"
-                                android:fontFamily="@font/quicksand_bold"
-                                android:text="Fotographi Populer"
-                                android:textColor="?colorPrimary"
-                                android:textSize="@dimen/_12sdp" />
-
-                            <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/rv_foto"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/_5sdp"
-                                android:orientation="horizontal"
-                                android:visibility="gone"
-                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                                tools:listitem="@layout/item_row_isi_kategori" />
-
-                            <RelativeLayout
+                            <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="@dimen/_180sdp"
-                                android:id="@+id/kosong">
-
-                                <ImageView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="@dimen/_120sdp"
-                                    android:src="@drawable/blank"
-                                    android:layout_marginTop="@dimen/_20sdp"
-                                    android:layout_centerHorizontal="true"/>
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textColor="?colorPrimary"
-                                    android:text="Data FotoGraphi Kosong"
-                                    android:layout_centerHorizontal="true"
-                                    android:layout_alignParentBottom="true"
-                                    android:layout_marginBottom="@dimen/_20sdp"
-                                    android:fontFamily="@font/quicksand_medium"/>
-
-                            </RelativeLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/_20sdp"
-                                android:layout_marginTop="@dimen/_20sdp"
-                                android:fontFamily="@font/quicksand_bold"
-                                android:text="Kendaraan Populer"
-                                android:textColor="?colorPrimary"
-                                android:textSize="@dimen/_12sdp" />
-
-                            <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/rv_Kendaraan"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/_5sdp"
-                                android:orientation="horizontal"
-                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                                tools:listitem="@layout/item_row_isi_kategori" />
-
-                            <RelativeLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/_180sdp"
-                                android:id="@+id/kosongKend">
-
-                                <ImageView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="@dimen/_120sdp"
-                                    android:src="@drawable/blank"
+                                    android:layout_marginLeft="@dimen/_20sdp"
                                     android:layout_marginTop="@dimen/_20sdp"
-                                    android:layout_centerHorizontal="true"/>
+                                    android:fontFamily="@font/quicksand_bold"
+                                    android:text="Fotographi Populer"
+                                    android:textColor="?colorPrimary"
+                                    android:textSize="@dimen/_12sdp" />
+
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/rv_foto"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/_5sdp"
+                                    android:orientation="horizontal"
+                                    android:visibility="visible"
+                                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                    tools:listitem="@layout/item_row_isi_kategori" />
+
+                                <RelativeLayout
+                                    android:id="@+id/kosong"
+                                    android:visibility="gone"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_180sdp">
+
+                                    <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="@dimen/_120sdp"
+                                        android:layout_centerHorizontal="true"
+                                        android:layout_marginTop="@dimen/_20sdp"
+                                        android:src="@drawable/blank" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_centerHorizontal="true"
+                                        android:layout_marginBottom="@dimen/_20sdp"
+                                        android:fontFamily="@font/quicksand_medium"
+                                        android:text="Data FotoGraphi Kosong"
+                                        android:textColor="?colorPrimary" />
+
+                                </RelativeLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/_20sdp"
+                                    android:layout_marginTop="@dimen/_20sdp"
+                                    android:fontFamily="@font/quicksand_bold"
+                                    android:text="Kendaraan Populer"
                                     android:textColor="?colorPrimary"
-                                    android:text="Data Kendaraan Kosong"
-                                    android:layout_centerHorizontal="true"
-                                    android:layout_alignParentBottom="true"
-                                    android:layout_marginBottom="@dimen/_20sdp"
-                                    android:fontFamily="@font/quicksand_medium"/>
+                                    android:textSize="@dimen/_12sdp" />
 
-                            </RelativeLayout>
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/rv_Kendaraan"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/_5sdp"
+                                    android:orientation="horizontal"
+                                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                    tools:listitem="@layout/item_row_isi_kategori" />
+
+                                <RelativeLayout
+                                    android:id="@+id/kosongKend"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_180sdp">
+
+                                    <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="@dimen/_120sdp"
+                                        android:layout_centerHorizontal="true"
+                                        android:layout_marginTop="@dimen/_20sdp"
+                                        android:src="@drawable/blank" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_centerHorizontal="true"
+                                        android:layout_marginBottom="@dimen/_20sdp"
+                                        android:fontFamily="@font/quicksand_medium"
+                                        android:text="Data Kendaraan Kosong"
+                                        android:textColor="?colorPrimary" />
+
+                                </RelativeLayout>
 
 
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/_20sdp"
+                                    android:layout_marginTop="@dimen/_20sdp"
+                                    android:fontFamily="@font/quicksand_bold"
+                                    android:text="Jasa Populer"
+                                    android:textColor="?colorPrimary"
+                                    android:textSize="@dimen/_12sdp" />
+
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/rv_Jasa"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/_5sdp"
+                                    android:orientation="horizontal"
+                                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                    tools:listitem="@layout/item_row_isi_kategori" />
+
+                                <RelativeLayout
+                                    android:id="@+id/kosongJasa"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_180sdp">
+
+                                    <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="@dimen/_120sdp"
+                                        android:layout_centerHorizontal="true"
+                                        android:layout_marginTop="@dimen/_20sdp"
+                                        android:src="@drawable/blank" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_centerHorizontal="true"
+                                        android:layout_marginBottom="@dimen/_20sdp"
+                                        android:fontFamily="@font/quicksand_medium"
+                                        android:text="Data Kendaraan Kosong"
+                                        android:textColor="?colorPrimary" />
+
+                                </RelativeLayout>
+
+
+                            </LinearLayout>
                         </LinearLayout>
-
                     </LinearLayout>
 
                     <com.facebook.shimmer.ShimmerFrameLayout

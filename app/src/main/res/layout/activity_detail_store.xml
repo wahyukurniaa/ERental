@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,9 +7,32 @@
     android:orientation="vertical"
     tools:context=".DetailStore.DetailStoreActivity">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar_second" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:translationZ="@dimen/_10sdp"
+        android:layout_height="@dimen/_50sdp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nama Toko.com"
+            android:textSize="@dimen/_18sdp"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:fontFamily="@font/quicksand_bold"
+            android:id="@+id/namaToko"/>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            app:civ_border_width="2dp"
+            android:src="@drawable/ic_back"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_centerVertical="true"
+            android:id="@+id/back"
+            app:civ_border_color="@color/white">
+
+        </de.hdodenhof.circleimageview.CircleImageView>
+    </RelativeLayout>
+
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -20,125 +43,127 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_store"
                 android:orientation="vertical">
 
-                <LinearLayout
+                <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_20sdp"
-                    android:layout_marginTop="@dimen/_20sdp"
-                    android:layout_marginRight="@dimen/_20sdp"
-                    android:orientation="horizontal">
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/fotoStore"
-                        android:layout_width="@dimen/_50sdp"
-                        android:layout_height="@dimen/_50sdp"
-                        android:layout_marginRight="@dimen/_20sdp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/website"
-                        app:civ_border_color="@color/white"
-                        app:civ_border_width="1dp" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/namaStore"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/quicksand_bold"
-                            android:text="NamaToko.Com"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/_14sdp" />
-
-                        <TextView
-                            android:id="@+id/alamatStore"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/quicksand_medium"
-                            android:text="Padang, Pauh, PasarBaru"
-                            android:textColor="@color/shimmer_background" />
-                    </LinearLayout>
-
-                </LinearLayout>
+                    android:layout_height="@dimen/_200sdp"
+                    android:src="@drawable/bg_store"
+                    android:scaleType="centerCrop"/>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:background="@drawable/topshape"
+                    android:layout_alignParentBottom="true"/>
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/fotoStore"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="@dimen/_100sdp"
+                    android:layout_marginRight="@dimen/_20sdp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/website"
+                    app:civ_border_color="@color/white"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="@dimen/_25sdp"
+                    app:civ_border_width="5dp" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/namaStore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand_bold"
+                android:text="NamaToko.Com"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textSize="@dimen/_14sdp" />
+
+
+            <TextView
+                android:id="@+id/alamatStore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand_medium"
+                android:textAlignment="center"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="Jl. Khatib Sulaiman No.85, Ulak Karang Sel., Kec. Padang Utara, Kota Padang, Sumatera Barat 25137"
+                android:textColor="@color/bg_dark" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_80sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:weightSum="2">
+                <RelativeLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/_20sdp"
-                    android:layout_marginTop="@dimen/_14sdp"
-                    android:layout_marginRight="@dimen/_20sdp">
-
-                    <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:background="@drawable/edmain"
+                    android:backgroundTint="@color/dark_gray">
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_20sdp"
-                        android:orientation="vertical">
+                        android:text="Jumlah barang "
+                        android:layout_margin="@dimen/_7sdp"
+                        android:textColor="@color/bg_dark"
+                        android:fontFamily="@font/quicksand_medium"/>
 
-                        <TextView
-                            android:id="@+id/jmlBarang"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/quicksand_bold"
-                            android:text="000"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/_18sdp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/quicksand_medium"
-                            android:text="Jumlah Barang"
-                            android:textColor="@color/white" />
-
-
-                    </LinearLayout>
-
-                    <RelativeLayout
-                        android:layout_width="2dp"
-                        android:layout_height="@dimen/_30sdp"
-                        android:layout_centerInParent="true"
-                        android:background="@color/white" />
-
-                    <LinearLayout
+                    <TextView
+                        android:id="@+id/jmlBarang"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="@dimen/_20sdp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/jmlSewa"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/quicksand_bold"
-                            android:text="000"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/_18sdp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/quicksand_medium"
-                            android:text=" Jumlah Sewa "
-                            android:textColor="@color/white" />
-
-                    </LinearLayout>
-
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:text="000"
+                        android:textColor="@color/black"
+                        android:layout_centerHorizontal="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="@dimen/_25sdp"
+                        android:textSize="@dimen/_18sdp" />
 
                 </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/edmain"
+                    android:backgroundTint="@color/dark_gray">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Barang Disewa"
+                        android:layout_margin="@dimen/_7sdp"
+                        android:textColor="@color/bg_dark"
+                        android:fontFamily="@font/quicksand_medium"/>
 
+                    <TextView
+                        android:id="@+id/jmlSewa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:text="000"
+                        android:textColor="@color/black"
+                        android:layout_centerHorizontal="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="@dimen/_25sdp"
+                        android:textSize="@dimen/_18sdp" />
+                </RelativeLayout>
             </LinearLayout>
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_detailStore"
@@ -152,4 +177,4 @@
                 tools:listitem="@layout/item_row_isi_kategori" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-</LinearLayout>
+</RelativeLayout>

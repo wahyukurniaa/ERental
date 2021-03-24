@@ -75,7 +75,7 @@ public class Detail_PesananMasukActivity extends AppCompatActivity {
         Locale localeId = new Locale("in", "ID");
         final NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeId);
 
-        binding.toolbar.tvToolbar.setText("Detail Booked");
+        binding.toolbar.tvToolbar.setText("Detail Pesanan");
         binding.toolbar.ibBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

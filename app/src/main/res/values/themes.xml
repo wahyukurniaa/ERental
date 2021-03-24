@@ -2,13 +2,13 @@
     <!-- Base application theme. -->
     <style name="Theme.ERental" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#47ACFC</item>
-        <item name="colorPrimaryVariant">#47ACFC</item>
+        <item name="colorPrimary">#036DCF</item>
+        <item name="colorPrimaryVariant">#036DCF</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">#47ACFC</item>
+        <item name="colorSecondary">#036DCF</item>
         <item name="colorSecondaryVariant">#AAAAAA</item>
-        <item name="colorOnSecondary">#47ACFC</item>
+        <item name="colorOnSecondary">#036DCF</item>
         <!-- Status bar color. -->
         <item name="android:windowBackground">@color/white</item>
         <item name="android:statusBarColor">@color/ui_day</item>

@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.smarteist.autoimageslider.SliderViewAdapter;
 import com.squareup.picasso.Picasso;
+import com.wahyukurnia.erental.API;
 import com.wahyukurnia.erental.R;
 
 import java.util.ArrayList;
@@ -54,17 +55,17 @@ public class SliderAdapter extends
 
     @Override
     public void onBindViewHolder(SliderAdapterVH viewHolder, final int position) {
-
+        API api = new API();
         ModelSlider sliderItem = mSliderItems.get(position);
 
-        Picasso.get().load(sliderItem.getImg()).into(viewHolder.imageViewBackground);
+        Picasso.get().load(api.URL_SLIDER+sliderItem.getImg()).into(viewHolder.imageViewBackground);
 
-        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context, "This is item in position " + position, Toast.LENGTH_SHORT).show();
-            }
-        });
+//        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(context, "This is item in position " + position, Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 
     @Override

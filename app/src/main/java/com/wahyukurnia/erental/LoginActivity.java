@@ -121,6 +121,7 @@ public class LoginActivity extends AppCompatActivity {
                                 tinyDB.putString("keyTelpUser",telp);
 
                                 tinyDB.putBoolean("keyLogin",true);
+                                tinyDB.putBoolean("keyStore",true);
                                 Log.e("salah",email);
 
                                 Toast.makeText(LoginActivity.this, "Login Sukses", Toast.LENGTH_SHORT).show();
@@ -129,8 +130,31 @@ public class LoginActivity extends AppCompatActivity {
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
 
-                            }
-                            else {
+                            } else if (stat == 2) {
+
+                                JSONObject data = response.getJSONObject("data");
+                                String id_user = data.getString("id_user");
+                                String nama_user = data.getString("nama_user");
+                                String alamat = data.getString("alamat_user");
+                                String email = data.getString("email_user");
+                                String telp = data.getString("telp_user");
+
+                                tinyDB.putString("keyIdUser",id_user);
+                                tinyDB.putString("keyNamaUser",nama_user);
+                                tinyDB.putString("keyAlamatUser",alamat);
+                                tinyDB.putString("keyEmailUser",email);
+                                tinyDB.putString("keyTelpUser",telp);
+                                tinyDB.putBoolean("keyLogin",true);
+                                Log.e("salah",email);
+
+                                Toast.makeText(LoginActivity.this, "Login Sukses", Toast.LENGTH_SHORT).show();
+                                Intent intent=new Intent(LoginActivity.this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+
+
+                            } else {
                                 Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {

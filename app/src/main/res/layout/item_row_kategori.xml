@@ -44,6 +44,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/txt_kategori"
         android:gravity="center_horizontal"
+        android:textColor="@color/white"
         android:text="Pakaian"
         android:textStyle="bold"
         android:fontFamily="@font/quicksand_bold"

@@ -166,7 +166,7 @@ public class PasangSewaActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView adapterView, View view, int i, long l) {
                 a  = (int) adapter.getItemId(i)+1;
-                Toast.makeText(getApplicationContext(), "Saya Memesan " + a, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), "Saya Memesan " + a, Toast.LENGTH_SHORT).show();
             }
 
             @Override

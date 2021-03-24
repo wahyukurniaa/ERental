@@ -5,30 +5,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="@dimen/_5sdp"
+    android:background="@color/main"
     tools:context=".LoginActivity">
 
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@drawable/cencel_24"
-        app:tint="?colorPrimary"
+        app:tint="@color/white"
         android:id="@+id/back"
         android:layout_margin="@dimen/_20sdp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_height="match_parent"
         android:layout_margin="@dimen/_20sdp"
+        android:layout_below="@id/back"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/quicksand_bold"
-            android:text="Login"
-            android:textColor="?colorOnSecondary"
+            android:text="E-Rental"
+            android:textColor="@color/white"
             android:textSize="@dimen/_35sdp" />
         <TextView
             android:layout_width="match_parent"
@@ -36,44 +36,8 @@
             android:fontFamily="@font/quicksand_medium"
             android:text="Temukan Barang Rental di Aplikasi E-Rental"
             android:layout_marginBottom="@dimen/_20sdp"
-            android:textStyle="bold" />
-
-
-        <EditText
-            android:id="@+id/edtusername"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/bg_login"
-            android:hint="Username"
-            android:inputType="text"
-            android:drawableLeft="@drawable/ic_baseline_account_circle_24"
-            android:padding="10dp"
-            android:singleLine="true" />
-
-        <EditText
-            android:id="@+id/edtpass"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/bg_login"
-            android:hint="Password"
-            android:drawableLeft="@drawable/ic_baseline_lock_24"
-            android:inputType="textPassword"
-            android:padding="10dp"
-            android:singleLine="true"/>
-
-        <Button
-            android:id="@+id/btnlogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginBottom="@dimen/_10sdp"
-            android:background="@drawable/edmain"
             android:textColor="@color/white"
-            android:fontFamily="@font/quicksand_bold"
-            android:text="Login" />
+            android:textStyle="bold" />
 
 <!--        <Button-->
 <!--            android:id="@+id/txt_register"-->
@@ -88,28 +52,97 @@
 
     </LinearLayout>
 
-
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/_20sdp">
+        android:orientation="vertical"
+        android:background="@drawable/topshape"
+        android:layout_alignParentBottom="true">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Username"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/cardview_dark_background"/>
+
+        <EditText
+            android:id="@+id/edtusername"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bg_login"
+            android:hint="Masukan Username"
+            android:inputType="text"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:padding="20dp"
+            android:singleLine="true" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/quicksand_medium"
-            android:text="Belum Punya akun? "/>
-        <TextView
+            android:text="Password"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/cardview_dark_background"/>
+        <EditText
+            android:id="@+id/edtpass"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/bg_login"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:hint="Masukan Password"
+            android:inputType="textPassword"
+            android:padding="20dp"
+            android:singleLine="true"/>
+
+        <Button
+            android:id="@+id/btnlogin"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/edmain"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/quicksand_bold"
+            android:text="Login" />
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Daftar Di sini"
-            android:textColor="?colorPrimary"
-            android:id="@+id/txt_register"/>
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/_20sdp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand_medium"
+                android:text="Belum Punya akun? "/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Daftar Di sini"
+                android:textColor="@color/second"
+                android:id="@+id/txt_register"/>
+
+        </LinearLayout>
 
     </LinearLayout>
+
+
 
 
 </RelativeLayout>

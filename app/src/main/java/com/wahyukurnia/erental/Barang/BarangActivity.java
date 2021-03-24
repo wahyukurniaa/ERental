@@ -29,7 +29,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BarangActivity extends AppCompatActivity {
+public class BarangActivity extends AppCompatActivity implements UpdateBarang{
     API api;
     private List<Model_Barang> dataBarang;
     private RecyclerView recycler_barang;
@@ -89,9 +89,7 @@ public class BarangActivity extends AppCompatActivity {
                                     Model_Barang Isi = gson.fromJson(data + "", Model_Barang.class);
                                     dataBarang.add(Isi);
                                 }
-                                Adapter_Barang adapter = new Adapter_Barang(dataBarang);
-                                recycler_barang.setAdapter(adapter);
-                                adapter.notifyDataSetChanged();
+                                getAdapter();
                             }else {
                                     kosong.setVisibility(View.VISIBLE);
                                     recycler_barang.setVisibility(View.GONE);
@@ -111,5 +109,16 @@ public class BarangActivity extends AppCompatActivity {
         if (dataBarang.isEmpty()){
             kosong.setVisibility(View.VISIBLE);
         }
+    }
+
+    private void getAdapter() {
+        Adapter_Barang adapter = new Adapter_Barang(dataBarang, this::OnUpdateBarang);
+        recycler_barang.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void OnUpdateBarang() {
+        getBarang();
     }
 }

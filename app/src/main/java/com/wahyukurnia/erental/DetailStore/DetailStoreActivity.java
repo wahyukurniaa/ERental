@@ -58,7 +58,7 @@ public class DetailStoreActivity extends AppCompatActivity {
         id_store = i.getStringExtra("id_store");
         Log.e("id_store",id_store);
 
-        binding.toolbar.ibBack.setOnClickListener(new View.OnClickListener() {
+        binding.back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
@@ -87,7 +87,7 @@ public class DetailStoreActivity extends AppCompatActivity {
                                 Picasso.get().load(api.URL_GAMBAR_U+data.getString("gambar_store")).into(binding.fotoStore);
                                 Model_IsiKategori Isi = gson.fromJson(data + "", Model_IsiKategori.class);
                                 dataStore.add(Isi);
-                                binding.toolbar.tvToolbar.setText(data.getString("nama_store"));
+                                binding.namaToko.setText(data.getString("nama_store"));
                             }
                             binding.jmlBarang.setText(dataStore.size()+"");
                             Adapter_IsiKategori adapter = new Adapter_IsiKategori(dataStore);
