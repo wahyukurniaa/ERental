@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,7 +29,7 @@ public class RegisterActivity extends AppCompatActivity {
     EditText edt_namauser_register, edt_alamatuser_register,
              edt_emailuser_register, edt_telpuser_register,
              edt_username_register, edt_passuser_register;
-    Button btn_daftar;
+    RelativeLayout btn_daftar;
     TextView txtLogin;
     AlertDialog alertDialog;
     @Override
@@ -38,34 +39,25 @@ public class RegisterActivity extends AppCompatActivity {
         alertDialog =new SpotsDialog.Builder().setContext(this).setMessage("Sedang Mengirim Data ....").setCancelable(false).build();
         Log.d(TAG, "onCreate: inisialisasi");
         api = new API();
+        Intent intent = getIntent();
 
-        edt_namauser_register = findViewById(R.id.edt_namauser_register);
-        edt_alamatuser_register = findViewById(R.id.edt_alamatuser_register);
-        edt_emailuser_register = findViewById(R.id.edt_emailuser_register);
-        edt_telpuser_register = findViewById(R.id.edt_telpuser_register);
         edt_username_register = findViewById(R.id.edt_username_register);
         edt_passuser_register = findViewById(R.id.edt_pass_register);
-        txtLogin = findViewById(R.id.txt_Login);
-        txtLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
 
         btn_daftar = findViewById(R.id.btn_daftar);
         AndroidNetworking.initialize(getApplicationContext());
         aksiTambah();
     }
+
     public void aksiTambah(){
+        Intent intent = getIntent();
         btn_daftar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String nama_user = edt_namauser_register.getText().toString(); //mengambil Value etNim menjadi string
-                String alamat_user = edt_alamatuser_register.getText().toString(); //mengambil Value etNim menjadi string
-                String email_user = edt_emailuser_register.getText().toString(); //mengambil Value etNim menjadi string
-                String telp_user = edt_telpuser_register.getText().toString(); //mengambil Value etNim menjadi string
+                String nama_user = intent.getStringExtra("namalengkap"); //mengambil Value etNim menjadi string
+                String alamat_user = intent.getStringExtra("alamat"); //mengambil Value etNim menjadi string
+                String email_user = intent.getStringExtra("email"); //mengambil Value etNim menjadi string
+                String telp_user = intent.getStringExtra("telepon"); //mengambil Value etNim menjadi string
                 String username = edt_username_register.getText().toString(); //mengambil Value etNim menjadi string
                 String pass = edt_passuser_register.getText().toString(); //mengambil Value etNim menjadi string
                 if (nama_user.equals("")||alamat_user.equals("")||email_user.equals("")||telp_user.equals("")||username.equals("")||pass.equals("")){
@@ -74,10 +66,6 @@ public class RegisterActivity extends AppCompatActivity {
                 } else {
                     tambahData(nama_user,alamat_user,email_user,telp_user,username,pass); //memanggil fungsi tambahData()
 
-                    edt_namauser_register.setText(""); //mengosongkan form setelah data berhasil ditambahkan
-                    edt_alamatuser_register.setText(""); //mengosongkan form setelah data berhasil ditambahkan
-                    edt_emailuser_register.setText(""); //mengosongkan form setelah data berhasil ditambahkan
-                    edt_telpuser_register.setText(""); //mengosongkan form setelah data berhasil ditambahkan
                     edt_username_register.setText(""); //mengosongkan form setelah data berhasil ditambahkan
                     edt_passuser_register.setText(""); //mengosongkan form setelah data berhasil ditambahkan
                 }
@@ -118,5 +106,8 @@ public class RegisterActivity extends AppCompatActivity {
                 });
     }
 
-
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
 }

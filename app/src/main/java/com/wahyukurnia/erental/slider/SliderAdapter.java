@@ -59,6 +59,7 @@ public class SliderAdapter extends
         ModelSlider sliderItem = mSliderItems.get(position);
 
         Picasso.get().load(api.URL_SLIDER+sliderItem.getImg()).into(viewHolder.imageViewBackground);
+//
 
 //        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
 //            @Override

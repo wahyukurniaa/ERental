@@ -4,378 +4,441 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".Detail.DetailBarangActivity">
+    android:background="@color/bg_dark"
+    tools:context=".DummyActivity">
+
+    <RelativeLayout
+        android:id="@+id/l_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_75sdp"
+        android:background="@drawable/ic_shadow_top"
+        android:paddingTop="@dimen/_4sdp"
+        android:translationZ="2dp">
+        <TextView
+            android:id="@+id/toolbarDetail"
+            android:text="Detail Barang"
+            android:gravity="center"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <ImageView
+            android:id="@+id/side_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="24dp"
+            android:src="@drawable/ic_back" />
+    </RelativeLayout>
 
     <LinearLayout
+        android:orientation="vertical"
+        android:weightSum="3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <include
-            android:id="@+id/toolbar"
-            layout="@layout/toolbar_second" />
-
-
-        <androidx.core.widget.NestedScrollView
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/l_atas"
+            android:layout_weight="1.7"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="@dimen/_50sdp">
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/img_detail"
+                android:src="@drawable/website"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/l_bawah"
+            android:layout_marginTop="-38dp"
+            android:layout_weight="1.3"
+            android:translationZ="1dp"
+            android:background="@drawable/ic_back_detail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <LinearLayout
+                android:id="@+id/l_pilihan"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:weightSum="3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/informasi"
+                    android:text="Informasi"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textSize="17sp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/toko"
+                    android:text="Toko Penyedia"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textSize="17sp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textColor="@color/dark_gray"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/ulasan"
+                    android:text="Ulasan"
+                    android:textSize="17sp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:gravity="center"
+                    android:textColor="@color/dark_gray"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutInformasi"
+                android:visibility="gone"
+                android:layout_below="@id/l_pilihan"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginHorizontal="@dimen/_28sdp"
+                android:layout_marginTop="@dimen/_14sdp"
                 android:orientation="vertical">
-
-
-                <ImageView
-                    android:id="@+id/img_detail"
+                <TextView
+                    android:id="@+id/txt_judul"
+                    android:text="Nama Barang"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="@color/black"
+                    android:textSize="22sp"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_230sdp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/website" />
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_20sdp"
-                    android:layout_marginTop="-50dp"
-                    android:layout_marginRight="@dimen/_20sdp"
-                    app:cardCornerRadius="@dimen/_10sdp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="@dimen/_10sdp"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/txt_judul"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/quicksand_bold"
-                            android:text="Baju Kurung"
-                            android:textColor="?colorPrimary"
-                            android:textSize="@dimen/_18sdp"
-                            android:textStyle="bold" />
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <TextView
-                                android:id="@+id/txt_stok"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/_5sdp"
-                                android:fontFamily="@font/quicksand_medium"
-                                android:text="Tersedia 5" />
-
-                            <TextView
-                                android:id="@+id/txt_tarif"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentRight="true"
-                                android:fontFamily="@font/quicksand_medium"
-                                android:text="Rp.45000/hari"
-                                android:textColor="?colorPrimary"
-                                android:textSize="@dimen/_14sdp" />
-                        </RelativeLayout>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-
+                    android:layout_height="wrap_content"/>
                 <TextView
                     android:id="@+id/txt_deskripsi"
+                    android:text="Deskripsi barang yang panjang\nDeskripsi barang yang panjang\nDeskripsi barang yang panjang"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="17sp"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:layout_marginBottom="@dimen/_16sdp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="@dimen/_20sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginRight="@dimen/_20sdp"
-                    android:fontFamily="@font/quicksand_medium"
-                    android:gravity="center"
-                    android:text="Baju kurung adalah salah satu pakaianadat masyarakat Melayu di Brunei Darussalam, Indonesia, Malaysia, Singapura, dan Thailand bagian selatan." />
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_5sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:background="?colorSecondaryVariant" />
-
+                    android:layout_height="wrap_content"/>
                 <LinearLayout
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:layout_marginHorizontal="@dimen/_8sdp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_20sdp"
-                    android:layout_marginRight="@dimen/_20sdp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:fontFamily="@font/quicksand_medium"
-                        android:text="Informasi Penyedia Sewa:" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_10sdp"
-
-                        android:orientation="horizontal">
-
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/imgStore"
-                            android:layout_width="@dimen/_50sdp"
-                            android:layout_height="@dimen/_50sdp"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/website" />
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="@dimen/_20sdp"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/txt_nama_penyedia"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/quicksand_bold"
-                                android:text="Nama Pemilik"
-                                android:textColor="?colorPrimary"
-                                android:textSize="@dimen/_20sdp" />
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginRight="@dimen/_5sdp"
-                                    android:src="@drawable/ic_baseline_storefront_24" />
-
-                                <TextView
-                                    android:id="@+id/txt_store"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:fontFamily="@font/quicksand_medium"
-                                    android:text="Nama Toko" />
-                            </LinearLayout>
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/place_24"
-                            app:tint="?colorPrimary" />
-
-
-                        <TextView
-                            android:id="@+id/txt_alamat_penyedia"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="@dimen/_5sdp"
-                            android:fontFamily="@font/quicksand_bold"
-                            android:text="Padang" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/phone_24"
-                            app:tint="?colorPrimary" />
-
-                        <TextView
-                            android:id="@+id/txt_telp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="@dimen/_5sdp"
-                            android:fontFamily="@font/quicksand_bold"
-                            android:text="08129048" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/whatsapp_1"
-                            app:tint="?colorPrimary" />
-
-                        <TextView
-                            android:id="@+id/txt_WA"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="@dimen/_5sdp"
-                            android:fontFamily="@font/quicksand_bold"
-                            android:text="08129048" />
-                    </LinearLayout>
-
-
-                </LinearLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_5sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginBottom="@dimen/_10sdp"
-                    android:background="?colorSecondaryVariant" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_20sdp"
-                        android:layout_marginRight="@dimen/_20sdp"
-                        android:orientation="horizontal">
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/quicksand_bold"
-                                android:text="Penilaian Ulasan Barang"
-                                android:textSize="@dimen/_14sdp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/quicksand_medium"
-                                android:id="@+id/rateKosong"
-                                android:visibility="visible"
-                                android:text="Rating belum Tersedia"/>
-                            <RelativeLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:visibility="visible"
-                                android:layout_marginBottom="-10dp"
-                                android:id="@+id/ulasanLayout"
-                                android:orientation="horizontal">
-
-                                <androidx.appcompat.widget.AppCompatRatingBar
-                                    android:id="@+id/ratingBar"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:isIndicator="true"
-                                    android:numStars="5"
-                                    android:progressTint="?colorPrimary"
-                                    android:rating="3.4"
-                                    android:scaleX=".5"
-                                    android:scaleY=".5"
-                                    android:stepSize="0.5"
-                                    android:transformPivotX="0dp"
-                                    android:transformPivotY="10dp" />
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="-110dp"
-                                    android:layout_toRightOf="@id/ratingBar"
-                                    android:orientation="horizontal">
-
-                                    <TextView
-                                        android:id="@+id/ratingCount"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="match_parent"
-                                        android:layout_gravity="bottom"
-                                        android:fontFamily="@font/quicksand_bold"
-                                        android:gravity="bottom"
-                                        android:text="2.3"
-                                        android:textColor="?colorPrimary"
-                                        android:textSize="@dimen/_14sdp" />
-
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="match_parent"
-                                        android:layout_gravity="bottom"
-                                        android:fontFamily="@font/quicksand_bold"
-                                        android:gravity="bottom"
-                                        android:text="/5"
-                                        android:textColor="?colorPrimary"
-                                        android:textSize="@dimen/_12sdp" />
-                                </LinearLayout>
-
-
-                            </RelativeLayout>
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
+                    android:layout_height="wrap_content">
                     <RelativeLayout
+                        android:layout_weight="1"
+                        android:elevation="@dimen/_2sdp"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/_1sdp"
-                        android:layout_marginLeft="@dimen/_5sdp"
-                        android:layout_marginBottom="@dimen/_10sdp"
-                        android:layout_marginRight="@dimen/_5sdp"
-                        android:background="?colorSecondaryVariant" />
+                        android:layout_height="match_parent">
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        app:spanCount="5"
-                        tools:listitem="@layout/row_ulasan"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        android:id="@+id/rvUlasan"/>
-
-
+                        <TextView
+                            android:id="@+id/m"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Mulai dari"
+                            android:textColor="@color/dark_gray" />
+                        <TextView
+                            android:id="@+id/txt_tarif"
+                            android:layout_below="@id/m"
+                            android:text="Rp. 74.000"
+                            android:textColor="@color/teal_200"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:text="/hari"
+                            android:layout_toRightOf="@id/txt_tarif"
+                            android:layout_below="@id/m"
+                            android:layout_marginTop="@dimen/_1sdp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textColor="@color/dark_gray"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_weight="1"
+                        android:elevation="@dimen/_2sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:id="@+id/b"
+                            android:text="Barang tersedia"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textColor="@color/dark_gray"
+                            android:layout_marginBottom="@dimen/_4sdp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:id="@+id/txt_stok"
+                            android:layout_below="@id/b"
+                            android:text="10"
+                            android:textColor="@color/teal_200"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:text=" tersedia"
+                            android:layout_toRightOf="@id/txt_stok"
+                            android:layout_below="@id/b"
+                            android:layout_marginTop="@dimen/_1sdp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textColor="@color/dark_gray"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </RelativeLayout>
                 </LinearLayout>
 
             </LinearLayout>
 
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/layoutInfoToko"
+                android:visibility="gone"
+                android:layout_below="@id/l_pilihan"
+                android:layout_marginHorizontal="@dimen/_28sdp"
+                android:layout_marginTop="@dimen/_14sdp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <RelativeLayout
+                        android:id="@+id/l_toko"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/card1"
+                            app:cardCornerRadius="@dimen/_8sdp"
+                            android:layout_width="@dimen/_70sdp"
+                            android:layout_height="@dimen/_70sdp">
+                            <ImageView
+                                android:id="@+id/imgStore"
+                                android:src="@drawable/website"
+                                android:scaleType="fitXY"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"/>
+                        </androidx.cardview.widget.CardView>
 
-        </androidx.core.widget.NestedScrollView>
+                        <LinearLayout
+                            android:layout_toEndOf="@id/card1"
+                            android:layout_marginEnd="@dimen/_4sdp"
+                            android:layout_marginStart="@dimen/_12sdp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <TextView
+                                android:id="@+id/txt_nama_penyedia"
+                                android:text="Kasual Store"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:textColor="@color/black"
+                                android:textSize="22sp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_marginVertical="@dimen/_2sdp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:src="@drawable/ic_toko"
+                                    android:layout_marginRight="@dimen/_8sdp"
+                                    android:layout_width="@dimen/_12sdp"
+                                    android:layout_height="@dimen/_12sdp"/>
+                                <TextView
+                                    android:id="@+id/txt_store"
+                                    android:text="alamat  dataIsiKategori.size()"
+                                    android:fontFamily="@font/poppins_medium"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_marginVertical="@dimen/_6sdp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:src="@drawable/ic_location"
+                                    android:layout_marginRight="@dimen/_8sdp"
+                                    android:layout_width="@dimen/_12sdp"
+                                    android:layout_height="@dimen/_12sdp"/>
+                                <TextView
+                                    android:id="@+id/txt_alamat_penyedia"
+                                    android:text="alamat "
+                                    android:fontFamily="@font/poppins_medium"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"/>
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/l_kontak"
+                        android:layout_below="@id/l_toko"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:text="Kontak Toko"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_marginVertical="@dimen/_6sdp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:src="@drawable/ic_whatsapp"
+                                android:layout_marginEnd="@dimen/_8sdp"
+                                android:layout_width="@dimen/_12sdp"
+                                android:layout_height="@dimen/_12sdp"/>
+                            <TextView
+                                android:id="@+id/txt_WA"
+                                android:text="alamat  dataIsiKategori"
+                                android:fontFamily="@font/poppins_medium"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/deskrip_toko"
+                        android:text="Menyediakan Barang barang berkualitas yang terbaru"
+                        android:layout_marginTop="@dimen/_12sdp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textSize="16sp"
+                        android:layout_below="@id/l_kontak"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
+            </androidx.core.widget.NestedScrollView>
+
+            <RelativeLayout
+                android:id="@+id/layoutUlasan"
+                android:visibility="gone"
+                android:layout_below="@id/l_pilihan"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/pnln"
+                    android:text="Penilaian Ulasan Barang"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <RelativeLayout
+                    android:id="@+id/l_rating"
+                    android:layout_below="@id/pnln"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/ratingLayout"
+                        android:visibility="visible"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:orientation="horizontal">
+                        <androidx.appcompat.widget.AppCompatRatingBar
+                            android:id="@+id/totalRatingBar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/Widget.AppCompat.RatingBar.Indicator"
+                            android:isIndicator="true"
+                            android:layout_marginStart="@dimen/_12sdp"
+
+                            android:numStars="5"
+                            android:progressTint="@color/orange"
+                            android:rating="3.4"
+                            android:scaleX=".7"
+                            android:scaleY=".7"
+                            android:stepSize="0.5" />
+                        <TextView
+                            android:id="@+id/ratingCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="bottom"
+                            android:fontFamily="@font/quicksand_bold"
+                            android:gravity="center_vertical"
+                            android:text="2.3"
+                            android:textColor="?colorPrimary"
+                            android:textSize="@dimen/_14sdp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="bottom"
+                            android:fontFamily="@font/quicksand_bold"
+                            android:gravity="center_vertical"
+                            android:text="/5"
+                            android:textColor="?colorPrimary"
+                            android:textSize="@dimen/_12sdp" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/rateKosong"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/pnln"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="20sp"
+                    android:visibility="gone"
+                    android:gravity="center"
+                    android:text="Rating belum Tersedia"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_below="@id/l_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_12sdp"
+                    android:layout_gravity="center"
+                    app:spanCount="5"
+                    tools:listitem="@layout/row_ulasan"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:id="@+id/rvUlasan"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/order"
+                android:translationZ="1dp"
+                android:layout_weight="1"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/ic_btn_order"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/_14sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="Sewa Sekarang"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:layout_centerInParent="true"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+
+        </RelativeLayout>
 
     </LinearLayout>
-
-
-    <Button
-        android:id="@+id/btn_order"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/_15sdp"
-        android:text="Order" />
-
-
 </RelativeLayout>
-
-

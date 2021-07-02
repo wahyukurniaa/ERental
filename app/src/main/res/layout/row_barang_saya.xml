@@ -63,18 +63,18 @@
                         android:id="@+id/namaBarang"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/quicksand_bold"
+                        android:fontFamily="@font/poppins_semibold"
                         android:text="Nama Barang"
                         android:textColor="?colorPrimary"
-                        android:textSize="@dimen/_15sdp" />
+                        android:textSize="18sp" />
                     <TextView
                         android:id="@+id/TarifBarangg"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/quicksand_bold"
+                        android:fontFamily="@font/poppins_semibold"
                         android:text="Tarif Barang"
                         android:textColor="?colorPrimary"
-                        android:textSize="@dimen/_15sdp" />
+                        android:textSize="16sp" />
 
 
                 </LinearLayout>

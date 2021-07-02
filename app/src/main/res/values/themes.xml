@@ -11,7 +11,7 @@
         <item name="colorOnSecondary">#036DCF</item>
         <!-- Status bar color. -->
         <item name="android:windowBackground">@color/white</item>
-        <item name="android:statusBarColor">@color/ui_day</item>
+        <item name="android:statusBarColor">@color/main</item>
         <!-- Customize your theme here. -->
     </style>
 </resources>

@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -38,11 +39,11 @@ public class IsiKategoriActivity extends AppCompatActivity {
     private RecyclerView recycler_kategori;
     Adapter_IsiKategori adapter;
     ImageView back;
-    TextView title;
+    TextView title,kategori,jdl,isi;
 
     ShimmerFrameLayout shimmerFrameLayout;
     SwipeRefreshLayout swipeRefreshLayout;
-    RelativeLayout koneksi;
+    RelativeLayout koneksi, info;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,16 +72,62 @@ public class IsiKategoriActivity extends AppCompatActivity {
 
         swipeRefreshLayout = findViewById(R.id.swBarang);
         shimmerFrameLayout = findViewById(R.id.shimmer_barang);
-        koneksi = findViewById(R.id.layout_koneksi);
+        koneksi = findViewById(R.id.l_kosong);
+        info = findViewById(R.id.l_info);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 getDataIsiKategori();
             }
         });
+        koneksi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getDataIsiKategori();
+            }
+        });
 
         dataIsiKategori = new ArrayList<>();
         getDataIsiKategori();
+
+        kategori = findViewById(R.id.kategori);
+        jdl = findViewById(R.id.jdl);
+        isi = findViewById(R.id.isi);
+        set_l_info();
+
+    }
+
+    private void set_l_info(){
+        if (id.equals("5")){
+            kategori.setText(R.string.s5_0);
+            jdl.setText(R.string.s5_1);
+            isi.setText(R.string.s5_2);
+        }else if(id.equals("6")){
+            kategori.setText(R.string.s6_0);
+            jdl.setText(R.string.s6_1);
+            isi.setText(R.string.s6_2);
+        }else if (id.equals("3")){
+            kategori.setText(R.string.s3_0);
+            jdl.setText(R.string.s3_1);
+            isi.setText(R.string.s3_2);
+        }else if (id.equals("1")){
+            kategori.setText(R.string.s1_0);
+            jdl.setText(R.string.s1_1);
+            isi.setText(R.string.s1_2);
+        }else if (id.equals("7")){
+            kategori.setText(R.string.s7_0);
+            jdl.setText(R.string.s7_1);
+            isi.setText(R.string.s7_2);
+        }else if (id.equals("2")){
+            kategori.setText(R.string.s2_0);
+            jdl.setText(R.string.s2_1);
+            isi.setText(R.string.s2_2);
+        }else if (id.equals("4")){
+            kategori.setText(R.string.s4_0);
+            jdl.setText(R.string.s4_1);
+            isi.setText(R.string.s4_2);
+        }
+
     }
 
     private void setLoading() {
@@ -88,6 +135,7 @@ public class IsiKategoriActivity extends AppCompatActivity {
         shimmerFrameLayout.setVisibility(View.VISIBLE);
         koneksi.setVisibility(View.GONE);
         recycler_kategori.setVisibility(View.GONE);
+        info.setVisibility(View.GONE);
         shimmerFrameLayout.startShimmer();
     }
 
@@ -97,16 +145,17 @@ public class IsiKategoriActivity extends AppCompatActivity {
         koneksi.setVisibility(View.GONE);
         shimmerFrameLayout.stopShimmer();
         recycler_kategori.setVisibility(View.VISIBLE);
+        info.setVisibility(View.VISIBLE);
     }
 
     private void setGagal() {
         recycler_kategori.setVisibility(View.GONE);
+        info.setVisibility(View.GONE);
         swipeRefreshLayout.setRefreshing(false);
         shimmerFrameLayout.setVisibility(View.GONE);
         koneksi.setVisibility(View.VISIBLE);
         shimmerFrameLayout.stopShimmer();
     }
-
 
 
     public void getDataIsiKategori(){

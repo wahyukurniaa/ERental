@@ -2,9 +2,7 @@ package com.wahyukurnia.erental.Notif;
 
 
 public class Model_Notif  {
-
-
-
+    
         private String id_sewa_barang;
         private String id_user;
         private String id_barang;
@@ -30,8 +28,11 @@ public class Model_Notif  {
         private String telp_user;
         private String username;
         private String password;
+        private String nama_kategori;
+        private String gambar_;
+        private String status;
 
-    public Model_Notif(String id_sewa_barang, String id_user, String id_barang, String id_status, String banyak_sewa, String tanggal_awal, String tanggal_akhir, String alamat_penyewa, String jaminan, String jenis_transaksi, String jenis_pengiriman, String total_harga, String id_kategori, String id_store, String nama_barang, String tarif_barang, String deskripsi, String stok, String gambar_barang, String nama_user, String alamat_user, String email_user, String telp_user, String username, String password) {
+    public Model_Notif(String id_sewa_barang, String id_user, String id_barang, String id_status, String banyak_sewa, String tanggal_awal, String tanggal_akhir, String alamat_penyewa, String jaminan, String jenis_transaksi, String jenis_pengiriman, String total_harga, String id_kategori, String id_store, String nama_barang, String tarif_barang, String deskripsi, String stok, String gambar_barang, String nama_user, String alamat_user, String email_user, String telp_user, String username, String password, String nama_kategori, String gambar_, String status) {
         this.id_sewa_barang = id_sewa_barang;
         this.id_user = id_user;
         this.id_barang = id_barang;
@@ -57,6 +58,9 @@ public class Model_Notif  {
         this.telp_user = telp_user;
         this.username = username;
         this.password = password;
+        this.nama_kategori = nama_kategori;
+        this.gambar_ = gambar_;
+        this.status = status;
     }
 
     public String getId_sewa_barang() {
@@ -257,6 +261,30 @@ public class Model_Notif  {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getNama_kategori() {
+        return nama_kategori;
+    }
+
+    public void setNama_kategori(String nama_kategori) {
+        this.nama_kategori = nama_kategori;
+    }
+
+    public String getGambar_() {
+        return gambar_;
+    }
+
+    public void setGambar_(String gambar_) {
+        this.gambar_ = gambar_;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
 

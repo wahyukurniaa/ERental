@@ -5,29 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/main"
     tools:context=".Profil.EditProfilActivity">
 
     <include
         layout="@layout/toolbar_second"
         android:id="@+id/toolbar"/>
 
-
     <LinearLayout
+        android:background="@drawable/topshape"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="@dimen/_15sdp"
-        android:gravity="center">
+        android:gravity="top">
         <EditText
             android:id="@+id/edt_namauser_register"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/bg_login"
+            android:background="@drawable/bg_input"
             android:hint="Nama Lengkap"
             android:inputType="text"
             android:padding="10dp"
             android:singleLine="true"
+            android:fontFamily="@font/poppins_medium"
             android:textColor="@color/black"
             android:textColorHint="@color/material_on_background_disabled"/>
         <EditText
@@ -35,11 +37,12 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/bg_login"
+            android:background="@drawable/bg_input"
             android:hint="Alamat"
             android:inputType="text"
             android:padding="10dp"
             android:singleLine="true"
+            android:fontFamily="@font/poppins_medium"
             android:textColor="@color/black"
             android:textColorHint="@color/material_on_background_disabled"/>
         <EditText
@@ -47,11 +50,12 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/bg_login"
+            android:background="@drawable/bg_input"
             android:hint="Email"
             android:inputType="text"
             android:padding="10dp"
             android:singleLine="true"
+            android:fontFamily="@font/poppins_medium"
             android:textColor="@color/black"
             android:textColorHint="@color/material_on_background_disabled"/>
         <EditText
@@ -59,11 +63,12 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/bg_login"
+            android:background="@drawable/bg_input"
             android:hint="Telepon"
             android:inputType="text"
             android:padding="10dp"
             android:singleLine="true"
+            android:fontFamily="@font/poppins_medium"
             android:textColor="@color/black"
             android:textColorHint="@color/material_on_background_disabled"/>
         <EditText
@@ -71,11 +76,12 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/bg_login"
+            android:background="@drawable/bg_input"
             android:hint="Username"
             android:inputType="text"
             android:padding="10dp"
             android:singleLine="true"
+            android:fontFamily="@font/poppins_medium"
             android:textColor="@color/black"
             android:textColorHint="@color/material_on_background_disabled"/>
         <EditText
@@ -83,22 +89,27 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/bg_login"
+            android:background="@drawable/bg_input"
             android:hint="Password"
             android:inputType="textPassword"
             android:padding="10dp"
             android:singleLine="true"
+            android:fontFamily="@font/poppins_medium"
             android:textColor="@color/black"
             android:textColorHint="@color/material_on_background_disabled"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_update"
+            android:text="Update "
+            android:layout_margin="@dimen/_10sdp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_semibold"
+            android:layout_gravity="right"
+            android:paddingVertical="@dimen/_10sdp"
+            android:textColorHint="@color/material_on_background_disabled"/>
     </LinearLayout>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_update"
-        android:text="Update "
-        android:layout_margin="@dimen/_10sdp"
-        android:textColor="@color/white"
-        android:layout_gravity="right"
-        android:textColorHint="@color/material_on_background_disabled"/>
+
 
 </LinearLayout>

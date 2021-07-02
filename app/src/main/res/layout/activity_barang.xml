@@ -5,20 +5,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/main"
     tools:context=".Barang.BarangActivity">
 
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar_second" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_centerHorizontal="true"
-        android:id="@+id/recycler_barang"
+    <LinearLayout
+        android:background="@drawable/topshape"
+        android:paddingTop="@dimen/_5sdp"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/item_row_barang"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:spanCount="5" />
+        android:layout_height="match_parent">
+        <TextView
+            android:text="ⓘ Swipe ke kiri untuk hapus barang"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/dark_gray"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_centerHorizontal="true"
+            android:id="@+id/recycler_barang"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/item_row_barang"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:spanCount="5" />
+    </LinearLayout>
     <include
         layout="@layout/layout_kosong"
         android:visibility="gone"/>

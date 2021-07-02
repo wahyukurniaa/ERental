@@ -29,6 +29,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -65,13 +66,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-
 public class OrderActivity extends AppCompatActivity {
     API api;
     String id, id_user;
     TinyDB tinyDB;
     ImageView img_order;
-    Button btnConfirm;
+    RelativeLayout btnConfirm;
     TextView namaBarang_Order, hargaBarang, txtStok;
     EditText edt_banyakSewa, edt_alamatPenyewa, edt_Jaminan, edt_jenis_transaksi, edt_jenis_pengiriman;
     String gambar, banyakSewa;
@@ -125,9 +125,9 @@ public class OrderActivity extends AppCompatActivity {
         tglAkhir = findViewById(R.id.tgl_akhir);
         tglAwal = findViewById(R.id.tgl_awal);
 
-        String now = LocalDate.now().toString();
-        tglAwal.setText(now);
-        tglAkhir.setText(now);
+//        String now = LocalDate.now().toString();
+//        tglAwal.setText(now);
+//        tglAkhir.setText(now);
 
         tglAwal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,8 +154,8 @@ public class OrderActivity extends AppCompatActivity {
 
         edt_banyakSewa = findViewById(R.id.edt_banyakSewa);
         edt_alamatPenyewa = findViewById(R.id.edt_alamatPenyewa);
-        edt_jenis_transaksi = findViewById(R.id.edt_jenis_transaksi);
-        edt_jenis_pengiriman = findViewById(R.id.edt_pengiriman);
+//        edt_jenis_transaksi = findViewById(R.id.edt_jenis_transaksi);
+//        edt_jenis_pengiriman = findViewById(R.id.edt_pengiriman);
 
 
         AndroidNetworking.initialize(this);
@@ -195,7 +195,6 @@ public class OrderActivity extends AppCompatActivity {
         String alamatPenyewa = edt_alamatPenyewa.getText().toString(); //mengambil Value etNim menjadi string
         String transaksi = "COD"; //mengambil Value etNim menjadi string
         String pengiriman = "COD"; //mengambil Value etNim menjadi string
-
 
         int total = Integer.valueOf(banyakSewa) * Integer.valueOf(tarif) * size;
 

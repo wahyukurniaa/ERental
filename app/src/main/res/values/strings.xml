@@ -3,4 +3,33 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="koneksi">Ups! Sepertinya ada yang salah nih. Tap di sini untuk memuat ulang.</string>
+
+    <string name="s1_0">Pakaian</string>
+    <string name="s1_1">Biar Kamu makin trendy!</string>
+    <string name="s1_2">Koleksi yang membantu kamu memudahkan dalam memilih fashion sesuai kebutuhan. Yuk sewa!</string>
+
+    <string name="s2_0">Teknologi</string>
+    <string name="s2_1">Bikin acara makin meriah!</string>
+    <string name="s2_2">Bingung alat buat acara apa aja? mending sewa disini lengkap untuk teknologi. Yuk sewa!</string>
+
+    <string name="s3_0">Jasa</string>
+    <string name="s3_1">Biar kerjaanmu beres!</string>
+    <string name="s3_2">Berbagai jenis jasa yang kami sediakan, biar kamu gak kecapekan dan kerjaan beres. Yuk sewa!</string>
+
+    <string name="s4_0">Bangunan</string>
+    <string name="s4_1">Sewa tempat ga ribet!</string>
+    <string name="s4_2">Dari kosan, kontrakan, gudang hingga Co-Working sewa hanya dengan satu klik!</string>
+
+    <string name="s5_0">Fotografi</string>
+    <string name="s5_1">Abadikan momentmu!</string>
+    <string name="s5_2">Dengan setup kamera yang canggih, biar hasil fotomu makin cakep. Yuk sewa!</string>
+
+    <string name="s6_0">Kendaraan</string>
+    <string name="s6_1">Sewa kendaraan</string>
+    <string name="s6_2">Bingung rame-rame jalan kemana? takut kehujanan, mending sewa kendaraan di sini. Yuk Sewa!</string>
+
+    <string name="s7_0">Hiburan</string>
+    <string name="s7_1">Biar liburanmu kece!</string>
+    <string name="s7_2">Sewa sepeda, PS5 hingga lapangan futsal cuma ada disini. Yuk sewa!</string>
+
 </resources>

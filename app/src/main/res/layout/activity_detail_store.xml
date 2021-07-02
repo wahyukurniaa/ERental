@@ -18,7 +18,7 @@
             android:textSize="@dimen/_18sdp"
             android:layout_centerInParent="true"
             android:textColor="@color/white"
-            android:fontFamily="@font/quicksand_bold"
+            android:fontFamily="@font/poppins_semibold"
             android:id="@+id/namaToko"/>
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="@dimen/_30sdp"
@@ -32,7 +32,6 @@
 
         </de.hdodenhof.circleimageview.CircleImageView>
     </RelativeLayout>
-
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -79,7 +78,7 @@
                 android:id="@+id/namaStore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/quicksand_bold"
+                android:fontFamily="@font/poppins_semibold"
                 android:text="NamaToko.Com"
                 android:textColor="@color/black"
                 android:layout_gravity="center"
@@ -89,10 +88,11 @@
 
             <TextView
                 android:id="@+id/alamatStore"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/quicksand_medium"
+                android:fontFamily="@font/poppins_medium"
                 android:textAlignment="center"
+                android:gravity="center"
                 android:layout_marginLeft="@dimen/_20sdp"
                 android:layout_marginRight="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_10sdp"
@@ -103,64 +103,92 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_80sdp"
                 android:layout_marginLeft="@dimen/_20sdp"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:paddingTop="@dimen/_8sdp"
                 android:layout_marginRight="@dimen/_20sdp"
                 android:weightSum="2">
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/_12sdp"
                     android:background="@drawable/edmain"
-                    android:backgroundTint="@color/dark_gray">
+                    android:backgroundTint="@color/light_gray">
                     <TextView
+                        android:id="@+id/j"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Jumlah barang "
-                        android:layout_margin="@dimen/_7sdp"
-                        android:textColor="@color/bg_dark"
-                        android:fontFamily="@font/quicksand_medium"/>
-
-                    <TextView
-                        android:id="@+id/jmlBarang"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/quicksand_bold"
-                        android:text="000"
-                        android:textColor="@color/black"
                         android:layout_centerHorizontal="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginBottom="@dimen/_25sdp"
-                        android:textSize="@dimen/_18sdp" />
-
+                        android:textColor="@color/dark_gray"
+                        android:fontFamily="@font/poppins_medium"/>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_below="@id/j"
+                        android:gravity="center_horizontal"
+                        android:layout_centerHorizontal="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/jmlBarang"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="1000"
+                            android:textColor="@color/teal_200"
+                            android:textSize="@dimen/_14sdp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tersedia"
+                            android:layout_marginStart="@dimen/_6sdp"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:textColor="@color/dark_gray"
+                            android:fontFamily="@font/poppins_medium"/>
+                    </LinearLayout>
                 </RelativeLayout>
+
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:paddingVertical="@dimen/_12sdp"
                     android:background="@drawable/edmain"
-                    android:backgroundTint="@color/dark_gray">
+                    android:backgroundTint="@color/light_gray">
                     <TextView
+                        android:id="@+id/s"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Barang Disewa"
-                        android:layout_margin="@dimen/_7sdp"
-                        android:textColor="@color/bg_dark"
-                        android:fontFamily="@font/quicksand_medium"/>
-
-                    <TextView
-                        android:id="@+id/jmlSewa"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/quicksand_bold"
-                        android:text="000"
-                        android:textColor="@color/black"
                         android:layout_centerHorizontal="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginBottom="@dimen/_25sdp"
-                        android:textSize="@dimen/_18sdp" />
+                        android:textColor="@color/dark_gray"
+                        android:fontFamily="@font/poppins_medium"/>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_below="@id/s"
+                        android:gravity="center_horizontal"
+                        android:layout_centerHorizontal="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/jmlSewa"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="5000"
+                            android:textColor="@color/teal_200"
+                            android:textSize="@dimen/_14sdp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Disewa"
+                            android:layout_marginStart="@dimen/_6sdp"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:textColor="@color/dark_gray"
+                            android:fontFamily="@font/poppins_medium"/>
+                    </LinearLayout>
                 </RelativeLayout>
             </LinearLayout>
 
@@ -171,7 +199,7 @@
                 android:layout_gravity="center"
                 android:layout_height="match_parent"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:spanCount="2"
                 tools:listitem="@layout/item_row_isi_kategori" />

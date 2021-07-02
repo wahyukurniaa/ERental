@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/main"
     tools:context=".Barang.Detail_BarangSewaActivity">
 
     <include
@@ -12,13 +13,14 @@
         layout="@layout/toolbar_second" />
 
     <androidx.core.widget.NestedScrollView
+        android:background="@drawable/topshape"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/toolbar">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <LinearLayout
@@ -26,16 +28,21 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <ImageView
+                <androidx.cardview.widget.CardView
+                    app:cardCornerRadius="@dimen/_10sdp"
                     android:layout_marginLeft="@dimen/_20sdp"
-                    android:layout_marginTop="@dimen/_20sdp"
-                    android:layout_marginBottom="@dimen/_20sdp"
-                    android:id="@+id/imgBarang"
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="@dimen/_100sdp"
+                    android:layout_marginVertical="@dimen/_20sdp"
                     android:layout_marginRight="@dimen/_10sdp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/website" />
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="@dimen/_100sdp">
+                    <ImageView
+                        android:id="@+id/imgBarang"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="@dimen/_100sdp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/website" />
+                </androidx.cardview.widget.CardView>
 
                 <LinearLayout
                     android:layout_marginRight="@dimen/_20sdp"
@@ -48,23 +55,25 @@
                         android:id="@+id/namaBarang"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/quicksand_bold"
+                        android:fontFamily="@font/poppins_semibold"
                         android:text="Nama Barang"
                         android:textColor="?colorPrimary"
-                        android:textSize="@dimen/_15sdp" />
+                        android:textSize="20sp" />
 
                     <TextView
                         android:id="@+id/hargaBarang"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/quicksand_medium"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textSize="16sp"
                         android:text="Rp. 100.000 /Hari" />
 
                     <TextView
                         android:id="@+id/banyakBarang"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/quicksand_medium"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textSize="16sp"
                         android:text="5 item" />
 
                 </LinearLayout>
@@ -80,17 +89,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:id="@+id/t1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Nama Pemilik "
-                        android:fontFamily="@font/quicksand_medium"/>
+                        android:textSize="16sp"
+                        android:fontFamily="@font/poppins_medium"/>
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_toEndOf="@id/t1"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Audi Rahman"
-                        android:fontFamily="@font/quicksand_bold"
+                        android:gravity="end"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textSize="18sp"
                         android:textColor="?colorPrimary"
-                        android:layout_alignParentRight="true"
+
                         android:id="@+id/namaPenyewa"/>
                 </RelativeLayout>
 
@@ -99,17 +113,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:id="@+id/t2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Alamat Pemilik "
-                        android:fontFamily="@font/quicksand_medium"/>
+                        android:textSize="16sp"
+                        android:fontFamily="@font/poppins_medium"/>
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_toEndOf="@id/t2"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Audi Rahman"
-                        android:fontFamily="@font/quicksand_bold"
+                        android:gravity="end"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textSize="18sp"
                         android:textColor="?colorPrimary"
-                        android:layout_alignParentRight="true"
+
                         android:id="@+id/alamat"/>
 
                 </RelativeLayout>

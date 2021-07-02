@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/main"
+    tools:context=".Notif.DetailNotificationActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_second" />
+
+    <androidx.core.widget.NestedScrollView
+        android:background="@drawable/topshape"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:paddingTop="@dimen/_26sdp"
+            android:paddingHorizontal="@dimen/_18sdp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.cardview.widget.CardView
+                app:cardCornerRadius="@dimen/_10sdp"
+                android:layout_width="@dimen/_120sdp"
+                android:layout_height="@dimen/_120sdp">
+                <ImageView
+                    android:id="@+id/imgDetailNotif"
+                    android:src="@drawable/website"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:text="Informasi Sewa"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/bg_dark"
+                android:gravity="center"
+                android:textSize="22sp"
+                android:layout_marginVertical="@dimen/_12sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <RelativeLayout
+                android:layout_marginBottom="@dimen/_12sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/t1"
+                    android:text="Nama Penyewa"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="@color/dark_gray"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/namaDetailNotif"
+                    android:layout_toEndOf="@+id/t1"
+                    android:text="Contoh Nama"
+                    android:textAlignment="textEnd"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="@color/main"
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_marginBottom="@dimen/_12sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="Tanggal Penyewa"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="@color/dark_gray"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/tgl1DetailNotif"
+                    android:text="01-01-2021"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="@color/main"
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_marginBottom="@dimen/_12sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="Tanggal Pengembalian"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="@color/dark_gray"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/tgl2DetailNotif"
+                    android:text="31-01-2021"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="@color/main"
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_marginBottom="@dimen/_12sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/t2"
+                    android:text="Alamat Penyewa"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="@color/dark_gray"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/alamatDetailNotif"
+                    android:layout_toEndOf="@+id/t2"
+                    android:textAlignment="textEnd"
+                    android:text="berjalan jalan berjalan jalan"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="@color/main"
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_marginBottom="@dimen/_12sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="Status Sewa"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="@color/dark_gray"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/statusDetailNotif"
+                    android:textAlignment="textEnd"
+                    android:text="Selesai"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="@color/main"
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_marginBottom="@dimen/_12sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="Jumlah Sewa"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="@color/dark_gray"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/jumlahDetailNotif"
+                    android:textAlignment="textEnd"
+                    android:text="1 item"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="@color/main"
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_marginBottom="@dimen/_12sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="Total Harga Sewa"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="@color/dark_gray"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/totalDetailNotif"
+                    android:textAlignment="textEnd"
+                    android:text="Rp. 50,000,-"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="@color/main"
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+            <TextView
+                android:text="Jaminan Sewa"
+                android:layout_marginBottom="@dimen/_12sdp"
+                android:textSize="15sp"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/dark_gray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            
+            <androidx.cardview.widget.CardView
+                app:cardCornerRadius="@dimen/_12sdp"
+                android:layout_marginHorizontal="@dimen/_24sdp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_150sdp">
+                <ImageView
+                    android:id="@+id/jaminanDetailNotif"
+                    android:src="@drawable/website"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"/>
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:weightSum="2"
+                android:layout_marginVertical="@dimen/_18sdp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:id="@+id/btnTerima"
+                    android:layout_weight="1"
+                    android:paddingVertical="@dimen/_12sdp"
+                    android:layout_marginEnd="@dimen/_6sdp"
+                    android:background="@drawable/edmain"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:text="Terima"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/btnTolak"
+                    android:layout_weight="1"
+                    android:paddingVertical="@dimen/_12sdp"
+                    android:layout_marginStart="@dimen/_6sdp"
+                    android:background="@drawable/edmain"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:text="Tolak"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

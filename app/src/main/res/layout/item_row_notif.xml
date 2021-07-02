@@ -2,110 +2,75 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/_20sdp"
+    android:layout_marginEnd="@dimen/_15sdp"
+    android:layout_marginTop="@dimen/_15sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/detail_notif"
     android:orientation="vertical">
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/kategori_notif"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_15sdp"
-        android:orientation="horizontal">
+        android:background="@drawable/ic_green_kategori"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="center"
+        android:text="Fotografi"
+        android:textColor="@color/second"
+        android:textSize="@dimen/_12sdp"
+        android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/img_barang"
-            android:layout_width="@dimen/_50sdp"
-            android:layout_height="@dimen/_50sdp"
-            android:layout_marginRight="@dimen/_15sdp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/website" />
+    <RelativeLayout
+        android:layout_marginTop="@dimen/_6sdp"
+        android:layout_marginBottom="@dimen/_12sdp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardImage"
+            app:cardCornerRadius="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp">
+            <ImageView
+                android:id="@+id/img_barang"
+                android:src="@drawable/website"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </androidx.cardview.widget.CardView>
 
-
+        <TextView
+            android:id="@+id/judulNotif"
+            android:layout_toRightOf="@id/cardImage"
+            android:text="Nama Barang"
+            android:fontFamily="@font/poppins_semibold"
+            android:textSize="18sp"
+            android:textColor="@color/bg_dark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
         <LinearLayout
+            android:layout_below="@id/judulNotif"
+            android:layout_toRightOf="@id/cardImage"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
+            android:layout_height="wrap_content">
             <TextView
-                android:id="@+id/judulNotif"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/quicksand_bold"
-                android:text="Baju Kurung"
-                android:textColor="?colorPrimary"
-                android:layout_marginBottom="@dimen/_5sdp"
-                android:textSize="@dimen/_14sdp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Akan di Sewa Oleh Nama Pada"
-                    android:fontFamily="@font/quicksand_medium"
-                    android:id="@+id/namaPenyewa"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="2021-02-01"
-                    android:id="@+id/tgl_awal"
-                    android:fontFamily="@font/quicksand_medium" />
-
-            </LinearLayout>
-
-            <TextView
+                android:id="@+id/namaPenyewa"
+                android:text="Akan di Sewa Oleh data.getNama_user()+ pada"
+                android:textColor="@color/dark_gray"
+                android:fontFamily="@font/poppins_medium"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_baseline_access_time_24"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:text="2021-01-20"
-                android:drawablePadding="@dimen/_5sdp"
-                android:layout_gravity="center_vertical"
-                android:gravity="center_vertical"
-                android:id="@+id/tglNotif"
-                android:fontFamily="@font/quicksand_medium"/>
-
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tgl_awal"
+                android:text="Tanggal 20-03-2021 sampai 23-03-2021 "
+                android:textColor="@color/dark_gray"
+                android:fontFamily="@font/poppins_medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
         </LinearLayout>
+    </RelativeLayout>
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/_15sdp"
-        android:layout_marginRight="@dimen/_15sdp"
-        android:layout_marginBottom="@dimen/_10sdp"
-        android:weightSum="2">
-
-        <Button
-            android:id="@+id/btnTolak"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:text="Tolak" />
-
-        <Button
-            android:id="@+id/btnTerima"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:text="Terima" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="?colorSecondaryVariant" />
 </LinearLayout>

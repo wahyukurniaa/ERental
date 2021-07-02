@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="5"
+    android:orientation="vertical"
+    android:background="@color/main"
+    tools:context=".Register1Activity">
+
+    <LinearLayout
+        android:layout_weight="3.5"
+        android:paddingStart="@dimen/_22sdp"
+        android:paddingTop="@dimen/_26sdp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:text="Daftar"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/white"
+            android:textSize="38sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Silahkan Daftar Untuk Mulai"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_medium"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_weight="1.5"
+        android:background="@drawable/topshape"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="20dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nama Lengkap"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:fontFamily="@font/poppins_semibold"
+            android:textSize="14sp"/>
+        <EditText
+            android:id="@+id/namalengkap_register"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bg_input"
+            android:inputType="text"
+            android:paddingStart="15dp"
+            android:paddingVertical="-100dp"
+            android:fontFamily="@font/poppins_medium"
+            android:singleLine="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alamat"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:fontFamily="@font/poppins_semibold"
+            android:textSize="14sp"/>
+        <EditText
+            android:id="@+id/alamat_register"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bg_input"
+            android:inputType="text"
+            android:paddingStart="15dp"
+            android:paddingVertical="-100dp"
+            android:fontFamily="@font/poppins_medium"
+            android:singleLine="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:fontFamily="@font/poppins_semibold"
+            android:textSize="14sp"/>
+        <EditText
+            android:id="@+id/email_register"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bg_input"
+            android:inputType="text"
+            android:paddingStart="15dp"
+            android:paddingVertical="-100dp"
+            android:fontFamily="@font/poppins_medium"
+            android:singleLine="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Telepon"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:fontFamily="@font/poppins_semibold"
+            android:textSize="14sp"/>
+        <EditText
+            android:id="@+id/telepon_register"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bg_input"
+            android:inputType="text"
+            android:paddingStart="15dp"
+            android:paddingVertical="-100dp"
+            android:fontFamily="@font/poppins_medium"
+            android:singleLine="true" />
+
+        <RelativeLayout
+            android:paddingStart="@dimen/_4sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/ltambah"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_6sdp"
+                    android:src="@drawable/edmain"/>
+                <ImageView
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_6sdp"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:src="@drawable/edmain"
+                    app:tint="@color/dark_gray"
+                    android:alpha="0.3"/>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/next_register"
+                android:background="@drawable/edmain"
+                android:layout_alignParentEnd="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="@dimen/_32sdp"
+                    android:paddingVertical="@dimen/_16sdp"
+                    android:text="Selanjutnya"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="@color/white"/>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

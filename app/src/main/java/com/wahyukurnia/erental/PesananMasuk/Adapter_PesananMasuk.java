@@ -59,7 +59,7 @@ public class Adapter_PesananMasuk extends RecyclerView.Adapter<Adapter_PesananMa
                 intent.putExtra("namaPenyewa", data.getNama_user());
                 intent.putExtra("tglAwal", data.getTanggal_awal());
                 intent.putExtra("tglAkhir", data.getTanggal_akhir());
-                intent.putExtra("alamat", data.getAlamat_user());
+                intent.putExtra("alamat", data.getAlamat_penyewa());
                 intent.putExtra("status", data.getStatus()); ///isi kk
                 intent.putExtra("gambarBarang", data.getGambar_barang());
                 intent.putExtra("gambarJaminan", data.getJaminan());

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,10 +47,17 @@ public class Adapter_IsiKategori extends RecyclerView.Adapter<Adapter_IsiKategor
         Locale localeId = new Locale("in", "ID");
         final NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeId);
         String id_barang = data.getId_barang();
+
+        holder.txt_store1.setText(data.getNama_store());
         holder.txt_namaKategori.setText(data.getNama_barang());
         holder.txt_tarif_kategori.setText(formatRupiah.format((double)Integer.valueOf(data.getTarif_barang())));
         Picasso.get().load(api.URL_GAMBAR_U + data.getGambar_barang()).into(holder.img_kategori);
-        holder.cardview.setOnClickListener(new View.OnClickListener() {
+
+        holder.txt_alamat.setText(data.getAlamat_store());
+        holder.txt_store2.setText(data.getNama_store());
+
+
+        holder.cardviewDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (Integer.valueOf(data.getStok()) > 0) {
@@ -75,9 +83,16 @@ public class Adapter_IsiKategori extends RecyclerView.Adapter<Adapter_IsiKategor
             }
         });
         if (Integer.valueOf(data.getStok())>0){
+//            holder.habis.setVisibility(View.GONE);
+//            holder.content.setVisibility(View.VISIBLE);
             holder.habis.setVisibility(View.GONE);
+
         }else {
+//            holder.habis.setVisibility(View.VISIBLE);
+//            holder.content.setVisibility(View.GONE);
+
             holder.habis.setVisibility(View.VISIBLE);
+            holder.cardviewDetail.setClickable(false);
         }
 
 
@@ -89,19 +104,27 @@ public class Adapter_IsiKategori extends RecyclerView.Adapter<Adapter_IsiKategor
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView txt_namaKategori, txt_tarif_kategori;
+        TextView txt_namaKategori, txt_tarif_kategori, txt_store1, txt_alamat, txt_store2;
         ImageView img_kategori;
-        CardView cardview;
-        RelativeLayout habis;
+        RelativeLayout detailIsiKategori, habis;
+        LinearLayout content ;
+        CardView cardviewDetail;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             context = itemView.getContext();
             habis = itemView.findViewById(R.id.habisLayout);
+            content = itemView.findViewById(R.id.isiLayout);
             txt_namaKategori = itemView.findViewById(R.id.txt_isi_kategori);
             txt_tarif_kategori = itemView.findViewById(R.id.txt_tarif);
             img_kategori = itemView.findViewById(R.id.img_isi_kategori);
-            cardview = itemView.findViewById(R.id.cardview_isi_kategori);
+            detailIsiKategori = itemView.findViewById(R.id.cardview_isi_kategori);
+
+            cardviewDetail = itemView.findViewById(R.id.cardview_detail_kategori);
+
+            txt_store1 = itemView.findViewById(R.id.store_isi_kategori);
+            txt_alamat = itemView.findViewById(R.id.alamat_isi_kategori);
+            txt_store2 = itemView.findViewById(R.id.store2_isi_kategori);
         }
     }
 }

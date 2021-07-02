@@ -1,107 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    android:id="@+id/cardview_detail_kategori"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingBottom="@dimen/_20sdp"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardCornerRadius="@dimen/_8sdp"
+    app:cardElevation="@dimen/_5sdp"
+    app:cardBackgroundColor="#ffffff"
+    android:layout_marginLeft="@dimen/_5sdp"
+    android:layout_marginTop="@dimen/_10sdp"
+    android:layout_marginRight="@dimen/_5sdp"
+    android:layout_marginBottom="@dimen/_10sdp"
     android:layout_width="@dimen/_140sdp"
-    android:layout_height="@dimen/_180sdp"
-    android:orientation="vertical">
+    android:layout_height="@dimen/_190sdp">
 
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardview_isi_kategori"
+    <RelativeLayout
+        android:translationZ="1dp"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_140sdp"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="@dimen/_5sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginRight="@dimen/_5sdp"
-        android:layout_marginBottom="@dimen/_10sdp"
-        android:background="@drawable/bg_isi"
-        android:clickable="true"
-        android:focusable="true"
-        android:foreground="?android:attr/selectableItemBackground"
-        app:cardCornerRadius="@dimen/_8sdp"
-        app:cardElevation="@dimen/_5sdp">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:id="@+id/habisLayout"
-                android:visibility="gone"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#63000000" />
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="@dimen/_25sdp"
-                    android:src="#8B000000" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/quicksand_bold"
-                    android:text="Habis"
-                    android:textColor="?colorOnPrimary"
-                    android:layout_centerInParent="true"
-                    android:textSize="@dimen/_13sdp"/>
-            </RelativeLayout>
-
-            <ImageView
-                android:id="@+id/img_isi_kategori"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/website"
-                android:translationZ="-100dp" />
-        </RelativeLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_50sdp"
-        android:layout_marginLeft="@dimen/_15sdp"
-        android:layout_marginTop="@dimen/_120sdp"
-        android:layout_marginRight="@dimen/_15sdp"
-        android:translationZ="@dimen/_5sdp"
-        app:cardCornerRadius="@dimen/_10sdp">
+        android:layout_height="match_parent">
 
         <LinearLayout
+            android:visibility="visible"
+            android:id="@+id/isiLayout"
+            android:weightSum="3"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical">
-
-
-            <TextView
-                android:id="@+id/txt_isi_kategori"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:id="@+id/cardview_isi_kategori"
+                android:layout_weight="1.2"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/quicksand_medium"
-                android:gravity="center"
-                android:text="Pakaian"
-                android:textStyle="bold" />
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/store_isi_kategori"
+                    android:text="example store"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    android:layout_marginTop="@dimen/_9sdp"
+                    android:paddingHorizontal="@dimen/_5sdp"
+                    android:background="@drawable/ic_blue_store"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/txt_tarif"
+                    android:text="Rp.1.000"
+                    android:layout_toStartOf="@id/txthari"
+                    android:textColor="@color/orange"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="4dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:text="Mulai dari"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textSize="8sp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_above="@id/txthari"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/txthari"
+                    android:text="/hari"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textSize="8sp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
 
-            <TextView
-                android:id="@+id/txt_tarif"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/quicksand_bold"
-                android:gravity="center"
-                android:text="Rp.50000"
-                android:textColor="?colorPrimary"
-                android:textStyle="bold" />
+                <ImageView
+                    android:id="@+id/img_isi_kategori"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/website"
+                    android:translationZ="-1dp" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/habisLayout"
+                    android:visibility="gone"
+                    android:layout_height="match_parent">
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#63000000" />
 
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/_25sdp"
+                        android:src="#8B000000" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:text="Habis"
+                        android:textColor="@color/white"
+                        android:layout_centerInParent="true"
+                        android:textSize="@dimen/_13sdp"/>
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/l_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.8"
+                android:weightSum="5"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/txt_isi_kategori"
+                    android:text="Jenis Pakaian"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="@color/black"
+                    android:alpha="0.9"
+                    android:textSize="15sp"
+                    android:layout_marginStart="@dimen/_6sdp"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <LinearLayout
+                    android:id="@+id/l_almt"
+                    android:layout_marginHorizontal="@dimen/_6sdp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:src="@drawable/ic_location"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:id="@+id/alamat_isi_kategori"
+                        android:text="alamat  dataIsiKategori.size()"
+                        android:textSize="10.5sp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginHorizontal="@dimen/_6sdp"
+                    android:layout_below="@id/l_almt"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:src="@drawable/ic_toko"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:id="@+id/store2_isi_kategori"
+                        android:text="Nama toko  dataIsiKategori.size()"
+                        android:maxLines="3"
+                        android:textSize="10.5sp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+            </LinearLayout>
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
-</RelativeLayout>
+
+
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

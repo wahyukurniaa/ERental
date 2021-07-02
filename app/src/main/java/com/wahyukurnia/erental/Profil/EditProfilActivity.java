@@ -133,6 +133,7 @@ ImageView back;
                         // do anything with response
 
                                 Intent i = new Intent(EditProfilActivity.this,ProfilActivity.class);
+                                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(i);
                                 tinyDB.putString("id_user",id);
                                 tinyDB.putString("keyNamaUser",edt_namauser_register.getText().toString());
@@ -143,7 +144,7 @@ ImageView back;
                                 Toast.makeText(getApplicationContext(), "Data berhasil di update..."
                                         ,Toast.LENGTH_LONG).show();
 
-
+                                finish();
                             }
 
                     @Override

@@ -2,7 +2,8 @@ package com.wahyukurnia.erental;
 
 public class API {
 
-        private String HOST = "https://hariselfian.my.id/api/";
+//        private String HOST = "https://hariselfian.my.id/api/";
+        private String HOST = "http://rental.kasirmediatama.com/rental/";
 
 
     public String URL_LOGIN = HOST + "Login.php";
