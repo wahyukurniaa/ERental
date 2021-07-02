@@ -11,170 +11,247 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/main"
         android:orientation="vertical">
 
         <include
             android:id="@+id/toolbar"
             layout="@layout/toolbar_second" />
 
-
-        <EditText
-            android:id="@+id/edt_namaStore"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_15sdp"
-            android:background="@drawable/edbg"
-            android:hint="Nama Store"
-            android:inputType="text"
-            android:paddingLeft="@dimen/_10sdp"
-            android:paddingTop="@dimen/_10sdp"
-            android:paddingBottom="@dimen/_10sdp"
-            android:singleLine="true" />
-
-
-        <EditText
-            android:id="@+id/edt_alamatStore"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_15sdp"
-            android:layout_marginRight="@dimen/_15sdp"
-            android:layout_marginBottom="@dimen/_15sdp"
-            android:background="@drawable/edbg"
-            android:hint="Alamat"
-            android:inputType="text"
-            android:paddingLeft="@dimen/_10sdp"
-            android:paddingTop="@dimen/_10sdp"
-            android:paddingBottom="@dimen/_10sdp"
-
-            android:singleLine="true" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_25sdp"
-                android:background="?android:windowBackground"
-                android:fontFamily="@font/quicksand_bold"
-                android:paddingLeft="@dimen/_5sdp"
-                android:paddingRight="@dimen/_5sdp"
-                android:text="Contact Person"
-                android:textColor="?colorPrimary" />
-
+            android:layout_height="match_parent"
+            android:background="@drawable/topshape"
+            android:orientation="vertical">
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_15sdp"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:layout_marginRight="@dimen/_15sdp"
-                android:layout_marginBottom="@dimen/_15sdp"
-                android:background="@drawable/bg_login"
                 android:orientation="vertical"
-                android:translationZ="-10dp">
-
-                <EditText
-                    android:id="@+id/edt_telpStore"
-                    android:layout_width="match_parent"
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/_15sdp"
-                    android:layout_marginTop="@dimen/_15sdp"
-                    android:layout_marginRight="@dimen/_15sdp"
-                    android:layout_marginBottom="@dimen/_15sdp"
-                    android:background="@drawable/edbg"
-                    android:hint="Nomor Telpon"
-                    android:inputType="phone"
-                    android:maxLines="1"
+                    android:layout_marginVertical="@dimen/_15sdp"
+                    android:background="?android:windowBackground"
+                    android:fontFamily="@font/poppins_semibold"
                     android:paddingLeft="@dimen/_5sdp"
-                    android:paddingTop="@dimen/_5sdp"
-                    android:paddingBottom="@dimen/_5sdp"
+                    android:paddingRight="@dimen/_5sdp"
+                    android:textSize="16sp"
+                    android:text="Informasi Toko"
+                    android:textColor="@color/bg_dark" />
+                <TextView
+                    android:text="Nama Toko"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textSize="15sp"
+                    android:textColor="@color/dark_gray"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <EditText
+                    android:id="@+id/edt_namaStore"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:layout_marginHorizontal="@dimen/_15sdp"
+                    android:background="@drawable/bg_input"
+                    android:hint="Nama Store"
+                    android:fontFamily="@font/poppins_medium"
+                    android:inputType="text"
+                    android:textSize="16sp"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/_10sdp"
                     android:singleLine="true" />
-
+                <TextView
+                    android:text="Alamat"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textSize="15sp"
+                    android:textColor="@color/dark_gray"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
                 <EditText
-                    android:inputType="phone"
-                    android:maxLines="1"
-                    android:id="@+id/edt_WAStore"
+                    android:id="@+id/edt_alamatStore"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:layout_marginLeft="@dimen/_15sdp"
-                    android:layout_marginRight="@dimen/_15sdp"
+                    android:layout_marginHorizontal="@dimen/_15sdp"
                     android:layout_marginBottom="@dimen/_15sdp"
-                    android:background="@drawable/edbg"
-                    android:hint="WhatsApp"
-                    android:paddingLeft="@dimen/_5sdp"
-                    android:paddingTop="@dimen/_5sdp"
-                    android:paddingBottom="@dimen/_5sdp" />
-
-                <EditText
-                    android:id="@+id/edt_IGStore"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:layout_marginLeft="@dimen/_15sdp"
-                    android:layout_marginRight="@dimen/_15sdp"
-                    android:layout_marginBottom="@dimen/_15sdp"
-                    android:background="@drawable/edbg"
-                    android:hint="Instagram"
-                    android:paddingLeft="@dimen/_5sdp"
-                    android:paddingTop="@dimen/_5sdp"
-                    android:paddingBottom="@dimen/_5sdp" />
-
+                    android:background="@drawable/bg_input"
+                    android:hint="Alamat"
+                    android:fontFamily="@font/poppins_medium"
+                    android:inputType="text"
+                    android:textSize="16sp"
+                    android:paddingLeft="@dimen/_10sdp"
+                    android:paddingTop="@dimen/_10sdp"
+                    android:paddingBottom="@dimen/_10sdp"
+                    android:singleLine="true" />
             </LinearLayout>
 
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_25sdp"
-                android:background="?android:windowBackground"
-                android:fontFamily="@font/quicksand_bold"
-                android:paddingLeft="@dimen/_5sdp"
-                android:paddingRight="@dimen/_5sdp"
-                android:text="Gambar Store"
-                android:textColor="?colorPrimary" />
-
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_140sdp"
-                android:layout_marginLeft="@dimen/_15sdp"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:layout_marginRight="@dimen/_15sdp"
-                android:layout_marginBottom="@dimen/_15sdp"
-                android:background="@drawable/bg_login"
-                android:orientation="vertical"
-                android:id="@+id/addPhoto"
-                android:translationZ="-10dp">
+                android:layout_height="wrap_content">
 
-                <ImageView
-                    android:id="@+id/placePhoto"
+                <TextView
+                    android:id="@+id/t1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_25sdp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:background="?android:windowBackground"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:paddingHorizontal="@dimen/_5sdp"
+                    android:textSize="16sp"
+                    android:text="Kontak Toko"
+                    android:textColor="@color/bg_dark" />
+
+                <LinearLayout
+                    android:layout_below="@id/t1"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_15sdp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ic_baseline_add_photo_alternate_24" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginRight="@dimen/_15sdp"
+                    android:layout_marginBottom="@dimen/_15sdp"
+                    android:background="@drawable/bg_login"
+                    android:orientation="vertical"
+                    >
+
+                    <TextView
+                        android:text="Nomor Telepon"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textSize="15sp"
+                        android:textColor="@color/dark_gray"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <EditText
+                        android:id="@+id/edt_telpStore"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_15sdp"
+                        android:layout_marginRight="@dimen/_15sdp"
+                        android:layout_marginBottom="@dimen/_15sdp"
+                        android:background="@drawable/bg_input"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textSize="16sp"
+                        android:hint="Nomor Telpon"
+                        android:inputType="phone"
+                        android:maxLines="1"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:paddingTop="@dimen/_5sdp"
+                        android:paddingBottom="@dimen/_5sdp"
+                        android:singleLine="true" />
+
+                    <TextView
+                        android:text="Whatsapp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textSize="15sp"
+                        android:textColor="@color/dark_gray"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <EditText
+                        android:inputType="phone"
+                        android:maxLines="1"
+                        android:id="@+id/edt_WAStore"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginLeft="@dimen/_15sdp"
+                        android:layout_marginRight="@dimen/_15sdp"
+                        android:layout_marginBottom="@dimen/_15sdp"
+                        android:background="@drawable/bg_input"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textSize="16sp"
+                        android:hint="WhatsApp"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:paddingTop="@dimen/_5sdp"
+                        android:paddingBottom="@dimen/_5sdp" />
+
+                    <TextView
+                        android:text="Instagram"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textSize="15sp"
+                        android:textColor="@color/dark_gray"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <EditText
+                        android:id="@+id/edt_IGStore"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginLeft="@dimen/_15sdp"
+                        android:layout_marginRight="@dimen/_15sdp"
+                        android:layout_marginBottom="@dimen/_15sdp"
+                        android:background="@drawable/bg_input"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textSize="16sp"
+                        android:hint="Instagram"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:paddingTop="@dimen/_5sdp"
+                        android:paddingBottom="@dimen/_5sdp" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_25sdp"
+                    android:background="?android:windowBackground"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:paddingLeft="@dimen/_5sdp"
+                    android:paddingRight="@dimen/_5sdp"
+                    android:textSize="16sp"
+                    android:text="Upload Gambar Toko"
+                    android:textColor="@color/bg_dark" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_140sdp"
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginRight="@dimen/_15sdp"
+                    android:layout_marginBottom="@dimen/_15sdp"
+                    android:background="@drawable/bg_login"
+                    android:orientation="vertical"
+                    android:id="@+id/addPhoto"
+                    android:translationZ="-10dp">
+
+                    <ImageView
+                        android:id="@+id/placePhoto"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_baseline_add_photo_alternate_24" />
 
 
-            </LinearLayout>
+                </LinearLayout>
 
-        </RelativeLayout>
+            </RelativeLayout>
 
-
-        <Button
-
-            android:id="@+id/btn_nextStore"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_margin="@dimen/_15sdp"
-            android:text="Next" />
+            <RelativeLayout
+                android:id="@+id/btn_nextStore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_margin="@dimen/_15sdp"
+                android:background="@drawable/edmain"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Next"
+                    android:paddingVertical="@dimen/_8sdp"
+                    android:textSize="16sp"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/poppins_semibold"/>
+            </RelativeLayout>
+        </LinearLayout>
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

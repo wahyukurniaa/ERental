@@ -5,97 +5,105 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:background="@color/main"
     tools:context=".Profil.ProfilActivity">
 
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar_second" />
 
-    <ImageView
-        android:layout_width="@dimen/_70sdp"
-        android:layout_height="@dimen/_70sdp"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:layout_marginBottom="@dimen/_20sdp"
-        android:src="@drawable/ic_baseline_account_circle_24"/>
-
     <LinearLayout
+        android:background="@drawable/topshape"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/_20sdp"
-        android:layout_marginRight="@dimen/_20sdp"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_70sdp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_25sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:src="@drawable/ic_baseline_account_circle_24"/>
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/quicksand_medium"
-            android:text="Nama Lengkap" />
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/nama"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Nama User "
-            android:textColor="?colorPrimary"
-            android:fontFamily="@font/quicksand_bold"
-            android:textSize="@dimen/_15sdp"
-            android:layout_marginBottom="@dimen/_10sdp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Nama Lengkap" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Alamat"
-            android:fontFamily="@font/quicksand_medium"/>
+            <TextView
+                android:id="@+id/nama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Nama User "
+                android:textColor="?colorPrimary"
+                android:fontFamily="@font/poppins_semibold"
+                android:textSize="18sp"
+                android:layout_marginBottom="@dimen/_10sdp"/>
 
-        <TextView
-            android:id="@+id/alamat"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Alamat"
-            android:fontFamily="@font/quicksand_bold"
-            android:textColor="?colorPrimary"
-            android:textSize="@dimen/_15sdp"
-            android:layout_marginBottom="@dimen/_10sdp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Alamat"
+                android:fontFamily="@font/poppins_medium"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Email"
-            android:fontFamily="@font/quicksand_medium"/>
+            <TextView
+                android:id="@+id/alamat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Alamat"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="?colorPrimary"
+                android:textSize="18sp"
+                android:layout_marginBottom="@dimen/_10sdp"/>
 
-        <TextView
-            android:id="@+id/email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Email"
-            android:fontFamily="@font/quicksand_bold"
-            android:textColor="?colorPrimary"
-            android:textSize="@dimen/_15sdp"
-            android:layout_marginBottom="@dimen/_10sdp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Email"
+                android:fontFamily="@font/poppins_medium"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Telepon"
-            android:fontFamily="@font/quicksand_medium" />
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Email"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="?colorPrimary"
+                android:textSize="18sp"
+                android:layout_marginBottom="@dimen/_10sdp"/>
 
-        <TextView
-            android:id="@+id/telp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Telepon"
-            android:fontFamily="@font/quicksand_bold"
-            android:textColor="?colorPrimary"
-            android:textSize="@dimen/_15sdp"
-            android:layout_marginBottom="@dimen/_10sdp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Telepon"
+                android:fontFamily="@font/poppins_medium" />
+
+            <TextView
+                android:id="@+id/telp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Telepon"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="?colorPrimary"
+                android:textSize="18sp"
+                android:layout_marginBottom="@dimen/_10sdp" />
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>

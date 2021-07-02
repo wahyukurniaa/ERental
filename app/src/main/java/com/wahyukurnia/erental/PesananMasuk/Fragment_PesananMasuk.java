@@ -58,7 +58,7 @@ public class Fragment_PesananMasuk extends Fragment {
         api = new API();
         AndroidNetworking.initialize(getContext());
 
-        kosong = view.findViewById(R.id.kosong);
+        kosong = view.findViewById(R.id.l_kosong);
         kosong.setVisibility(View.GONE);
 
 

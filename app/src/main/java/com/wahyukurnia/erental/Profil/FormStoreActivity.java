@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,7 +39,7 @@ import java.text.Normalizer;
 
 public class FormStoreActivity extends AppCompatActivity {
 
-    Button next;
+RelativeLayout next;
 String id_user;
 API api;
 TinyDB tinyDB;
@@ -46,6 +47,7 @@ EditText edt_namaStore, edt_alamatStore, edt_telpStore, edt_WAStore, edt_IGStore
     edt_gambar;
 TextView title;
 ImageView back;
+
 
 LinearLayout addPhoto;
 ImageView placePhoto;
@@ -103,8 +105,6 @@ ImageView placePhoto;
         edt_telpStore = findViewById(R.id.edt_telpStore);
         edt_WAStore = findViewById(R.id.edt_WAStore);
         edt_IGStore = findViewById(R.id.edt_IGStore);
-
-
 
         next = findViewById(R.id.btn_nextStore);
 
@@ -179,7 +179,6 @@ ImageView placePhoto;
     }
 
 
-
     public void aksiTambahStore(){
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -209,10 +208,6 @@ ImageView placePhoto;
 
             }
         });
-
-
-
-
 
     }
 

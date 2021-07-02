@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,26 +52,45 @@ public class Adapter_Notif extends RecyclerView.Adapter<Adapter_Notif.ViewHolder
         API api = new API();
         String id_sewa_barang =  data.getId_sewa_barang();
 
+        holder.kategoriNotif.setText(data.getNama_kategori()+"");
         holder.namaPenyewa.setText("Akan di Sewa Oleh "+data.getNama_user()+" pada");
-        holder.tglNotif.setText(data.getTanggal_awal());
-        holder.tglAwal.setText("Tanggal "+data.getTanggal_awal()+" sampai "+data.getTanggal_akhir());
-        Picasso.get().load(api.URL_GAMBAR_U+data.getGambar_barang()).into(holder.imgBarang);
+        holder.tglAwal.setText("Tanggal "+ data.getTanggal_awal() +" sampai "+ data.getTanggal_akhir());
+        Picasso.get().load(api.URL_GAMBAR_U+data.getGambar_barang()).placeholder(R.drawable.website).into(holder.imgBarang);
         holder.txtNama_Barang.setText(data.getNama_barang());
-        holder.btn_terima.setOnClickListener(new View.OnClickListener() {
+
+        holder.detail_notif.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                terima(data);
+                Intent intent = new Intent(context, DetailNotificationActivity.class);
+                intent.putExtra("idsewa", id_sewa_barang);
+                intent.putExtra("gambarsewa", data.getGambar_barang());
+                intent.putExtra("namapenyewa", data.getNama_user());
+                intent.putExtra("tglawal", data.getTanggal_awal());
+                intent.putExtra("tglakhir", data.getTanggal_akhir());
+                intent.putExtra("alamat", data.getAlamat_penyewa());
+                intent.putExtra("status", data.getStatus());
+                intent.putExtra("jumlahsewa", data.getBanyak_sewa());
+                intent.putExtra("harga", data.getTotal_harga());
+                intent.putExtra("jaminan", data.getJaminan());
+                intent.putExtra("telp", data.getTelp_user());
+                intent.putExtra("namabarang", data.getNama_barang());
+                context.startActivity(intent);
             }
         });
-        holder.btn_tolak.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               tolak(data);
 
-            }
-        });
-
-
+//        holder.btn_terima.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                terima(data);
+//            }
+//        });
+//        holder.btn_tolak.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//               tolak(data);
+//
+//            }
+//        });
 
 
     }
@@ -144,23 +164,24 @@ public class Adapter_Notif extends RecyclerView.Adapter<Adapter_Notif.ViewHolder
     @Override
     public int getItemCount() {
         return dataNotif.size();
+//        return 5;
+
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView txtNama_Barang, tglNotif, tglAwal, tglAkhir, namaPenyewa;
+        TextView txtNama_Barang, tglNotif, tglAwal, tglAkhir, namaPenyewa, kategoriNotif;
         ImageView imgBarang;
         Button btn_terima, btn_tolak;
+        LinearLayout detail_notif;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             context = itemView.getContext();
             tglAwal = itemView.findViewById(R.id.tgl_awal);
-            tglNotif = itemView.findViewById(R.id.tglNotif);
             namaPenyewa = itemView.findViewById(R.id.namaPenyewa);
             txtNama_Barang = itemView.findViewById(R.id.judulNotif);
-            btn_terima = itemView.findViewById(R.id.btnTerima);
-            btn_tolak = itemView.findViewById(R.id.btnTolak);
             imgBarang = itemView.findViewById(R.id.img_barang);
-
+            detail_notif = itemView.findViewById(R.id.detail_notif);
+            kategoriNotif = itemView.findViewById(R.id.kategori_notif);
         }
     }
 }

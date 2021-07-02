@@ -1,6 +1,7 @@
 package com.wahyukurnia.erental.Detail;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +16,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,16 +47,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class    DetailBarangActivity extends AppCompatActivity {
+public class DetailBarangActivity extends AppCompatActivity {
     String id,id_store;
-    TextView judul, txt_stok, txt_deskripsi, txt_nama_penyedia, txt_alamat_penyedia, txt_tarif,txt_store,txt_telp,txt_WA;
-    Button btn_order;
+    TextView judul, txt_stok, txt_deskripsi, txt_nama_penyedia, txt_alamat_penyedia, txt_tarif,txt_store,txt_WA;
+//    Button btn_order;
     ImageView img_detail,img_store, back;
-    TextView title;
+    TextView informasi, toko, ulasan;
     TextView rateCount, rateKosong;
     RatingBar ratingBar;
     API api;
-    RelativeLayout ulasan;
+    RelativeLayout layoutUlasan, btn_order;
+    NestedScrollView layoutInfoToko;
+    LinearLayout layoutInformasi, ratingLayout;
     TinyDB tinyDB;
     String stok;
     List<ModelRating>ratings;
@@ -67,14 +71,13 @@ public class    DetailBarangActivity extends AppCompatActivity {
         tinyDB = new TinyDB(this);
         AndroidNetworking.initialize(this);
 
-        back = findViewById(R.id.ib_back);
+        back = findViewById(R.id.side_back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-        title = findViewById(R.id.tv_toolbar);
 
         Intent i = getIntent();
         id = i.getStringExtra("id_barang");
@@ -93,13 +96,20 @@ public class    DetailBarangActivity extends AppCompatActivity {
         txt_nama_penyedia = findViewById(R.id.txt_nama_penyedia);
         txt_alamat_penyedia = findViewById(R.id.txt_alamat_penyedia);
         txt_store = findViewById(R.id.txt_store);
-        txt_telp = findViewById(R.id.txt_telp);
+//        txt_telp = findViewById(R.id.txt_telp);
         txt_WA = findViewById(R.id.txt_WA);
         txt_tarif = findViewById(R.id.txt_tarif);
         img_detail = findViewById(R.id.img_detail);
-        btn_order = findViewById(R.id.btn_order);
+        btn_order = findViewById(R.id.order);
 
-        getDataIsiKategori();
+        informasi = findViewById(R.id.informasi);
+        toko = findViewById(R.id.toko);
+        ulasan = findViewById(R.id.ulasan);
+        layoutUlasan = findViewById(R.id.layoutUlasan);
+        layoutInfoToko = findViewById(R.id.layoutInfoToko);
+        layoutInformasi = findViewById(R.id.layoutInformasi);
+
+        displayLayout();
 
         btn_order.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,7 +121,7 @@ public class    DetailBarangActivity extends AppCompatActivity {
                     startActivity(intent);
                 }else {
                     if (i.getStringExtra("id_user").equalsIgnoreCase(tinyDB.getString("keyIdUser"))){
-                        Toast.makeText(DetailBarangActivity.this, "Anda, Tidak Bisa Menyewa Barang Sendiri", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(DetailBarangActivity.this, "Anda Tidak Bisa Menyewa Barang Sendiri", Toast.LENGTH_SHORT).show();
                     }else {
                         Intent i = new Intent(DetailBarangActivity.this, OrderActivity.class);
                         i.putExtra("id_barang", "" + id);
@@ -124,9 +134,50 @@ public class    DetailBarangActivity extends AppCompatActivity {
 
         rateKosong = findViewById(R.id.rateKosong);
         rateCount = findViewById(R.id.ratingCount);
-        ratingBar = findViewById(R.id.ratingBar);
-        ulasan = findViewById(R.id.ulasanLayout);
-        getUlasan();
+        ratingBar = findViewById(R.id.totalRatingBar);
+        ratingLayout = findViewById(R.id.ratingLayout);
+
+    }
+
+    private void displayLayout(){
+        getDataIsiKategori();
+        layoutInformasi.setVisibility(View.VISIBLE);
+
+        informasi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                layoutInformasi.setVisibility(View.VISIBLE);
+                layoutInfoToko.setVisibility(View.GONE);
+                layoutUlasan.setVisibility(View.GONE);
+                informasi.setTextColor(getResources().getColor(R.color.black));
+                toko.setTextColor(getResources().getColor(R.color.dark_gray));
+                ulasan.setTextColor(getResources().getColor(R.color.dark_gray));
+            }
+        });
+
+        toko.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                layoutInformasi.setVisibility(View.GONE);
+                layoutInfoToko.setVisibility(View.VISIBLE);
+                layoutUlasan.setVisibility(View.GONE);
+                informasi.setTextColor(getResources().getColor(R.color.dark_gray));
+                toko.setTextColor(getResources().getColor(R.color.black));
+                ulasan.setTextColor(getResources().getColor(R.color.dark_gray));
+            }
+        });
+        ulasan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                layoutInformasi.setVisibility(View.GONE);
+                layoutInfoToko.setVisibility(View.GONE);
+                layoutUlasan.setVisibility(View.VISIBLE);
+                informasi.setTextColor(getResources().getColor(R.color.dark_gray));
+                toko.setTextColor(getResources().getColor(R.color.dark_gray));
+                ulasan.setTextColor(getResources().getColor(R.color.black));
+                getUlasan();
+            }
+        });
 
     }
 
@@ -142,7 +193,8 @@ public class    DetailBarangActivity extends AppCompatActivity {
                             if (response.getString("status").equalsIgnoreCase("sukses")) {
                                 rateCount.setText(response.getString("rate"));
                                 ratingBar.setRating((float) response.getDouble("rate"));
-                                ulasan.setVisibility(View.VISIBLE);
+
+                                ratingLayout.setVisibility(View.VISIBLE);
                                 rateKosong.setVisibility(View.GONE);
                                 JSONArray d = response.getJSONArray("res");
                                 Gson gson = new Gson();
@@ -157,7 +209,7 @@ public class    DetailBarangActivity extends AppCompatActivity {
                                 rvRating.setAdapter(adapterRating);
                                 adapterRating.notifyDataSetChanged();
                             }else {
-                                ulasan.setVisibility(View.GONE);
+                                ratingLayout.setVisibility(View.GONE);
                                 rateKosong.setVisibility(View.VISIBLE);
                             }
                         } catch (JSONException e) {
@@ -184,27 +236,29 @@ public class    DetailBarangActivity extends AppCompatActivity {
         String deskripsi = i.getStringExtra("deskripsi");
         stok = i.getStringExtra("stok");
         String nama_Store = i.getStringExtra("nama_store");
-        String telp_store = i.getStringExtra("telp_store");
+//        String telp_store = i.getStringExtra("telp_store");
         String WA_store = i.getStringExtra("wa_store");
         String alamat_Store = i.getStringExtra("alamat_store");
         String nama_user = i.getStringExtra("nama_user");
 
         judul.setText(nama);
-        txt_stok.setText("Tersedia " + stok);
+        txt_stok.setText(stok);
         txt_deskripsi.setText(deskripsi);
         txt_nama_penyedia.setText(nama_user);
         txt_alamat_penyedia.setText(alamat_Store);
         txt_store.setText(nama_Store);
-        txt_telp.setText(telp_store);
+
         txt_WA.setText(WA_store);
-        txt_tarif.setText(tarif + " /hari");
+        txt_tarif.setText(tarif);
         Picasso.get().load(api.URL_GAMBAR_U + i.getStringExtra("gambar_barang")).into(img_detail);
         Picasso.get().load(api.URL_GAMBAR_U+i.getStringExtra("gambar_toko")).into(img_store);
+
+        String nowastore = "+62" + WA_store.substring(1);
 
         txt_WA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url = "https://api.whatsapp.com/send?phone="+WA_store;
+                String url = "https://api.whatsapp.com/send?phone="+nowastore;
                 Intent s = new Intent(Intent.ACTION_VIEW);
                 s.setData(Uri.parse(url));
                 startActivity(s);
@@ -212,16 +266,16 @@ public class    DetailBarangActivity extends AppCompatActivity {
             }
         });
 
-        txt_telp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:" + telp_store));
-                if (intent.resolveActivity(getPackageManager()) != null) {
-                    startActivity(intent);
-                }
-            }
-        });
+//        txt_telp.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(Intent.ACTION_DIAL);
+//                intent.setData(Uri.parse("tel:" + telp_store));
+//                if (intent.resolveActivity(getPackageManager()) != null) {
+//                    startActivity(intent);
+//                }
+//            }
+//        });
         txt_store.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -230,7 +284,6 @@ public class    DetailBarangActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        title.setText("Detail Barang");
     }
 
 

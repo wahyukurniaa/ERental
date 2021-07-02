@@ -64,7 +64,7 @@ public class Fragment_Pesanan extends Fragment {
 //            }
 //        });
 
-        kosong = view.findViewById(R.id.kosong);
+        kosong = view.findViewById(R.id.l_kosong);
         kosong.setVisibility(View.GONE);
 
         tinyDB = new TinyDB(getContext());

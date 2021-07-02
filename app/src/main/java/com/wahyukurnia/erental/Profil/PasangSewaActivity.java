@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,7 +46,7 @@ import java.util.ArrayList;
 
 public class PasangSewaActivity extends AppCompatActivity {
     EditText edt_namaBarang,edt_tarif,edt_stokBarang,edtdeskripsi,edt_input_gambar;
-    Button pasang_sewa;
+    RelativeLayout pasang_sewa;
     API api;
     TextView title;
     ImageView back;

@@ -64,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
         txt_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(LoginActivity.this, RegisterActivity.class);
+                Intent i = new Intent(LoginActivity.this, Register1Activity.class);
                 startActivity(i);
             }
         });
@@ -101,11 +101,11 @@ public class LoginActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         try {
                             alertDialog.hide();
-                            int stat = response.getInt("status");
+                            int stat = response.getInt("store");
                             String message = response.getString("message");
                             Log.d("sukses", "code"+response);
-                            if (stat == 1){
 
+                            if (stat == 1){
 
                                 JSONObject data = response.getJSONObject("data");
                                 String id_user = data.getString("id_user");
@@ -130,7 +130,7 @@ public class LoginActivity extends AppCompatActivity {
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
 
-                            } else if (stat == 2) {
+                            } else if (stat == 0) {
 
                                 JSONObject data = response.getJSONObject("data");
                                 String id_user = data.getString("id_user");
@@ -145,6 +145,7 @@ public class LoginActivity extends AppCompatActivity {
                                 tinyDB.putString("keyEmailUser",email);
                                 tinyDB.putString("keyTelpUser",telp);
                                 tinyDB.putBoolean("keyLogin",true);
+                                tinyDB.putBoolean("keyStore",false);
                                 Log.e("salah",email);
 
                                 Toast.makeText(LoginActivity.this, "Login Sukses", Toast.LENGTH_SHORT).show();
@@ -153,9 +154,8 @@ public class LoginActivity extends AppCompatActivity {
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
 
-
                             } else {
-                                Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "username atau password salah", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();

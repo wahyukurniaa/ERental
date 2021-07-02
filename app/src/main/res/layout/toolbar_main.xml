@@ -29,10 +29,10 @@
             <TextView
                 android:id="@+id/tv_toolbar"
                 android:layout_width="wrap_content"
-                android:fontFamily="@font/quicksand_bold"
+                android:fontFamily="@font/poppins_semibold"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:textSize="@dimen/_18sdp"
+                android:textSize="22sp"
                 android:textColor="@color/white"
                 tools:text="E-Rental" />
 
@@ -51,13 +51,13 @@
 
             <ImageButton
                 android:id="@+id/ib_notif"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
                 android:background="?attr/actionBarItemBackground"
                 android:scaleType="fitCenter"
-                android:src="@drawable/ic_baseline_notifications_24"
+                android:src="@drawable/ic_notification"
                 android:tint="@color/white" />
 
         </RelativeLayout>

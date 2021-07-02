@@ -51,12 +51,16 @@ public class NotificationActivity extends AppCompatActivity {
         tinyDB = new TinyDB(this);
         id_user = tinyDB.getString("keyIdUser");
 
-        recycler_notif = findViewById(R.id.recycler_notif);
-        recycler_notif.setHasFixedSize(true);
 
-        kosong = findViewById(R.id.kosong);
+        kosong = findViewById(R.id.l_kosong);
+        kosong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getNotif();
+            }
+        });
 
-        btn_terima = findViewById(R.id.btnTerima);
+//        btn_terima = findViewById(R.id.btnTerima);
 
         back = findViewById(R.id.ib_back);
         back.setOnClickListener(new View.OnClickListener() {
@@ -69,8 +73,9 @@ public class NotificationActivity extends AppCompatActivity {
         title = findViewById(R.id.tv_toolbar);
         title.setText("Notifikasi");
 
+        recycler_notif = findViewById(R.id.recycler_notif);
+//        dataNotif = new ArrayList<>();
 
-        dataNotif = new ArrayList<>();
         getNotif();
     }
     public void getNotif(){
@@ -87,7 +92,9 @@ public class NotificationActivity extends AppCompatActivity {
                                 kosong.setVisibility(View.GONE);
                                 recycler_notif.setVisibility(View.VISIBLE);
                                 Log.d("tampilmenu","response:"+response);
+
                                 JSONArray res = response.getJSONArray("res");
+                                dataNotif = new ArrayList<>();
                                 Gson gson = new Gson();
                                 dataNotif.clear();
                                 for (int i = 0; i < res.length(); i++) {
@@ -101,7 +108,6 @@ public class NotificationActivity extends AppCompatActivity {
                             }else {
                                 kosong.setVisibility(View.VISIBLE);
                                 recycler_notif.setVisibility(View.GONE);
-                                Toast.makeText(NotificationActivity.this, "Data Kosong", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -115,9 +121,10 @@ public class NotificationActivity extends AppCompatActivity {
                         Log.e("tampil menu","response:"+anError);
                     }
                 });
-        if (dataNotif.isEmpty()){
-            kosong.setVisibility(View.VISIBLE);
-
-        }
+//        if (dataNotif.isEmpty()){
+//            Toast.makeText(NotificationActivity.this, "Data notif kosong", Toast.LENGTH_SHORT).show();
+//            kosong.setVisibility(View.VISIBLE);
+//            recycler_notif.setVisibility(View.GONE);
+//        }
     }
 }

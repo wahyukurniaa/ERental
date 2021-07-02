@@ -3,7 +3,6 @@ package com.wahyukurnia.erental.Barang;
 
 
 public class Model_Barang {
-
         private String id_barang;
         private String id_user;
         private String id_kategori;

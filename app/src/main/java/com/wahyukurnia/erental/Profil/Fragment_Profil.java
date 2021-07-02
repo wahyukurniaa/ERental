@@ -44,8 +44,6 @@ public class Fragment_Profil extends Fragment {
             startActivity(intent);
         }
 
-
-
         logout = view.findViewById(R.id.btn_logout);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override

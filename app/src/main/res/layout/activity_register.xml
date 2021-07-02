@@ -1,138 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="@dimen/_5sdp"
+    android:weightSum="5"
+    android:background="@color/main"
     tools:context=".RegisterActivity">
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_centerInParent="true"
-        android:layout_height="wrap_content">
-
     <LinearLayout
+        android:layout_weight="2.2"
+        android:paddingHorizontal="@dimen/_22sdp"
+        android:paddingTop="@dimen/_26sdp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_20sdp"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/quicksand_bold"
             android:text="Daftar"
-            android:textColor="?colorOnSecondary"
-            android:textSize="@dimen/_35sdp" />
-
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/white"
+            android:textSize="38sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_20sdp"
-            android:fontFamily="@font/quicksand_medium"
-            android:text="Daftar Di Sini Untuk Dapat Masuk"
-            android:textStyle="bold" />
+            android:text="Memudahkan kamu dalam menemukan barang yang akan disewa!"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_medium"/>
+    </LinearLayout>
 
-        <EditText
-            android:id="@+id/edt_namauser_register"
-            android:layout_width="fill_parent"
+    <LinearLayout
+        android:layout_weight="2.8"
+        android:background="@drawable/topshape"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="20dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/bg_login"
-            android:hint="Nama Lengkap"
-            android:inputType="text"
-            android:padding="10dp"
-            android:singleLine="true" />
-
-        <EditText
-            android:id="@+id/edt_alamatuser_register"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/bg_login"
-            android:hint="Alamat"
-            android:inputType="text"
-            android:padding="10dp"
-            android:singleLine="true" />
-
-        <EditText
-            android:id="@+id/edt_emailuser_register"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/bg_login"
-            android:hint="Email"
-            android:inputType="text"
-            android:padding="10dp"
-            android:singleLine="true"/>
-
-        <EditText
-            android:id="@+id/edt_telpuser_register"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/bg_login"
-            android:hint="Telepon"
-            android:inputType="phone"
-            android:padding="10dp"
-            android:singleLine="true"/>
-
+            android:text="Username"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:fontFamily="@font/poppins_semibold"
+            android:textSize="14sp"/>
         <EditText
             android:id="@+id/edt_username_register"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/bg_login"
-            android:hint="Username"
+            android:background="@drawable/bg_input"
             android:inputType="text"
-            android:padding="10dp"
-            android:singleLine="true"/>
+            android:paddingStart="15dp"
+            android:paddingVertical="-100dp"
+            android:fontFamily="@font/poppins_medium"
+            android:singleLine="true" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Password"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:fontFamily="@font/poppins_semibold"
+            android:textSize="14sp"/>
         <EditText
             android:id="@+id/edt_pass_register"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/bg_login"
-            android:hint="Password"
+            android:background="@drawable/bg_input"
             android:inputType="textPassword"
-            android:padding="10dp"
-            android:singleLine="true"/>
+            android:paddingStart="15dp"
+            android:paddingVertical="-100dp"
+            android:fontFamily="@font/poppins_medium"
+            android:singleLine="true" />
 
-        <Button
-            android:id="@+id/btn_daftar"
+        <RelativeLayout
+            android:paddingStart="@dimen/_4sdp"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_40sdp"
-            android:textColor="@color/white"
-            android:fontFamily="@font/quicksand_bold"
-            android:text="Daftar" />
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/ltambah"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_6sdp"
+                    android:src="@drawable/edmain"
+                    app:tint="@color/dark_gray"
+                    android:alpha="0.3"/>
+                <ImageView
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_6sdp"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:src="@drawable/edmain"/>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/btn_daftar"
+                android:background="@drawable/edmain"
+                android:layout_alignParentEnd="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="@dimen/_38sdp"
+                    android:paddingVertical="@dimen/_16sdp"
+                    android:text="Daftar"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="@color/white"/>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
 
     </LinearLayout>
 
-    </androidx.core.widget.NestedScrollView>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/_20sdp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/quicksand_medium"
-            android:text="Sudah Punya akun? "/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Masuk Di sini"
-            android:textColor="?colorPrimary"
-            android:id="@+id/txt_Login"/>
-
-    </LinearLayout>
-
-</RelativeLayout>
+</LinearLayout>

@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -63,14 +64,10 @@ public class Adapter_Kategori extends RecyclerView.Adapter<Adapter_Kategori.View
         return dataKategori.size();
     }
 
-
-
-
-
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView txt_kategori;
         ImageView gambar;
-        CardView cardView;
+        RelativeLayout cardView;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             context = itemView.getContext();

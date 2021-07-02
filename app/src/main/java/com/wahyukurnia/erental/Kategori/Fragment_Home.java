@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -59,7 +60,7 @@ public class Fragment_Home extends Fragment {
     RecyclerView rvJava;
 
     Adapter_Kategori adapter;
-    TextView title;
+    TextView title, seeAllFotografi, seeAllKendaraan, seeAllJasa;
     List<ModelSlider> sliders;
     SliderView sliderView;
 
@@ -145,8 +146,8 @@ public class Fragment_Home extends Fragment {
 //        sliders.add(new ModelSlider(2, api.URL_SLIDER+"sld2.jpg"));
 //        sliders.add(new ModelSlider(3, api.URL_SLIDER+"sld3.jpg"));
 //        sliders.add(new ModelSlider(4, api.URL_SLIDER+"sld4.jpg"));
-
-
+//        SliderAdapter adapter = new SliderAdapter(sliders);
+//        sliderView.setSliderAdapter(adapter);
 
         sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM); //set indicator animation by using IndicatorAnimationType. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
         sliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
@@ -160,9 +161,36 @@ public class Fragment_Home extends Fragment {
         dataKategori = new ArrayList<>();
         AndroidNetworking.initialize(getContext());
         getDataKategori();
+
+        seeAllFotografi = view.findViewById(R.id.seeAllFotografi);
+        seeAllFotografi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(),IsiKategoriActivity.class);
+                intent.putExtra("id","5");
+                startActivity(intent);
+            }
+        });
+        seeAllKendaraan = view.findViewById(R.id.seeAllKendaraan);
+        seeAllKendaraan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(),IsiKategoriActivity.class);
+                intent.putExtra("id","6");
+                startActivity(intent);
+            }
+        });
+        seeAllJasa = view.findViewById(R.id.seeAllJasa);
+        seeAllJasa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(),IsiKategoriActivity.class);
+                intent.putExtra("id","3");
+                startActivity(intent);
+            }
+        });
+        
         return view;
-
-
     }
 
     private void getSlider() {
@@ -173,10 +201,12 @@ public class Fragment_Home extends Fragment {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            Log.d("tampilmenu","response:"+response);
+
                             if (response.getString("status").equalsIgnoreCase("sukses")){
+
                                 JSONArray res = response.getJSONArray("res");
                                 sliders.clear();
+
                                 for(int i =0; i <res.length();i++){
                                     JSONObject data = res.getJSONObject(i);
                                     sliders.add(new ModelSlider(
@@ -184,8 +214,11 @@ public class Fragment_Home extends Fragment {
                                             data.getString("img_slider")
                                     ));
                                 }
+
                                 SliderAdapter adapter = new SliderAdapter(sliders);
                                 sliderView.setSliderAdapter(adapter);
+                            }else{
+                                Toast.makeText(getContext(), "Slider Gagal", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -195,7 +228,7 @@ public class Fragment_Home extends Fragment {
                     @Override
                     public void onError(ANError anError) {
                         setGagal();
-                        Log.e("tampil menu","response:"+anError);
+                        Toast.makeText(getContext(), "Internal Error", Toast.LENGTH_SHORT).show();
                     }
                 });
     }

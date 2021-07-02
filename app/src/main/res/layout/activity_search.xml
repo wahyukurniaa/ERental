@@ -21,11 +21,11 @@
 
             <ImageView
                 android:id="@+id/ib_back"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
                 android:layout_centerVertical="true"
                 android:scaleType="fitCenter"
-                android:src="@drawable/ic_back"
+                android:src="@drawable/ic_back_2"
                 android:visibility="visible"
                 app:tint="@color/white" />
 
@@ -33,7 +33,7 @@
                 android:id="@+id/searchEd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginLeft="@dimen/_15sdp"
                 android:layout_toRightOf="@id/ib_back"
                 android:background="@drawable/edbg" />
 

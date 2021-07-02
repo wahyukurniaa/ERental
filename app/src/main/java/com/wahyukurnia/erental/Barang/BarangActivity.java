@@ -49,7 +49,7 @@ public class BarangActivity extends AppCompatActivity implements UpdateBarang{
         tinyDB = new TinyDB(this);
         id_user = tinyDB.getString("keyIdUser");
 
-        kosong = findViewById(R.id.kosong);
+        kosong = findViewById(R.id.l_kosong);
 
         title = findViewById(R.id.tv_toolbar);
         title.setText("Barang Saya");

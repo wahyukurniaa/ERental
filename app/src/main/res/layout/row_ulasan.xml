@@ -1,78 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/_2sdp"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_marginLeft="@dimen/_10sdp"
-        android:layout_marginRight="@dimen/_10sdp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="@dimen/_50sdp"
-            android:layout_height="@dimen/_50sdp"
-            android:src="@drawable/ic_baseline_account_circle_24" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/namaUser"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/quicksand_bold"
-                android:text="Nama User"
-                android:textColor="?colorPrimary"
-                android:textSize="@dimen/_14sdp" />
-
-            <TextView
-                android:id="@+id/tglUlasan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/quicksand_medium"
-                android:text="2020-02-21" />
-        </LinearLayout>
-        <androidx.appcompat.widget.AppCompatRatingBar
-            android:id="@+id/ratingBar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:isIndicator="true"
-            android:numStars="5"
-            android:progressTint="?colorPrimary"
-            android:rating="3.4"
-            android:scaleX=".3"
-            android:scaleY=".3"
-            android:stepSize="0.5"
-            android:transformPivotX="170dp"
-            android:transformPivotY="25dp" />
-    </LinearLayout>
+    <ImageView
+        android:id="@+id/img"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:layout_marginEnd="@dimen/_12sdp"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:src="@drawable/ic_com" />
     <TextView
-        android:layout_marginLeft="@dimen/_10sdp"
+        android:id="@+id/namaUser"
+        android:layout_toRightOf="@id/img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Nama User"
+        android:textColor="?colorPrimary"
+        android:textSize="@dimen/_14sdp" />
+    <androidx.appcompat.widget.AppCompatRatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/namaUser"
+        android:layout_toEndOf="@id/img"
+        android:layout_marginEnd="@dimen/_6sdp"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:progressTint="@color/orange"
+        android:rating="3.4"
+        android:stepSize="0.5"
+        style="?android:attr/ratingBarStyleSmall"
+        android:transformPivotX="170dp"
+        android:transformPivotY="25dp" />
+    <TextView
+        android:id="@+id/tglUlasan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/quicksand_medium"
+        android:textColor="@color/black"
+        android:layout_toEndOf="@id/ratingBar"
+        android:layout_marginStart="@dimen/_6sdp"
+        android:layout_below="@id/namaUser"
+        android:alpha="0.8"
+        android:transformPivotY="@dimen/_12sdp"
+        android:text="2020-02-21" />
+    <TextView
         android:layout_marginTop="@dimen/_5sdp"
         android:layout_marginRight="@dimen/_10sdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/ratingBar"
+        android:layout_toRightOf="@id/img"
         android:text="Online calculator for quick calculations, along with a large collection of calculators on math, finance, fitness, and more, each with related in-depth information."
-        android:fontFamily="@font/quicksand_medium"
+        android:fontFamily="@font/poppins_medium"
         android:id="@+id/txtUlasan"/>
 
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/_1sdp"
+        android:layout_below="@id/txtUlasan"
         android:layout_marginLeft="@dimen/_5sdp"
         android:layout_marginRight="@dimen/_5sdp"
-        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_12sdp"
         android:layout_marginBottom="@dimen/_10sdp"
         android:background="?colorSecondaryVariant" />
 
 
-
-</LinearLayout>
+</RelativeLayout>

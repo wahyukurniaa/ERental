@@ -28,7 +28,6 @@ public class ProfilActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profil);
 
 
-
         tinyDB = new TinyDB(this);
         nama = findViewById(R.id.nama);
         nama.setText(tinyDB.getString("keyNamaUser"));

@@ -133,7 +133,7 @@ public class Detail_PesananMasukActivity extends AppCompatActivity {
                 });
     }
 
-    private void setDataSpinner (){
+    private void setDataSpinner(){
         adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_dropdown_item, dataStatus);
 

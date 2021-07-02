@@ -51,7 +51,7 @@ public class CheckoutActivity extends AppCompatActivity {
     TinyDB tinyDB;;
     ImageView img_checkout;
     TextView txt_judul_checkout,txt_tarif_checkout,txt_banyak_checkout,namaCheckout,alamatCheckout,totalCheckout;
-    Button btnCheckout;
+    RelativeLayout btnCheckout;
 
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";

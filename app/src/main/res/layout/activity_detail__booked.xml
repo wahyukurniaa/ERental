@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/main"
     tools:context=".Pesanan.Detail_BookedActivity">
 
     <include
@@ -12,8 +13,10 @@
         layout="@layout/toolbar_second" />
 
     <androidx.core.widget.NestedScrollView
+        android:background="@drawable/topshape"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_4sdp"
         android:layout_below="@+id/toolbar">
 
         <LinearLayout
@@ -26,19 +29,23 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_marginLeft="@dimen/_20sdp"
-                    android:layout_marginTop="@dimen/_20sdp"
-                    android:layout_marginBottom="@dimen/_20sdp"
-                    android:id="@+id/imgBarang"
+                <androidx.cardview.widget.CardView
                     android:layout_width="@dimen/_100sdp"
                     android:layout_height="@dimen/_100sdp"
-                    android:layout_marginRight="@dimen/_10sdp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/website" />
+                    android:layout_margin="@dimen/_20sdp"
+                    app:cardCornerRadius="@dimen/_12sdp">
+                    <ImageView
+                        android:id="@+id/imgBarang"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/website" />
+                </androidx.cardview.widget.CardView>
+
+
 
                 <LinearLayout
-                    android:layout_marginRight="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -48,24 +55,28 @@
                         android:id="@+id/namaBarang"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/quicksand_bold"
+                        android:fontFamily="@font/poppins_semibold"
                         android:text="Nama Barang"
                         android:textColor="?colorPrimary"
-                        android:textSize="@dimen/_15sdp" />
+                        android:textSize="22sp" />
 
                     <TextView
                         android:id="@+id/hargaBarang"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/quicksand_medium"
-                        android:text="Rp. 100.000 /Hari" />
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Rp. 100.000 /Hari"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/banyakBarang"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/quicksand_medium"
-                        android:text="5 item" />
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="5 item"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="16sp" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -80,37 +91,49 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:id="@+id/t1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_semibold"
                         android:text="Nama Pemilik "
-                        android:fontFamily="@font/quicksand_medium"/>
+                        android:textColor="@color/dark_gray"
+                        android:textSize="16sp" />
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/namaPenyewa"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_toEndOf="@id/t1"
+                        android:fontFamily="@font/poppins_semibold"
                         android:text="Audi Rahman"
-                        android:fontFamily="@font/quicksand_bold"
+                        android:textAlignment="textEnd"
                         android:textColor="?colorPrimary"
-                        android:layout_alignParentRight="true"
-                        android:id="@+id/namaPenyewa"/>
+                        android:textSize="18sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:layout_marginBottom="@dimen/_5sdp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_5sdp">
                     <TextView
+                        android:id="@+id/t2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_semibold"
                         android:text="Tanggal Penyewaan "
-                        android:fontFamily="@font/quicksand_medium"/>
+                        android:textColor="@color/dark_gray"
+                        android:textSize="16sp" />
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/tgl_awal"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_toEndOf="@id/t2"
+                        android:fontFamily="@font/poppins_semibold"
                         android:text="Audi Rahman"
-                        android:fontFamily="@font/quicksand_bold"
+                        android:textAlignment="textEnd"
                         android:textColor="?colorPrimary"
-                        android:layout_alignParentRight="true"
-                        android:id="@+id/tgl_awal"/>
+                        android:textSize="18sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -118,18 +141,25 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:id="@+id/t3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Tanggal Pengembalian "
-                        android:fontFamily="@font/quicksand_medium"/>
+                        android:textSize="16sp"
+                        android:textColor="@color/dark_gray"
+                        android:fontFamily="@font/poppins_semibold"/>
+
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/tgl_akhir"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_toEndOf="@id/t3"
+                        android:fontFamily="@font/poppins_semibold"
                         android:text="Audi Rahman"
-                        android:fontFamily="@font/quicksand_bold"
+                        android:textAlignment="textEnd"
                         android:textColor="?colorPrimary"
-                        android:layout_alignParentRight="true"
-                        android:id="@+id/tgl_akhir"/>
+                        android:textSize="18sp" />
                 </RelativeLayout>
 
 
@@ -138,18 +168,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:id="@+id/t4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Alamat Penyewa "
-                        android:fontFamily="@font/quicksand_medium"/>
+                        android:textSize="16sp"
+                        android:textColor="@color/dark_gray"
+                        android:fontFamily="@font/poppins_semibold"/>
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/alamat"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_toEndOf="@id/t4"
+                        android:fontFamily="@font/poppins_semibold"
                         android:text="Audi Rahman"
-                        android:fontFamily="@font/quicksand_bold"
+                        android:textAlignment="textEnd"
                         android:textColor="?colorPrimary"
-                        android:layout_alignParentRight="true"
-                        android:id="@+id/alamat"/>
+                        android:textSize="18sp" />
                 </RelativeLayout>
 
 
@@ -157,19 +193,26 @@
                     android:layout_marginBottom="@dimen/_5sdp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                     <TextView
+                        android:id="@+id/t6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_semibold"
                         android:text="Status Sewa "
-                        android:fontFamily="@font/quicksand_medium"/>
+                        android:textColor="@color/dark_gray"
+                        android:textSize="16sp" />
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/statusSewa"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_toEndOf="@id/t6"
+                        android:fontFamily="@font/poppins_semibold"
                         android:text="Audi Rahman"
-                        android:fontFamily="@font/quicksand_bold"
+                        android:textAlignment="textEnd"
                         android:textColor="?colorPrimary"
-                        android:layout_alignParentRight="true"
-                        android:id="@+id/statusSewa"/>
+                        android:textSize="18sp" />
                 </RelativeLayout>
 
 
@@ -178,44 +221,55 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:id="@+id/t7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Banyak Sewa "
-                        android:fontFamily="@font/quicksand_medium"/>
+                        android:textSize="16sp"
+                        android:textColor="@color/dark_gray"
+                        android:fontFamily="@font/poppins_semibold"/>
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/ketBanyak"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_toEndOf="@id/t7"
+                        android:fontFamily="@font/poppins_semibold"
                         android:text="Audi Rahman"
-                        android:fontFamily="@font/quicksand_bold"
+                        android:textAlignment="textEnd"
                         android:textColor="?colorPrimary"
-                        android:layout_alignParentRight="true"
-                        android:id="@+id/ketBanyak"/>
+                        android:textSize="18sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:id="@+id/t8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Total Harga Sewa "
-                        android:fontFamily="@font/quicksand_medium"/>
+                        android:textSize="16sp"
+                        android:textColor="@color/dark_gray"
+                        android:fontFamily="@font/poppins_semibold"/>
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/totalHarga"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Audi Rahman"
-                        android:fontFamily="@font/quicksand_bold"
-                        android:textColor="?colorPrimary"
                         android:layout_alignParentRight="true"
-                        android:id="@+id/totalHarga"/>
+                        android:layout_toEndOf="@id/t8"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Audi Rahman"
+                        android:textAlignment="textEnd"
+                        android:textColor="?colorPrimary"
+                        android:textSize="18sp" />
                 </RelativeLayout>
 
             </LinearLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_150sdp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="@dimen/_20sdp">
+                android:layout_marginHorizontal="@dimen/_20sdp">
                 <LinearLayout
                     android:layout_marginTop="@dimen/_8sdp"
                     android:layout_width="match_parent"
@@ -226,21 +280,32 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Jaminan Sewa"
+                    android:textSize="16sp"
+                    android:textColor="@color/dark_gray"
+                    android:fontFamily="@font/poppins_semibold"
                     android:background="?android:windowBackground"
-                    android:layout_marginLeft="@dimen/_10sdp"
-                    android:paddingLeft="@dimen/_10sdp"
-                    android:paddingRight="@dimen/_10sdp"/>
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:paddingHorizontal="@dimen/_10sdp"/>
 
-                <ImageView
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/website"
-                    android:scaleType="fitCenter"
-                    android:id="@+id/imgJaminan"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
                     android:layout_marginTop="@dimen/_20sdp"
                     android:layout_marginBottom="@dimen/_5sdp"
-                    android:layout_marginLeft="@dimen/_5sdp"
-                    android:layout_marginRight="@dimen/_5sdp"/>
+                    app:cardCornerRadius="@dimen/_8sdp">
+                    <ImageView
+                        android:src="@drawable/website"
+                        android:scaleType="fitCenter"
+                        android:adjustViewBounds="true"
+                        android:id="@+id/imgJaminan"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:contentDescription="TODO" />
+                </androidx.cardview.widget.CardView>
+
+
+
 
             </RelativeLayout>
         </LinearLayout>
