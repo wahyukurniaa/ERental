@@ -34,7 +34,7 @@
                 android:textStyle="bold"
                 android:textSize="22sp"
                 android:textColor="@color/white"
-                tools:text="E-Rental" />
+                tools:text="Rentalku" />
 
             <ImageButton
                 android:layout_alignParentRight="true"
