@@ -1,16 +1,29 @@
 package com.wahyukurnia.erental;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.crowdfire.cfalertdialog.CFAlertDialog;
+import com.google.android.play.core.appupdate.AppUpdateInfo;
+import com.google.android.play.core.appupdate.AppUpdateManager;
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
+import com.google.android.play.core.install.model.AppUpdateType;
+import com.google.android.play.core.install.model.UpdateAvailability;
+import com.google.android.play.core.tasks.Task;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.wahyukurnia.erental.Kategori.Adapter_Kategori;
@@ -26,15 +39,18 @@ public class MainActivity extends AppCompatActivity{
     TextView title;
     ImageView notif, msg;
     Adapter_Kategori adapter;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        context = this;
 //        btn_cari = findViewById(R.id.btncari);
+        playstore();
 
         title = findViewById(R.id.tv_toolbar);
-        title.setText("E Rental");
+        title.setText("Rentalku");
 
         notif = findViewById(R.id.ib_notif);
         notif.setOnClickListener(new View.OnClickListener() {
@@ -73,8 +89,6 @@ public class MainActivity extends AppCompatActivity{
                         fragment = new Fragment_PesananMasuk();
                         break;
 
-
-
                     /*case R.id.notidications:
                         fragment = new Notification();
                         break;*/
@@ -94,6 +108,47 @@ public class MainActivity extends AppCompatActivity{
             return true;
         }
         return false;
+    }
+
+    private void playstore(){
+        AppUpdateManager appUpdateManager = AppUpdateManagerFactory.create(context);
+        Task<AppUpdateInfo> appUpdateInfoTask = appUpdateManager.getAppUpdateInfo();
+        appUpdateInfoTask.addOnSuccessListener(appUpdateInfo -> {
+            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
+                    // This example applies an immediate update. To apply a flexible update
+                    // instead, pass in AppUpdateType.FLEXIBLE
+                    && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
+
+                CFAlertDialog.Builder dialog = new CFAlertDialog.Builder(context)
+                        .setDialogStyle(CFAlertDialog.CFAlertStyle.NOTIFICATION)
+                        .setTitle("New Update Available")
+                        .setMessage("Update aplikasi untuk melanjutkan!!")
+                        .setCancelable(false)
+                        .addButton("Oke",
+                                -1,
+                                -1,
+                                CFAlertDialog.CFAlertActionStyle.POSITIVE,
+                                CFAlertDialog.CFAlertActionAlignment.END,
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        String url = "market://details?id=com.wahyukurnia.erental";
+                                        Intent intent = new Intent(Intent.ACTION_VIEW);
+                                        intent.setData(Uri.parse(url));
+                                        finish();
+                                        startActivity(intent);
+                                    }
+                                }
+                        );
+
+                dialog.show();
+
+            }else {
+//                Toast.makeText(context, " Update tidak ada", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
     }
 
     @Override

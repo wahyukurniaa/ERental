@@ -47,7 +47,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/_20sdp"
                             android:fontFamily="@font/poppins_semibold"
-                            android:text="Di E-Rental Padang"
+                            android:text="Di Aplikasi Rentalku"
                             android:textColor="@color/white"
                             android:textSize="25sp" />
 
